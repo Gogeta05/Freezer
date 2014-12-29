@@ -1,0 +1,105 @@
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="1149" measuredH="267" mockupW="765" mockupH="183">
+  <controls>
+    <control controlID="7" controlTypeID="com.balsamiq.mockups::VerticalTabBar" x="477" y="84" w="200" h="183" measuredW="200" measuredH="212" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <hrefs>search_logged_in%26bm%3Bsearch_logged_in.bmml%26bm%3Bsearch_logged_in.bmml%26bm%3Bsearch_logged_in.bmml%2Cfilter_logged_in%26bm%3Bfilter_logged_in.bmml%26bm%3Bfilter_logged_in.bmml%26bm%3Bfilter_logged_in.bmml%2Cfavorites_logged_in%26bm%3Bfavorites_logged_in.bmml%26bm%3Bfavorites_logged_in.bmml%26bm%3Bfavorites_logged_in.bmml%2Csettings_logged_in%26bm%3Bsettings_logged_in.bmml%26bm%3Bsettings_logged_in.bmml%26bm%3Bsettings_logged_in.bmml%2Cmatch_welcome%26bm%3Bmatch_welcome.bmml%26bm%3Bmatch_welcome.bmml%26bm%3Bmatch_welcome.bmml</hrefs>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%2293%2C20%2C157%2C50%22%20href%3D%22search_logged_in.bmml%22%20alt%3D%22search_logged_in%22%20id%3D%227%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%2293%2C48%2C157%2C78%22%20href%3D%22filter_logged_in.bmml%22%20alt%3D%22filter_logged_in%22%20id%3D%227%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%2293%2C76%2C157%2C106%22%20href%3D%22favorites_logged_in.bmml%22%20alt%3D%22favorites_logged_in%22%20id%3D%227%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%2293%2C104%2C157%2C134%22%20href%3D%22settings_logged_in.bmml%22%20alt%3D%22settings_logged_in%22%20id%3D%227%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%2293%2C132%2C157%2C162%22%20href%3D%22match_welcome.bmml%22%20alt%3D%22match_welcome%22%20id%3D%227%22/%3E</map>
+        <text>Search%0AFilter%0AFavorites%0ASettings%0A*Match*</text>
+      </controlProperties>
+    </control>
+    <control controlID="17" controlTypeID="__group__" x="384" y="92" w="93" h="132" measuredW="93" measuredH="132" zOrder="1" locked="false" isInGroup="-1">
+      <groupChildrenDescriptors>
+        <control controlID="0" controlTypeID="com.balsamiq.mockups::VCurly" x="0" y="0" w="93" h="132" measuredW="180" measuredH="140" zOrder="0" locked="false" isInGroup="17">
+          <controlProperties>
+            <direction>right</direction>
+            <text>swipe%20right%20to%20blend%20in%20options%20bar</text>
+          </controlProperties>
+        </control>
+      </groupChildrenDescriptors>
+    </control>
+    <control controlID="18" controlTypeID="com.balsamiq.mockups::Arrow" x="682" y="96" w="79" h="10" measuredW="150" measuredH="100" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="19" controlTypeID="com.balsamiq.mockups::Label" x="776" y="91" w="-1" h="-1" measuredW="373" measuredH="21" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>navigation%20bar%20toned%20down%20and%20hardly%20visible%20%28except%20the%20icons%29</text>
+      </controlProperties>
+    </control>
+    <control controlID="23" controlTypeID="com.balsamiq.mockups::Label" x="548" y="85" w="-1" h="-1" measuredW="34" measuredH="21" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <href>home_logged_in%26bm%3Bhome_logged_in.bmml%26bm%3Bhome_logged_in.bmml%26bm%3Bhome_logged_in.bmml</href>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22164%2C1%2C198%2C22%22%20href%3D%22home_logged_in.bmml%22%20alt%3D%22home_logged_in%22%20id%3D%2223%22/%3E</map>
+        <text>Home</text>
+      </controlProperties>
+    </control>
+    <control controlID="25" controlTypeID="com.balsamiq.mockups::Icon" x="565" y="131" w="-1" h="-1" measuredW="16" measuredH="16" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <borderStyle>none</borderStyle>
+        <color>16767334</color>
+        <icon>StarIcon%7Cxsmall</icon>
+      </controlProperties>
+    </control>
+    <control controlID="26" controlTypeID="com.balsamiq.mockups::Icon" x="581" y="131" w="-1" h="-1" measuredW="16" measuredH="16" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <borderStyle>none</borderStyle>
+        <color>16767334</color>
+        <icon>StarIcon%7Cxsmall</icon>
+      </controlProperties>
+    </control>
+    <control controlID="27" controlTypeID="com.balsamiq.mockups::Icon" x="599" y="131" w="-1" h="-1" measuredW="16" measuredH="16" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <borderStyle>none</borderStyle>
+        <color>0</color>
+        <icon>StarIcon%7Cxsmall</icon>
+      </controlProperties>
+    </control>
+    <control controlID="28" controlTypeID="com.balsamiq.mockups::Icon" x="615" y="131" w="-1" h="-1" measuredW="16" measuredH="16" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <borderStyle>none</borderStyle>
+        <color>0</color>
+        <icon>StarIcon%7Cxsmall</icon>
+      </controlProperties>
+    </control>
+    <control controlID="29" controlTypeID="com.balsamiq.mockups::Icon" x="631" y="131" w="-1" h="-1" measuredW="16" measuredH="16" zOrder="9" locked="false" isInGroup="-1">
+      <controlProperties>
+        <borderStyle>none</borderStyle>
+        <color>0</color>
+        <icon>StarIcon%7Cxsmall</icon>
+      </controlProperties>
+    </control>
+    <control controlID="41" controlTypeID="com.balsamiq.mockups::Link" x="547" y="244" w="-1" h="-1" measuredW="23" measuredH="16" zOrder="10" locked="false" isInGroup="-1">
+      <controlProperties>
+        <href>lake_detail_logged_in%26bm%3Blake_detail_logged_in.bmml%26bm%3Blake_detail_logged_in.bmml%26bm%3Blake_detail_logged_in.bmml</href>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22163%2C160%2C186%2C176%22%20href%3D%22lake_detail_logged_in.bmml%22%20alt%3D%22lake_detail_logged_in%22%20id%3D%2241%22/%3E</map>
+        <size>10</size>
+        <text>Back</text>
+      </controlProperties>
+    </control>
+    <control controlID="44" controlTypeID="com.balsamiq.mockups::Label" x="565" y="112" w="-1" h="-1" measuredW="83" measuredH="21" zOrder="11" locked="false" isInGroup="-1">
+      <controlProperties>
+        <align>center</align>
+        <text>Rate%20this%20lake%3A</text>
+      </controlProperties>
+    </control>
+    <control controlID="45" controlTypeID="com.balsamiq.mockups::Label" x="553" y="147" w="-1" h="-1" measuredW="107" measuredH="21" zOrder="12" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Write%20your%20review%3A</text>
+      </controlProperties>
+    </control>
+    <control controlID="46" controlTypeID="com.balsamiq.mockups::TextArea" x="547" y="170" w="120" h="69" measuredW="200" measuredH="140" zOrder="13" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="47" controlTypeID="com.balsamiq.mockups::Link" x="635" y="244" w="-1" h="-1" measuredW="32" measuredH="16" zOrder="14" locked="false" isInGroup="-1">
+      <controlProperties>
+        <href>lake_detail_logged_in%26bm%3Blake_detail_logged_in.bmml%26bm%3Blake_detail_logged_in.bmml%26bm%3Blake_detail_logged_in.bmml</href>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22251%2C160%2C283%2C176%22%20href%3D%22lake_detail_logged_in.bmml%22%20alt%3D%22lake_detail_logged_in%22%20id%3D%2247%22/%3E</map>
+        <size>10</size>
+        <text>Submit</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>
