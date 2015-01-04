@@ -1,7 +1,23 @@
-@(message: String)
+@* The list of users - which is passed via the index.render() method *@
+@(users: List[User])
 
 @main("Welcome to Play") {
 
-    @play20.welcome(message, style = "Java")
+	<h1>Register</h1>
+    <form action='@routes.Application.register()' method='post'>
+    	<p>email:<br>
+    	<input type='text' name='email' label='test'></p>
+    	<p>password:<br>
+    	<input type='text' name='password'></p>
+    	<button>Submit</button>
+    </form>
+    
+    <h1>Registered users:</h1>
+    <ul>
+    @for(user <- users) {
+    	<li>@user.getEmail() : @user.getPassword()</li>
+    }
+    </ul>
+    
 
 }
