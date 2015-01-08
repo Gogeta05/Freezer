@@ -9,19 +9,18 @@ use it for editing
 1. comments*
 ************
 
-current version : 0.1
+current version : 1.0
 
-Just some Basics, further pages are planned:
+Includes all imo important features
+Some Buttons/Lables are clickable to faster navigation
 
-- left swipe menu [has different setting menus] (just 1 page, no need to include in every page):
-	+ relocate settings there (e.g. 'general' , 'matching settings', 'interests', ...)
-
-- add settings pages
-
-- more detailed location status in HOME (with option to choose a lift)
+TODO:
+- More Detailed Panes for Location Status and Current Setting Informations in HOME page
+[- Make Save buttons in Setting pages clickable]
 
 
 *************
 2. changelog*
 *************
-v0.1 - Basic Prototype, still some things to do
+v1.0 - All Features included *MasterMoritz*
+v0.1 - Basic Prototype, still some things to do *MasterMoritz*
