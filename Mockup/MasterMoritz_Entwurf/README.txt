@@ -16,6 +16,8 @@ Some Buttons/Lables are clickable to faster navigation
 
 TODO:
 - More Detailed Panes for Location Status and Current Setting Informations in HOME page
+- Settings page is missing contact and set filter buttons
+- maybe add an inbox icon on top navigation menu (between Home and On/Off) ?
 
 
 *************
