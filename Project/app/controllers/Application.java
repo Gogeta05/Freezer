@@ -26,5 +26,9 @@ public class Application extends Controller {
     	
     	return redirect(routes.Application.index());
     }
+    
+    public static Result locationTracker() {
+    	return ok(locationTracker.render());
+    }
 
 }
