@@ -9,17 +9,20 @@ use it for editing
 1. comments*
 ************
 
-current version : 1.1
+current version : 1.2
 
-Includes all imo important features
+open index.html to view the Mockup
+
 Some Buttons/Lables are clickable to faster navigation
 
-TODO:
 
+********
+2. TODO*
+********
 
 
 *************
-2. changelog*
+3. changelog*
 *************
 v1.2	- Settings page is no longer missing contact and set filter buttons
 	- More Detailed Panes for Location Status and Status Informations in HOME page
