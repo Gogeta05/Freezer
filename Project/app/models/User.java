@@ -14,9 +14,8 @@ public class User extends Model {
 	private long id;
 	
 	private String email;
-	
 	private String password;
-	
+	private Location location;
 	
 	public String getEmail() {
 		return email;
