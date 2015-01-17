@@ -1,15 +1,49 @@
 @* The list of users - which is passed via the index.render() method *@
 @(users: List[User])
 
-@main("Welcome to Play") {
-
-	<h1>Register</h1>
+@header("Index of Freezer")()() {
+	<!-- hier mit if-else arbeiten, um Gaeste und User zu unterscheiden -->
+	<h1>Register (Guests)</h1>
     <form action='@routes.Application.register()' method='post'>
-    	<p>email:<br>
-    	<input type='text' name='email' label='test'></p>
-    	<p>password:<br>
-    	<input type='text' name='password'></p>
-    	<button>Submit</button>
+		<div class="formFieldLabel">
+			<label for="username">Username</label>
+		</div>	
+		<div class="formField">
+			<input type="text" name="username" id="username" />
+		</div>
+		
+		<div class="formFieldLabel">
+			<label for="password">Password</label>
+		</div>	
+		<div class="formField">
+			<input type="password" name="password" id="password" />
+		</div>
+
+		<div class="formFieldLabel">
+			<label for="passwordConfirm">Confirm Password</label>
+		</div>	
+		<div class="formField">
+			<input type="passwordConfirm" name="passwordConfirm" id="passwordConfirm" />
+		</div>
+		
+		<div class="formFieldLabel">
+			<label for="email">Email</label>
+		</div>	
+		<div class="formField">
+			<input type="text" name="email" id="email" />
+		</div>
+		
+		<div class="formFieldLabel">
+			<label for="emailConfirm">Confirm Email</label>
+		</div>	
+		<div class="formField">
+			<input type="text" name="emailConfirm" id="emailConfirm" />
+		</div>
+		
+		<div class="formSubmit">
+			<input accesskey="s" value="Absenden" type="submit">
+			<input kl_virtual_keyboard_secure_input="on" accesskey="r" value="Zurücksetzen" type="reset">
+		</div>
     </form>
     
     <h1>Registered users:</h1>
@@ -24,6 +58,5 @@
     
     <h1>View Lifts:</h1>
     <a href='@routes.Application.displayLifts()'>Click me!</a>
-    
-
 }
+@footer() { }
