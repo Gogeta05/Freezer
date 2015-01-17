@@ -6,6 +6,7 @@ import java.net.URL;
 
 import models.Lift;
 import models.Location;
+import models.User;
 
 import org.apache.commons.io.FileUtils;
 
@@ -14,6 +15,7 @@ import jxl.Sheet;
 import jxl.Workbook;
 import jxl.read.biff.BiffException;
 import play.db.ebean.Model;
+import utils.Util;
 
 import com.avaje.ebean.Expr;
 
@@ -23,13 +25,17 @@ public final class Database {
 		return new Model.Finder<String, Lift>(String.class, Lift.class).where(Expr.eq("name", name)).findUnique();
 	}
 
+	public static User getUser(String usrname) {
+		return new Model.Finder<String, User>(String.class, User.class).where(Expr.eq("username", usrname)).findUnique();
+	}
+	
 	/**
 	 * Reading the xls spreadsheet into the database.
 	 */
 	public static void readSpreadsheet() {
 		try {
 			File file = File.createTempFile("jdslk", "jskdl");
-			FileUtils.copyURLToFile(new URL("https://gis.tirol.gv.at/ogd/sport_freizeit/Aufstiegshilfen.xls"), file);
+			FileUtils.copyURLToFile(new URL(Util.url_LiftXls), file);
 			Workbook workbook = Workbook.getWorkbook(file);
 			Sheet sheet = workbook.getSheet(0);
 			// The order and type of cells is validated in the respective unit test
