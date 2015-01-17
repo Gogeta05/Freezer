@@ -252,7 +252,7 @@ public class User extends Model {
 	/**
 	 * send a message to another user
 	 */
-	public void sendMsg (Message msg, User to) {
-		Database.getUser(to.getUsername()).recieveMsg(msg);
+	public void sendMsg (String msg, User to) {
+		Database.getUser(to.getUsername()).recieveMsg(new Message(this, to, msg));
 	}
 }

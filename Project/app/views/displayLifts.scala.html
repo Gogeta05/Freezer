@@ -1,7 +1,7 @@
 @* not related to any final view *@
 @(lifts: List[Lift])
 
-@main("Welcome to Play") {
+@header("List of available lifts")()() {
  
  <h1>@lifts.length lifts currently stored in the database.</h1>
     <ul>
@@ -17,3 +17,4 @@
     }
     </ul>
 }
+@footer() {}
