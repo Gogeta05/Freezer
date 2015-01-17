@@ -2,9 +2,18 @@ package models;
 
 import java.util.ArrayList;
 
-import play.db.ebean.Model;
-
-public class MessageBox extends Model {
+public class MessageBox {
+	
 	public ArrayList<Message> messages;
+	
+	public void deleteMsg(Message msg) {
+		messages.remove(msg);
+	}
+	public void deleteAll() {
+		messages.clear();
+	}
+	public void reply(String newMsg, Message msg) {
+		msg.reply(newMsg);
+	}
 	
 }
