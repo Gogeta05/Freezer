@@ -1,0 +1,28 @@
+@(title: String)(optionalHeaderInput: Html)(optionalCSSInput: Html)
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+	<title>@title</title>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/main.css")" />
+	<link rel="stylesheet" type="text/css" media="main and (max-device-width: 480px)" href="@routes.Assets.at("stylesheets/mobile.css")" /> <!-- Responsive Webdesign -->
+	<link rel="shortcut icon" href="@routes.Assets.at("icons/favicon.ico")" type="image/x-icon" />
+	<!--
+	Hier per Variablen weitere Anweisungen einfuegen; zb JavaScripts laden oder weitere CSS Anweisungen
+	-->
+	@optionalHeaderInput
+	@optionalCSSInput
+</head>
+<body>
+<!-- Die obere Navigation -->
+<div class="topNavigation" id="topNavigation">
+	<ul>
+		<li>Home</li>
+		<li>Vogel-Icon</li>
+		<li><a href="https://proto.io/freebies/onoff/" target="_blank">OnOff Switch</a></li>
+		<li>Logout</lil>
+	</ul>
+</div>
+
+<!-- Ab hier: Der eigentliche Inhalt. Main Container wird noch hier im Header geoeffnet -->
+<div class="mainContent" id="mainContent">
