@@ -1,57 +1,7 @@
-<!-- TODO: As every other view file this should pass the html body + title to main.scala.html -->
-
-
-
-<!DOCTYPE html>
-<html>
-	<head>
-	<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-	<meta charset="utf-8">
-	<title>Location Tracker</title>
-	<style>
-		html, body {
-		height: 100%;
-		margin: 0px;
-		padding: 0px
-		}
-		#map-canvas {
-			height: 600px;
-			width: 400px;
-			margin: 0px;
-			padding: 0px;
-			left:50%;
-			top:50%;
-			margin-left:-200px;
-			margin-top:-300px;
-			z-index: 0;
-		}
-		#panel {
-			position:absolute;
-			top:1px;
-			height: 100px;
-			width: 100%;
-			z-index: 5;
-		}
-		#info {
-			top: 5px;
-			z-index: 5;
-			height: 100%;
-			width: 20%;
-			background-color: #fff;
-			padding: 5px;
-			border: 1px solid #999;
-		}
-			
-	</style>
-	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
-	<script src="@routes.Assets.at("javascripts/locationTracker.js")"></script>	
-
-  </head>
-  <body>
+@header("Index of Freezer")(<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script><script type="text/javascript" src="@routes.Assets.at("javascripts/locationTracker.js")"></script>)(<link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/locationTracker.css")" />)	 {
     <div id="panel">
-		<span id="info">Location Tracking prototype by MasterMoritz</span>
+		<span id="info">Location Tracking prototype by MasterMoritz - implemented into new html scheme prototype by Gogeta</span>
 	</div>
     <div id="map-canvas"></div>
-  </body>
-</html>
-
+}
+@footer() {}
