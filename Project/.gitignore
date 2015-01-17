@@ -13,6 +13,7 @@ dist
 /.project
 /RUNNING_PID
 /.settings
+/.metadata
 /conf/evolutions/default/*.sql
 
 # Windows image file caches
