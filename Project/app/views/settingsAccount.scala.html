@@ -1,0 +1,41 @@
+@header("Settings Account")()() {
+	<ul>
+		<li>Settings</li>
+			<ul>
+				<li>Account</li>
+				<li>Profile</li>
+				<li>Matching</li>
+			</ul>
+	</ul>
+
+	<div class="filterOptions">Account Settings</div>
+	
+    <form action='@routes.Application.accountSettings()' method='post'>
+		<div class="formFieldLabel">
+			<label for="username">Username</label>
+		</div>	
+		<div class="formField">
+			<input type="text" name="username" id="username" />
+		</div>
+		
+		<div class="formFieldLabel">
+			<label for="password">Password</label>
+		</div>	
+		<div class="formField">
+			<input type="password" name="password" id="password" />
+		</div>
+		
+		<div class="formFieldLabel">
+			<label for="email">Email</label>
+		</div>	
+		<div class="formField">
+			<input type="text" name="email" id="email" />
+		</div>
+		
+		<div class="formSubmit">
+			<input accesskey="s" value="Speichern" type="submit">
+			<input kl_virtual_keyboard_secure_input="on" accesskey="r" value="Zurücksetzen" type="reset">
+		</div>
+    </form>
+}
+@footer() {}

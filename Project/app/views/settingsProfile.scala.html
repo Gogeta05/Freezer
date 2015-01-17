@@ -1,0 +1,63 @@
+@header("Settings Profile")()() {
+	<ul>
+		<li>Settings</li>
+			<ul>
+				<li>Account</li>
+				<li>Profile</li>
+				<li>Matching</li>
+			</ul>
+	</ul>
+
+	<div class="filterOptions">Profile Settings</div>
+	
+    <form action='@routes.Application.profileSettings()' method='post'>
+		<div class="formFieldLabel">
+			<label for="firstname">first name</label>
+		</div>	
+		<div class="formField">
+			<input type="text" name="firstname" id="firstname" />
+		</div>
+		
+		<div class="formFieldLabel">
+			<label for="lastname">last name</label>
+		</div>	
+		<div class="formField">
+			<input type="text" name="lastname" id="lastname" />
+		</div>
+		
+		<div class="formFieldLabel">
+			<label for="age">age</label>
+		</div>	
+		<div class="formField">
+			<input type="text" name="age" id="age" />
+		</div>
+		
+		<div class="formFieldLabel positionRight">
+			<label for="avatar"><img src="@routes.Assets.at("images/avatar_default.png")" alt="Avatar" /></label>
+		</div>	
+		
+		<div class="formFieldLabel positionRight">
+			<label for="gender"><select name="gender">
+					<option value="male">male</option>
+					<option value="female">female</option>
+					<option value="unknown">Don't know</option>
+				</select>
+			</label>
+		</div>
+		
+	<div class="filterOptions">Interests</div>
+		<ul>
+			<li>+ Politics [x]</li>
+			<li>+ Theology [x]</li>
+			<li>+ Games [x]</li>
+		</ul>
+		<br />
+		([x] ... should be replaced with javascript code to expand sub-categories in final version)<br /><br />
+		
+		<div class="formSubmit">
+			<input accesskey="s" value="Speichern" type="submit">
+			<input kl_virtual_keyboard_secure_input="on" accesskey="r" value="Zurücksetzen" type="reset">
+		</div>
+	</form>
+}
+@footer() {}
