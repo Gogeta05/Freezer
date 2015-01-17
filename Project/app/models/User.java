@@ -122,7 +122,7 @@ public class User extends Model {
 				ArrayList<Interests> parsed = new ArrayList<>();
 				
 				// start from row <start+1> until end of table
-				for (int r = start, i = 0; r < readRows.length; r++, i++) {
+				for (int r = start; r < readRows.length; r++) {
 					
 					//skip already read rows
 					if (readRows[r]) {
