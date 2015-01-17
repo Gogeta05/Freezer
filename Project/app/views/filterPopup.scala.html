@@ -1,0 +1,42 @@
+@header("Filter Popup")()() {
+ 
+ <h1>Filter matching</h1>
+<div class="filterOptions">Gender</div>
+ <div class="formFieldLabel">
+	<label for="male">Male</label>
+</div>
+<div class="formField">
+	<input type="checkbox" name="gender" value="1" />
+</div>
+ <div class="formFieldLabel">
+	<label for="female">Female</label>
+</div>
+<div class="formField">
+	<input type="checkbox" name="gender" value="2" />
+</div>
+<br /><br />
+
+<div class="filterOptions">Age</div>
+<select name="ageSelect">
+	<option value="=">=</option>
+	<option value=">=">>=</option>
+	<option value="<="><=</option>
+</select>
+<input type="text" name="ageInput" value="42" size="10" />
+<br /><br />
+
+<div class="filterOptions">Interests</div>
+	<ul>
+		<li>+ Politics [x]</li>
+		<li>+ Theology [x]</li>
+		<li>+ Games [x]</li>
+	</ul>
+	<br />
+	([x] ... should be replaced with javascript code to expand sub-categories in final version)<br /><br />
+
+<div class="footerButtons" id="footerButtons">
+	<input type="button" class="buttonLeft" name="contact" value="contact" onclick="javascript:alert('STALKER!!!');">
+	<input type="button" class="buttonRight" name="contact" value="set filter" onclick="javascript:alert('FILTER!!!');">
+</div>
+}
+@footer() {}
