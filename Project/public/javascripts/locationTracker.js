@@ -1,49 +1,76 @@
-		var geocoder;
-		var map;
-		var infowindow = new google.maps.InfoWindow();
-		var marker;
-		var tracker;
+var geocoder = new google.maps.Geocoder();
+var tracker;
 
-		function initialize() {
-		  geocoder = new google.maps.Geocoder();
-		  var latlng = new google.maps.LatLng(47.269258 ,11.4040792	);
-		  var mapOptions = {
-			zoom: 8,
-			center: latlng,
-			mapTypeId: 'roadmap'
-		  }
-		  map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-		}
+//request position once
+function getPosition() {
+	navigator.geolocation.getCurrentPosition(getPostal, errorHandler);
+}
+//request position in intervals
+function start() {
+	tracker = navigator.geolocation.watchPosition(getPostal, errorHandler);
+}
+//stop the requesting in intervals
+function stop() {
+	navigator.geolocation.clearWatch(tracker);
+}
 
-		function trackLocation() {
-			tracker = navigator.geolocation.watchPosition(codeLatLng);
-		}
-			
-		function codeLatLng(position) {
-		  var lat = position.coords.latitude;
-		  var lng = position.coords.longitude;
-		  var latlng = new google.maps.LatLng(lat, lng);
-		  geocoder.geocode({'latLng': latlng}, function(results, status) {
-			if (status == google.maps.GeocoderStatus.OK) {
-			  if (results[0]) {
-				map.setZoom(11);
-				marker = new google.maps.Marker({
-					position: latlng,
-					map: map
-				});
+function errorHandler(error) {
+	switch(error.code) {
+		case error.PERMISSION_DENIED:
+			alert("User denied the request for Geolocation.");
+			break;
+		case error.POSITION_UNAVAILABLE:
+			alert("Location information is unavailable.");
+			break;
+		case error.TIMEOUT:
+			alert("The request to get user location timed out.");
+			break;
+		case error.UNKNOWN_ERROR:
+			//try again (could end in endless loop, needs some savior)
+			getPosition();
+			break;
+	}
+}
+
+function getPostal(position) {
+	var lat = position.coords.latitude;
+	var lng = position.coords.longitude;
+	var subsequent = 0;
+	var postal = "";
+	var latlng = new google.maps.LatLng(lat, lng);
+	geocoder.geocode({'latLng': latlng}, function(results, status) {
+		if (status == google.maps.GeocoderStatus.OK) {
+			if (results[0]) {
+				
 				var location = results[0].formatted_address;
-				infowindow.setContent(location);
-				infowindow.open(map, marker);
-				document.getElementById("locationInfo").innerHTML=location;
-			  } else {
-				alert('No results found');
-			  }
+				//location = location.replace(/\s/g, "");
+				
+				//extract the postal code
+				for (var x = 0; x < location.length; x++) {
+					var c = location.charAt(x);
+					if (c >= '0' && c <= '9') {
+						subsequent += 1;
+						postal += c;
+					} else if ( (c == ',' || c == ' ') && subsequent == 4){
+						break;
+					} else {
+						subsequent = 0;
+						postal = "";
+					}
+				}
+				
+				//Do something with the postal code
+				document.getElementById("locationInfo").innerHTML=parseInt(postal);
+				
 			} else {
-			  alert('Geocoder failed due to: ' + status);
-			}
-		  });
+				alert('No results found');
+			}	
+			
+		//try again (could end in endless loop, needs some savior) if unknown_error
+		} else {
+			getPosition();
 		}
+	});
+}
 
-		google.maps.event.addDomListener(window, 'load', initialize);
-
-		window.onload(trackLocation());
+window.onload(getPosition());
