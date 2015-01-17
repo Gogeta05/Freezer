@@ -48,7 +48,11 @@ public final class Database {
 					if (sheet.getCell(14, i).getContents().equals("")) {
 						maxPersons = 0;
 					} else {
+						//better?
+						maxPersons = (int) ((NumberCell) sheet.getCell(14, i)).getValue();
+						/*
 						maxPersons = Integer.parseInt(sheet.getCell(14, i).getContents()); // cell type in document is LABEL not NUMBER -> why different in unit test???
+						*/
 					}
 					Boolean seatHeating = sheet.getCell(15, i).getContents().equalsIgnoreCase("ja") ? true : false;
 					String weatherProtection = sheet.getCell(16, i).getContents();
