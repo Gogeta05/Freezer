@@ -51,7 +51,7 @@ public final class Database {
 						//better?
 						maxPersons = (int) ((NumberCell) sheet.getCell(14, i)).getValue();
 						/*
-						maxPersons = Integer.parseInt(sheet.getCell(14, i).getContents()); // cell type in document is LABEL not NUMBER -> why different in unit test???
+						maxPersons = Integer.parseInt(sheet.getCell(14, i).getContents());
 						*/
 					}
 					Boolean seatHeating = sheet.getCell(15, i).getContents().equalsIgnoreCase("ja") ? true : false;
