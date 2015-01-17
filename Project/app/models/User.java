@@ -129,7 +129,7 @@ public class User extends Model {
 						continue;
 					}
 					
-					//add the interest with all its sub-interests if not already existant
+					//add the interest with all its sub-interests
 					parsed.add(parseInterest(r, sheet));
 				}
 				
