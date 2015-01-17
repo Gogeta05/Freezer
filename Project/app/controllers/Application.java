@@ -2,6 +2,8 @@ package controllers;
 
 import java.util.List;
 
+import backend.Database;
+import models.Lift;
 import models.User;
 import play.*;
 import play.data.Form;
@@ -25,6 +27,15 @@ public class Application extends Controller {
     	user.save();
     	
     	return redirect(routes.Application.index());
+    }
+    
+    /*
+     * For testing purposes only - a bit of eyecandy in addition to the unit tests. 
+     */
+    public static Result displayLifts() {
+    	Database.readSpreadsheet();
+    	List<Lift> lifts = new Model.Finder<>(String.class, Lift.class).all();
+    	return ok(displayLifts.render(lifts));
     }
     
     public static Result locationTracker() {

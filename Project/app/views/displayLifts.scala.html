@@ -1,0 +1,19 @@
+@* not related to any final view *@
+@(lifts: List[Lift])
+
+@main("Welcome to Play") {
+ 
+ <h1>@lifts.length lifts currently stored in the database.</h1>
+    <ul>
+    @for(lift <- lifts) {
+    	<br>
+    	<li><b>Name:</b> @lift.name</li>
+    	@*<li><b>PLZ:</b> @lift.location.PLZ</li>
+    	<li><b>Ort:</b> @lift.location.municipality</li>
+    	<li><b>Typ:</b> @lift.type</li>
+    	<li><b>Anz. Personen:</b> @lift.maxPersons.toString()</li>
+    	<li><b>Sitzheizung:</b> @lift.seatHeating.toString()</li>
+    	<li><b>Wetterschutz:</b> @lift.weatherProtection</li>*@
+    }
+    </ul>
+}
