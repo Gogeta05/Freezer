@@ -1,22 +1,25 @@
 package models;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class Interests {
 	
 	/** The title of the interest, as displayed in the HTML later */
 	private String title;
-	/** The parent interest of which this one is a sub-interest */
-	private Interests parent;
+	/** The sub-interests of this one */
+	private ArrayList<Interests> subInterests;
 	/** The User is interested in this interest if on == true */
 	private Boolean on;
 	
 	/**
 	 * The Constructor
 	 * @param title
-	 * @param parent use null for this argument if no parent exists
+	 * @param subs The sub-Interests, use null if none exist
 	*/
-	public Interests(String title, Interests parent) {
+	public Interests(String title, ArrayList<Interests> subs) {
 		this.title = title;
-		this.parent = parent;
+		this.subInterests = subs;
 		on = false;
 	}
 
@@ -26,8 +29,8 @@ public class Interests {
 		return title;
 	}
 
-	public Interests getParent() {
-		return parent;
+	public ArrayList<Interests> getSubInterests() {
+		return subInterests;
 	}
 
 	public Boolean isOn() {
@@ -39,8 +42,8 @@ public class Interests {
 		this.title = title;
 	}
 
-	public void setParent(Interests parent) {
-		this.parent = parent;
+	public void addSubInterest(Interests sub) {
+		this.subInterests.add(sub);
 	}
 
 	/* Methods */
@@ -59,6 +62,29 @@ public class Interests {
 		this.on = false;
 	}
 
-
+	@Override
+	public boolean equals(Object othat) {
+		if ( this == othat ) return true;
+		if ( !(othat instanceof Interests) ) return false;
+		Interests that = (Interests) othat;
+		
+		return 
+				this.title.equals(that.title) &&
+				subEquals(that);
+		
+	}
+	
+	//check if the subInterests are equal
+	private boolean subEquals(Interests that) {
+		if (this.subInterests.size() != that.subInterests.size()) return false;
+		
+		for (int i = 0; i < subInterests.size(); i++) {
+			if (! (this.subInterests.get(i).equals(that.subInterests.get(i)))) {
+				return false;
+			}
+		}
+		
+		return true;
+	}
 	
 }
