@@ -17,6 +17,7 @@ import jxl.read.biff.BiffException;
 import org.apache.commons.io.FileUtils;
 
 import backend.Database;
+import play.data.validation.Constraints.Required;
 import play.db.ebean.Model;
 import utils.Util;
 
@@ -27,8 +28,11 @@ public class User extends Model {
 	@GeneratedValue
 	private long id;
 	
+	@Required
 	private String username;
+	@Required
 	private String email;
+	@Required
 	private String password;
 	private Integer age;
 	private char gender;
