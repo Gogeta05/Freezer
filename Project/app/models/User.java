@@ -159,7 +159,7 @@ public class User extends Model {
 			String[] items = arr.split(seperator);
 			ArrayList<Interests> subs = null;
 			
-			if (items.length > 0) {
+			if (! (items[0].equals("")) ) {
 				subs = new ArrayList<>();
 		
 				for (int i = 0; i < items.length; i++) {
