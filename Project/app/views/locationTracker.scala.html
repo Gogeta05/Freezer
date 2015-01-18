@@ -8,7 +8,6 @@
 	<link rel="shortcut icon" href="@routes.Assets.at("icons/favicon.ico")" type="image/x-icon" />
 	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
 	<script type="text/javascript" src="@routes.Assets.at("javascripts/locationTracker.js")"></script>
-	<link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/locationTracker.css")" />
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
 	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
@@ -26,16 +25,9 @@
 
 <!-- Ab hier: Der eigentliche Inhalt. Main Container wird noch hier im Header geoeffnet -->
 <div class="mainContent" id="mainContent">
-    <div id="panel">
-		<span id="info">Location Tracking prototype by MasterMoritz - implemented into new html scheme prototype by Gogeta</span>
-		<span id="locationInfo"></span>
-	</div>
-    <div id="map-canvas"></div>
+	<span id="info">Location Tracking prototype by MasterMoritz - implemented into new html scheme prototype by Gogeta</span>
 </div>
 <br /><hr />
-<div class="copyright" id="copyright">&copy;2014-2015 by MasterMoritz, YtGz, Gogeta05<br />All rights reserved - Thanks to Play!</div>
-<a href="http://localhost:9000">Index</a> - <a href="http://localhost:9000/register">Register</a> - <a href="http://localhost:9000/settingsAccount">Settings Account (other settings linked there)</a> -
-<a href="http://localhost:9000/userPopup">UserPopup</a> - <a href="http://localhost:9000/displayLifts">Display lifts</a> - <a href="http://localhost:9000/filterPopup">Filter popup</a> -
-<a href="http://localhost:9000/locationTracker">Location Tracker</a> - <a href="http://localhost:9000/privateMessage">Private Message detail</a> - <a href="http://localhost:9000/privateMessageList">Private MessageList</a>
+Your position is registered with the Postal code: <span id="locationInfo"></span>
 </body>
 </html>
