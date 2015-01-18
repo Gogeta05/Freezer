@@ -198,7 +198,16 @@ public class User extends Model {
 	}
 	
 	//recursive submethod of updateInterests()
-	private void rUpdateInterests(ArrayList<Interests> thiss, ArrayList<Interests> that) {	
+	private void rUpdateInterests(ArrayList<Interests> thiss, ArrayList<Interests> that) {
+		//null check
+		if (that == null) {
+			thiss = null;
+			return;
+		}
+		else if (thiss == null) {
+			thiss = new ArrayList<Interests>();
+		}
+		
 		//update subinterests
 		int thisSize = thiss.size();
 		int thatSize = that.size();
