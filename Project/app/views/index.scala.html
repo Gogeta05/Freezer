@@ -17,15 +17,15 @@
 	<ul>
 		<li>Home</li>
 		<li>Vogel-Icon</li>
-		<li><input type="checkbox" data-role="flipswitch" name="flip-checkbox-1" id="flip-checkbox-1"></li>
-		<li>Logout</lil>
+		<li><input type="checkbox" data-role="flipswitch" name="flip-checkbox-1" id="flip-checkbox-1" data-theme="b"></li>
+		<li>Logout</li>
 	</ul>
 </div>
 
 <!-- Ab hier: Der eigentliche Inhalt. Main Container wird noch hier im Header geoeffnet -->
 <div class="mainContent" id="mainContent">
 	<!-- hier mit if-else arbeiten, um Gaeste und User zu unterscheiden -->
-	<h1>Register (Guests)</h1>
+	<h1>Login</h1>
     <form action='@routes.Application.register()' method='post'>
 		<div class="formFieldLabel">
 			<label for="username">Username</label>
