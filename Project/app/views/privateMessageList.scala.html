@@ -3,18 +3,21 @@
 <head>
 	<title>Private Message List</title>
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-	<link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/main.css")" />
+	<link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/hund.css")" />
 	<link rel="stylesheet" type="text/css" media="main and (max-device-width: 480px)" href="@routes.Assets.at("stylesheets/mobile.css")" /> <!-- Responsive Webdesign -->
 	<link rel="shortcut icon" href="@routes.Assets.at("icons/favicon.ico")" type="image/x-icon" />
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 </head>
 <body>
 <!-- Die obere Navigation -->
 <div class="topNavigation" id="topNavigation">
 	<ul>
-		<li>Home</li>
-		<li>Vogel-Icon</li>
-		<li><a href="https://proto.io/freebies/onoff/" target="_blank">OnOff Switch</a></li>
-		<li>Logout</lil>
+		<li><a href="http://localhost:9000">Home</a></li>
+		<li><span style="margin-left:25px;">0</span><img src="@routes.Assets.at("images/inbox.png")" alt="inbox" style="width:30px; height:25px;"></li>
+		<li style="margin-left:25px;"><input type="checkbox" data-role="flipswitch" name="flip-checkbox-1" id="flip-checkbox-1" data-theme="b" data-mini="true"></li>
+		<li style="margin-left:25px;">Logout</li>
 	</ul>
 </div>
 
@@ -52,6 +55,10 @@
 	</tbdoy>
 </table>
 </div>
+<br /><hr />
 <div class="copyright" id="copyright">&copy;2014-2015 by MasterMoritz, YtGz, Gogeta05<br />All rights reserved - Thanks to Play!</div>
+<a href="http://localhost:9000">Index</a> - <a href="http://localhost:9000/register">Register</a> - <a href="http://localhost:9000/settingsAccount">Settings Account (other settings linked there)</a> -
+<a href="http://localhost:9000/userPopup">UserPopup</a> - <a href="http://localhost:9000/displayLifts">Display lifts</a> - <a href="http://localhost:9000/filterPopup">Filter popup</a> -
+<a href="http://localhost:9000/locationTracker">Location Tracker</a> - <a href="http://localhost:9000/privateMessage">Private Message detail</a> - <a href="http://localhost:9000/privateMessageList">Private MessageList</a>
 </body>
 </html>
