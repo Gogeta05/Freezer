@@ -76,8 +76,23 @@ public class Interests {
 	
 	//check if the subInterests are equal
 	private boolean subEquals(Interests that) {
+		//check if any subinterests exist for both
+		if (this.subInterests == null) {
+			if (that.subInterests == null) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
+		else if (that.subInterests == null) {
+			return false;
+		}
+		
+		//check if size of subinterests is equal
 		if (this.subInterests.size() != that.subInterests.size()) return false;
 		
+		//check if subinterests equal each other respectively
 		for (int i = 0; i < subInterests.size(); i++) {
 			if (! (this.subInterests.get(i).equals(that.subInterests.get(i)))) {
 				return false;
