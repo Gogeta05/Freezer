@@ -19,6 +19,12 @@ public class Application extends Controller {
     	//Passing the list to the view
         return ok(index.render(users));
     }
+	
+    public static Result login() {
+    	//Retrieve data from POST
+    	
+    	return redirect(routes.Application.index());
+    }
     
     public static Result register() {
     	//Retrieve data from POST
