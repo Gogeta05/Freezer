@@ -32,11 +32,16 @@ public class Application extends Controller {
     
     public static Result submitRegistration() {
     	//Retrieve data from POST
-    	User user = Form.form(User.class).bindFromRequest().get();
-    	//Save user into database
-    	user.save();
-    	
-    	return redirect(routes.Application.index());
+    	Form<User> userForm = Form.form(User.class).bindFromRequest();
+    	if (userForm.hasErrors()) {
+    	    return badRequest(register.render());
+    	}
+    	else {
+    		User user = userForm.get();
+    		//Save user into database
+    		user.save();
+    		return redirect(routes.Application.index());
+    	}
     }
     
     /*
