@@ -15,11 +15,8 @@ create table lift (
 
 create table user (
   id                        bigint not null,
-  username                  varchar(255),
   email                     varchar(255),
   password                  varchar(255),
-  age                       integer,
-  gender                    varchar(255),
   constraint pk_user primary key (id))
 ;
 
