@@ -165,7 +165,7 @@ public class User extends Model {
 				for (int i = 0; i < items.length; i++) {
 					try {
 						int subcell = Integer.parseInt(items[i]);
-						subs.add(parseInterest(subcell+1,sheet));
+						subs.add(parseInterest(subcell-1,sheet));
 						
 					} catch (NumberFormatException nfe) {};
 					
