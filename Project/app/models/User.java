@@ -2,19 +2,15 @@ package models;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-import jxl.NumberCell;
 import jxl.Sheet;
 import jxl.Workbook;
 import jxl.read.biff.BiffException;
-
-import org.apache.commons.io.FileUtils;
 
 import backend.Database;
 import play.data.validation.Constraints.Required;
@@ -110,8 +106,8 @@ public class User extends Model {
 		boolean[] readRows;
 		
 		//Constructor
-		public XlsParser(String seperator, int start, String filepath) {
-			this.seperator = seperator;
+		public XlsParser(int start, String filepath) {
+			this.seperator = Util.seperator_Interests;
 			this.start = start;
 			this.xls = new File(filepath);
 			this.readRows = null;
@@ -187,12 +183,12 @@ public class User extends Model {
 		
 		//if there was no list saved for the user, just save the new one
 		if (interests == null) {
-			interests = new XlsParser(",", 2, Util.file_Interests).parseInterests();
+			interests = new XlsParser(2, Util.file_Interests).parseInterests();
 		}
 		
 		//otherwise update the old one with the new one
 		else {
-			ArrayList<Interests> parsed = new XlsParser(",", 2, Util.file_Interests).parseInterests();
+			ArrayList<Interests> parsed = new XlsParser(2, Util.file_Interests).parseInterests();
 			rUpdateInterests(this.interests, parsed);
 		}
 	}
