@@ -27,6 +27,10 @@ public class Application extends Controller {
     }
     
     public static Result register() {
+    	return ok(register.render());
+    }
+    
+    public static Result submitRegistration() {
     	//Retrieve data from POST
     	User user = Form.form(User.class).bindFromRequest().get();
     	//Save user into database

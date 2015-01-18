@@ -4,8 +4,9 @@
 
 # Home page
 GET     /                           controllers.Application.index()
-POST	/login					controllers.Application.login()
-POST	/register					controllers.Application.register()
+POST	/login						controllers.Application.login()
+GET		/register					controllers.Application.register()
+POST	/submitRegistration			controllers.Application.submitRegistration()
 GET		/displayLifts				controllers.Application.displayLifts()
 GET		/filterPopup				controllers.Application.filterPopup()
 GET		/locationTracker			controllers.Application.locationTracker()
