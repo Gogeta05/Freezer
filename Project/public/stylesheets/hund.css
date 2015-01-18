@@ -2,3 +2,7 @@ li {
 	display:inline;
 	list-style-image:none;
 }
+
+ul.settings li {
+	display:block;
+}
