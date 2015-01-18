@@ -55,7 +55,7 @@ public class User extends Model {
 		this.age = age;
 		this.gender = gender;
 		this.location = null;
-		this.interests = new ArrayList<>();
+		this.interests = null;
 		this.msgBox = new MessageBox();
 		updateInterests();
 	}
@@ -107,7 +107,7 @@ public class User extends Model {
 		//the xls file to be parsed
 		File xls;
 		//the rows that were already read (true == already read), allows for some row-jumping
-		Boolean[] readRows;
+		boolean[] readRows;
 		
 		//Constructor
 		public XlsParser(String seperator, int start, String filepath) {
@@ -124,6 +124,7 @@ public class User extends Model {
 				Workbook workbook = Workbook.getWorkbook(xls);
 				Sheet sheet = workbook.getSheet(0);
 				ArrayList<Interests> parsed = new ArrayList<>();
+				readRows = new boolean[sheet.getRows()];
 				
 				// start from row <start+1> until end of table
 				for (int r = start; r < readRows.length; r++) {
