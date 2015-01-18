@@ -33,15 +33,14 @@ public class Application extends Controller {
     public static Result submitRegistration() {
     	//Retrieve data from POST
     	Form<User> userForm = Form.form(User.class).bindFromRequest();
-    	if (userForm.hasErrors()) {
-    	    return badRequest(register.render());
-    	}
-    	else {
-    		User user = userForm.get();
-    		//Save user into database
-    		user.save();
-    		return redirect(routes.Application.index());
-    	}
+   
+    	User user = new User(userForm.field("username").value(),userForm.field("email").value(),userForm.field("password").value(),
+    				Integer.parseInt(userForm.field("age").value()),userForm.field("gender").value().charAt(0));
+    	
+    	//Save user into database
+    	user.save();
+    	
+    	return redirect(routes.Application.index());
     }
     
     /*

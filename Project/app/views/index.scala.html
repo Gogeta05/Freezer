@@ -13,7 +13,7 @@
 	<link rel="stylesheet" media="main and (max-device-width: 480px)" href="@routes.Assets.at("stylesheets/mobile.css")" /> <!-- Responsive Webdesign -->
 </head>
 <body>
-<!-- Die obere Navigation -->
+<!-- Top Navigation -->
 <div class="topNavigation" id="topNavigation">
 	<ul>
 		<li><a href="http://localhost:9000">Home</a></li>
@@ -23,9 +23,9 @@
 	</ul>
 </div>
 
-<!-- Ab hier: Der eigentliche Inhalt. Main Container wird noch hier im Header geoeffnet -->
+<!-- Content -->
 <div class="mainContent" id="mainContent">
-	<!-- hier mit if-else arbeiten, um Gaeste und User zu unterscheiden -->
+
 	<h1>Login</h1>
     <form action='@routes.Application.login()' method='post'>
 		<div class="formFieldLabel">
@@ -52,11 +52,11 @@
     New? <a href='@routes.Application.register()'>Register now.</a>
     
     <h1>Registered users:</h1>
-    <ul>
+
     @for(user <- users) {
-    	<li>@user.getEmail() : @user.getPassword()</li>
+    	<p>username: @user.getUsername(), age: @user.getAge(), gender: @user.getGender()</p>
     }
-    </ul>
+
     
     <h1>Location Tracking:</h1>
     <a href='@routes.Application.locationTracker()'>Click me!</a>
