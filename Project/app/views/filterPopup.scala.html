@@ -1,5 +1,25 @@
-@header("Filter Popup")()() {
- 
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+	<title>Filter popup</title>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/main.css")" />
+	<link rel="stylesheet" type="text/css" media="main and (max-device-width: 480px)" href="@routes.Assets.at("stylesheets/mobile.css")" /> <!-- Responsive Webdesign -->
+	<link rel="shortcut icon" href="@routes.Assets.at("icons/favicon.ico")" type="image/x-icon" />
+</head>
+<body>
+<!-- Die obere Navigation -->
+<div class="topNavigation" id="topNavigation">
+	<ul>
+		<li>Home</li>
+		<li>Vogel-Icon</li>
+		<li><a href="https://proto.io/freebies/onoff/" target="_blank">OnOff Switch</a></li>
+		<li>Logout</lil>
+	</ul>
+</div>
+
+<!-- Ab hier: Der eigentliche Inhalt. Main Container wird noch hier im Header geoeffnet -->
+<div class="mainContent" id="mainContent">
  <h1>Filter matching</h1>
 <div class="filterOptions">Gender</div>
  <div class="formFieldLabel">
@@ -38,5 +58,7 @@
 	<input type="button" class="buttonLeft" name="contact" value="contact" onclick="javascript:alert('STALKER!!!');">
 	<input type="button" class="buttonRight" name="contact" value="set filter" onclick="javascript:alert('FILTER!!!');">
 </div>
-}
-@footer() {}
+</div>
+<div class="copyright" id="copyright">&copy;2014-2015 by MasterMoritz, YtGz, Gogeta05<br />All rights reserved - Thanks to Play!</div>
+</body>
+</html>

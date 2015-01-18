@@ -1,4 +1,4 @@
-@(title: String)(optionalHeaderInput: Html)(optionalCSSInput: Html)
+@(title: String)(optionalHeaderInput: Html)(optionalCSSInput: Html)(content: Html)
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 <head>
@@ -26,3 +26,4 @@
 
 <!-- Ab hier: Der eigentliche Inhalt. Main Container wird noch hier im Header geoeffnet -->
 <div class="mainContent" id="mainContent">
+@content
