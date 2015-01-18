@@ -38,8 +38,40 @@ public class Application extends Controller {
     	return ok(displayLifts.render(lifts));
     }
     
+    public static Result filterPopup() {
+    	return ok(filterPopup.render());
+    }
+    
     public static Result locationTracker() {
     	return ok(locationTracker.render());
+    }
+    
+    public static Result privateMessage() {
+    	return ok(privateMessage.render());
+    }
+    
+    public static Result privateMessageList() {
+    	return ok(privateMessageList.render());
+    }
+    
+    public static Result settingsAccount() {
+    	return ok(settingsAccount.render());
+    }
+    
+    public static Result settingsGeneral() {
+    	return ok(settingsGeneral.render());
+    }
+    
+    public static Result settingsMatching() {
+    	return ok(settingsMatching.render());
+    }
+    
+    public static Result settingsProfile() {
+    	return ok(settingsProfile.render());
+    }
+    
+    public static Result userPopup() {
+    	return ok(userPopup.render());
     }
 
 }
