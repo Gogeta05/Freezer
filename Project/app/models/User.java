@@ -33,8 +33,8 @@ public class User extends Model {
 	private Integer age;
 	private char gender;
 	private Location location;
-	private MessageBox msgBox;
-	private ArrayList<Interests> interests;
+	public MessageBox msgBox;
+	public ArrayList<Interests> interests;
 	
 	/**
 	 * The Constructor
@@ -249,6 +249,19 @@ public class User extends Model {
 	public void resetInterests() {
 		for (Interests i : interests) {
 			i.turnOff();
+			ArrayList<Interests> subs = i.getSubInterests();
+			if (subs != null) {
+				rResetInterests(subs);
+			}
+		}
+	}
+	private void rResetInterests(ArrayList<Interests> interests) {
+		for (Interests i : interests) {
+			i.turnOff();
+			ArrayList<Interests> subs = i.getSubInterests();
+			if (subs != null) {
+				rResetInterests(subs);
+			}
 		}
 	}
 	

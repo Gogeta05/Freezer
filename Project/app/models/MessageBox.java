@@ -12,6 +12,11 @@ public class MessageBox {
 	 */
 	public ArrayList<Message> messages;
 	
+	
+	public MessageBox() {
+		messages = new ArrayList<Message>();
+	}
+	
 	/**
 	 * Deletes a message
 	 * @param msg the message to delete
@@ -33,5 +38,7 @@ public class MessageBox {
 	public void reply(String newMsg, Message msg) {
 		msg.reply(newMsg);
 	}
+	
+	
 	
 }
