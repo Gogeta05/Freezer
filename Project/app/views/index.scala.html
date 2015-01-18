@@ -13,13 +13,14 @@
 	<link rel="stylesheet" media="main and (max-device-width: 480px)" href="@routes.Assets.at("stylesheets/mobile.css")" /> <!-- Responsive Webdesign -->
 </head>
 <body>
+
 <!-- Top Navigation -->
 <div class="topNavigation" id="topNavigation">
 	<ul>
-		<li><a href="http://localhost:9000">Home</a></li>
-		<li><span style="margin-left:25px;">0</span><img src="@routes.Assets.at("images/inbox.png")" alt="inbox" style="width:30px; height:25px;"></li>
+		<li><a href='@routes.Application.index'>Home</a></li>
+		<li><span style="margin-left:25px;">0</span><a href='@routes.Application.privateMessageList()'><img src="@routes.Assets.at("images/inbox.png")" alt="inbox" style="width:30px; height:25px;"></a></li>
 		<li style="margin-left:25px;"><input type="checkbox" data-role="flipswitch" name="flip-checkbox-1" id="flip-checkbox-1" data-theme="b" data-mini="true"></li>
-		<li style="margin-left:25px;">Logout</li>
+		<li style="margin-left:25px;"><a href='@routes.Application.index()'>Logout</a></li>
 	</ul>
 </div>
 
@@ -65,10 +66,12 @@
     <a href='@routes.Application.displayLifts()'>Click me!</a>
 
 </div>
+
+<!-- foot -->
 <br /><hr />
 <div class="copyright" id="copyright">&copy;2014-2015 by MasterMoritz, YtGz, Gogeta05<br />All rights reserved - Thanks to Play!</div>
-<a href="http://localhost:9000">Index</a> - <a href="http://localhost:9000/register">Register</a> - <a href="http://localhost:9000/settingsAccount">Settings Account (other settings linked there)</a> -
-<a href="http://localhost:9000/userPopup">UserPopup</a> - <a href="http://localhost:9000/displayLifts">Display lifts</a> - <a href="http://localhost:9000/filterPopup">Filter popup</a> -
-<a href="http://localhost:9000/locationTracker">Location Tracker</a> - <a href="http://localhost:9000/privateMessage">Private Message detail</a> - <a href="http://localhost:9000/privateMessageList">Private MessageList</a>
+<a href='@routes.Application.index'>Index</a> - <a href='@routes.Application.register()'>Register</a> - <a href='@routes.Application.settingsAccount()'>Settings Account (other settings linked there)</a> -
+<a href='@routes.Application.userPopup()'>UserPopup</a> - <a href='@routes.Application.displayLifts()'>Display lifts</a> - <a href='@routes.Application.filterPopup()'>Filter popup</a> -
+<a href='@routes.Application.locationTracker()'>Location Tracker</a> - <a href='@routes.Application.privateMessage()'>Private Message detail</a> - <a href='@routes.Application.privateMessageList()'>Private MessageList</a>
 </body>
 </html>
