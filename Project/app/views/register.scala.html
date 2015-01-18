@@ -1,9 +1,7 @@
-@* The list of users - which is passed via the index.render() method *@
-@(users: List[User])
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 <head>
-	<title>Index of freezer</title>
+	<title>Registration of freezer</title>
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 	<link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/main.css")" />
 	<link rel="stylesheet" type="text/css" media="main and (max-device-width: 480px)" href="@routes.Assets.at("stylesheets/mobile.css")" /> <!-- Responsive Webdesign -->
@@ -16,7 +14,7 @@
 		<li>Home</li>
 		<li>Vogel-Icon</li>
 		<li><a href="https://proto.io/freebies/onoff/" target="_blank">OnOff Switch</a></li>
-		<li>Logout</lil>
+		<li>Login</lil>
 	</ul>
 </div>
 
@@ -38,25 +36,33 @@
 		<div class="formField">
 			<input type="password" name="password" id="password" />
 		</div>
+
+		<div class="formFieldLabel">
+			<label for="passwordConfirm">Confirm Password</label>
+		</div>	
+		<div class="formField">
+			<input type="password" name="passwordConfirm" id="passwordConfirm" />
+		</div>
+		
+		<div class="formFieldLabel">
+			<label for="email">Email</label>
+		</div>	
+		<div class="formField">
+			<input type="text" name="email" id="email" />
+		</div>
+		
+		<div class="formFieldLabel">
+			<label for="emailConfirm">Confirm Email</label>
+		</div>	
+		<div class="formField">
+			<input type="text" name="emailConfirm" id="emailConfirm" />
+		</div>
 		
 		<div class="formSubmit">
-			<input accesskey="s" value="Login" type="submit">
+			<input accesskey="s" value="Absenden" type="submit">
 			<input kl_virtual_keyboard_secure_input="on" accesskey="r" value="Zurücksetzen" type="reset">
 		</div>
     </form>
-    
-    <h1>Registered users:</h1>
-    <ul>
-    @for(user <- users) {
-    	<li>@user.getEmail() : @user.getPassword()</li>
-    }
-    </ul>
-    
-    <h1>Location Tracking:</h1>
-    <a href='@routes.Application.locationTracker()'>Click me!</a>
-    
-    <h1>View Lifts:</h1>
-    <a href='@routes.Application.displayLifts()'>Click me!</a>
 
 </div>
 <div class="copyright" id="copyright">&copy;2014-2015 by MasterMoritz, YtGz, Gogeta05<br />All rights reserved - Thanks to Play!</div>
