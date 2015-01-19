@@ -10,6 +10,7 @@ import models.User;
 
 import org.apache.commons.io.FileUtils;
 
+import jxl.CellType;
 import jxl.NumberCell;
 import jxl.Sheet;
 import jxl.Workbook;
@@ -40,14 +41,9 @@ public final class Database {
 			Sheet sheet = workbook.getSheet(0);
 			// The order and type of cells is validated in the respective unit test
 			for (int i = 3; i < sheet.getRows(); i++) { // read in tuples until end of table
-				if (sheet.getCell(8, i).getContents().equalsIgnoreCase("nein")) { // filtering out lifts that are no longer active
+				if (sheet.getCell(8, i).getContents().equalsIgnoreCase("nein") && !sheet.getCell(2, i).getContents().equals("")) { // filtering out lifts that are no longer active or that have no postal code assigned
 					String name = sheet.getCell(0, i).getContents();
-					int PLZ;
-					if (sheet.getCell(2, i).getContents().equals("")) {
-						PLZ = 0;
-					} else {
-						PLZ = Integer.parseInt(sheet.getCell(2, i).getContents()); // cell type in document is LABEL not NUMBER
-					}
+					int PLZ = Integer.parseInt(sheet.getCell(2, i).getContents()); // cell type in document is LABEL not NUMBER
 					String municipality = sheet.getCell(3, i).getContents();
 					String type = sheet.getCell(10, i).getContents();
 					int maxPersons;
