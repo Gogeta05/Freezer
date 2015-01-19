@@ -9,6 +9,8 @@
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
 	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+	<script type="text/javascript" src="@routes.Assets.at("javascripts/locationTracker.js")"></script>
 </head>
 <body>
 
@@ -24,7 +26,7 @@
 
 <!-- Content -->
 <div class="mainContent" id="mainContent">
-<span id="locationInfo"></span>
+Location: <span id="locationInfo"></span>
 <br/>
 potential matchings:
 <table class="tableList">

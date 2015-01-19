@@ -1,4 +1,4 @@
-name := """Project_Poseidon"""
+name := """Freezer"""
 
 version := "1.0-SNAPSHOT"
 

@@ -23,20 +23,18 @@
 </div>
 
 <!-- Ab hier: Der eigentliche Inhalt. Main Container wird noch hier im Header geoeffnet -->
-<div class="mainContent" id="mainContent">
+<div class="filterOptions" id="mainContent">
  <h1>Filter matching</h1>
-<div class="filterOptions">Gender</div>
- <div class="formFieldLabel">
-	<label for="male">Male</label>
-</div>
-<div class="formField">
-	<input type="checkbox" name="gender" value="1" />
-</div>
- <div class="formFieldLabel">
-	<label for="female">Female</label>
-</div>
-<div class="formField">
-	<input type="checkbox" name="gender" value="2" />
+<div class="filterGender">
+	<label for="gender">Gender</label>
+	</div>	
+	
+	<fieldset data-role="controlgroup" data-iconpos="left">
+		<input name="gender" id="genderMale" value="m" checked="checked" type="radio">
+			<label for="genderMale">Male</label>
+		<input name="gender" id="genderFemale" value="f" type="radio">
+			<label for="genderFemale">Female</label>
+	</fieldset>
 </div>
 <br /><br />
 
@@ -46,7 +44,7 @@
 	<option value=">=">>=</option>
 	<option value="<="><=</option>
 </select>
-<input type="text" name="ageInput" value="42" size="10" />
+<input type="number" name="ageInput" value="42" size="10" />
 <br /><br />
 
 <div class="filterOptions">Interests</div>
@@ -59,8 +57,7 @@
 	([x] ... should be replaced with javascript code to expand sub-categories in final version)<br /><br />
 
 <div class="footerButtons" id="footerButtons">
-	<input type="button" class="buttonLeft" name="contact" value="contact" onclick="javascript:alert('STALKER!!!');">
-	<input type="button" class="buttonRight" name="contact" value="set filter" onclick="javascript:alert('FILTER!!!');">
+	<a href='@routes.Application.home'><input type="button" class="buttonRight" name="contact" value="set filter"></a>
 </div>
 </div>
 <!-- foot -->
