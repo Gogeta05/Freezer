@@ -23,19 +23,19 @@
 </div>
 
 <!-- Ab hier: Der eigentliche Inhalt. Main Container wird noch hier im Header geoeffnet -->
-<div class="filterOptions" id="mainContent">
+<div class="mainContent" id="mainContent">
  <h1>Filter matching</h1>
-<div class="filterGender">
-	<label for="gender">Gender</label>
-	</div>	
-	
-	<fieldset data-role="controlgroup" data-iconpos="left">
-		<input name="gender" id="genderMale" value="m" checked="checked" type="radio">
-			<label for="genderMale">Male</label>
-		<input name="gender" id="genderFemale" value="f" type="radio">
-			<label for="genderFemale">Female</label>
-	</fieldset>
-</div>
+ 
+<div class="formFieldLabel">
+			<label for="gender">Gender</label>
+		</div>	
+		
+		<fieldset data-role="controlgroup" data-iconpos="left">
+			<input name="gender" id="genderMale" value="m" checked="checked" type="radio">
+				<label for="genderMale">Male</label>
+			<input name="gender" id="genderFemale" value="f" type="radio">
+				<label for="genderFemale">Female</label>
+		</fieldset>
 <br /><br />
 
 <div class="filterOptions">Age</div>
@@ -57,7 +57,7 @@
 	([x] ... should be replaced with javascript code to expand sub-categories in final version)<br /><br />
 
 <div class="footerButtons" id="footerButtons">
-	<a href='@routes.Application.home'><input type="button" class="buttonRight" name="contact" value="set filter"></a>
+	<a href='@routes.Application.home'><input type="button" class="buttonRight" value="set filter"></a>
 </div>
 </div>
 <!-- foot -->
