@@ -23,7 +23,7 @@ public class Application extends Controller {
     public static Result login() {
     	//Retrieve data from POST
     	
-    	return redirect(routes.Application.index());
+    	return redirect(routes.Application.privateMessageList());
     }
     
     public static Result register() {
