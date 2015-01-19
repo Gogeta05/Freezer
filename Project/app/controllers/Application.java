@@ -20,10 +20,14 @@ public class Application extends Controller {
         return ok(index.render(users));
     }
 	
+    public static Result home() {
+		return ok(home.render());
+    }
+    
     public static Result login() {
     	//Retrieve data from POST
     	
-    	return redirect(routes.Application.privateMessageList());
+    	return redirect(routes.Application.home());
     }
     
     public static Result register() {
@@ -87,5 +91,4 @@ public class Application extends Controller {
     public static Result userPopup() {
     	return ok(userPopup.render());
     }
-
 }
