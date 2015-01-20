@@ -6,11 +6,16 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.crypto.Cipher;
+
 import jxl.Sheet;
 import jxl.Workbook;
 import jxl.read.biff.BiffException;
 
+import org.bouncycastle.jce.provider.BouncyCastleProvider;
+import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import play.db.ebean.Model;
@@ -21,10 +26,18 @@ public class UserTest {
 	
 	@Before
 	public void setUp() throws Exception {
+		//setup the password encrypter
+		if (Util.encrypter == null) {
+        	Util.encrypter = new StandardPBEStringEncryptor();
+			Util.encrypter.setProvider(new BouncyCastleProvider());
+	        Util.encrypter.setAlgorithm("PBEWITHSHA256AND128BITAES-CBC-BC");
+	        Util.encrypter.setPassword("WhatIsThisFor? I don't even!");
+		}
+
 		try {
 			user = new User("VirginDestroyer69", "still@virg.in", "sadpanda", 42, 'm');
 		} catch (Exception e) {
-			fail ("error in updateInterests()");
+			fail ("error in updateInterests() or creating user");
 		}
 	}
 	
