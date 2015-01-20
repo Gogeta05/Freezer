@@ -13,4 +13,4 @@ libraryDependencies ++= Seq(
   javaWs
 )
 
-libraryDependencies +=  "commons-io" % "commons-io" % "2.4"
+libraryDependencies ++= Seq("commons-io" % "commons-io" % "2.4", "org.jasypt" % "jasypt" % "1.9.2")
