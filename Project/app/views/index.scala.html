@@ -47,7 +47,7 @@
     <h1>Registered users:</h1>
 
     @for(user <- users) {
-    	<p>username: @user.getUsername(), age: @user.getAge(), gender: @user.getGender()</p>
+    	<p>username: @user.getUsername(), age: @user.getAge(), gender: @user.getGender(), password(encrypted): @user.getPassword()</p>
     }
 
     
