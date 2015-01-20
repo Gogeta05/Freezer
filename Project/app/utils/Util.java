@@ -1,4 +1,5 @@
 package utils;
+import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
 
 public final class Util {
 	/* paths */
@@ -7,4 +8,5 @@ public final class Util {
 	
 	/* file format constants */
 	static public String seperator_Interests = ",";
+	static public StandardPBEStringEncryptor encrypter = null;
 }

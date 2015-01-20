@@ -11,8 +11,8 @@ import javax.persistence.Id;
 import jxl.Sheet;
 import jxl.Workbook;
 import jxl.read.biff.BiffException;
-
 import backend.Database;
+import play.Logger;
 import play.data.validation.Constraints.Required;
 import play.db.ebean.Model;
 import utils.Util;
@@ -45,15 +45,21 @@ public class User extends Model {
 	 * @param gender
 	 */
 	public User(String username, String email, String password, Integer age, char gender) {
-		this.username = username;
-		this.email = email;
-		this.password = password;
-		this.age = age;
-		this.gender = gender;
-		this.location = null;
-		this.interests = null;
-		this.msgBox = new MessageBox();
-		updateInterests();
+		try {
+			
+			this.username = username;
+			this.email = email;
+			this.password = Util.encrypter.encrypt(password);
+			this.age = age;
+			this.gender = gender;
+			this.location = null;
+			this.interests = null;
+			this.msgBox = new MessageBox();
+			updateInterests();
+			
+		} catch (Exception e) {
+			Logger.info("an exception has occurred at user creation: " + e);
+		}
 	}
 	
 	/* Getters */
