@@ -30,6 +30,9 @@ public class User extends Model {
 	private String email;
 	@Required
 	private String password;
+	
+	private String firstName;
+	private String lastName;
 	private Integer age;
 	private char gender;
 	private Location location;
@@ -50,6 +53,8 @@ public class User extends Model {
 			this.username = username;
 			this.email = email;
 			this.password = Util.encrypter.encrypt(password);
+			this.firstName = "";
+			this.lastName = "";
 			this.age = age;
 			this.gender = gender;
 			this.location = null;
@@ -71,6 +76,15 @@ public class User extends Model {
 	}
 	public String getPassword() {
 		return password;
+	}
+	public String getFirstName() {
+		return firstName;
+	}
+	public String getLastName() {
+		return lastName;
+	}
+	public String getName() {
+		return firstName + " " + lastName;
 	}
 	public Integer getAge() {
 		return age;
@@ -98,6 +112,13 @@ public class User extends Model {
 	public void setLocation(Location location) {
 		this.location = location;
 	}
+	public void setFirstName(String name) {
+		this.firstName = name;
+	}
+	public void setLastName(String name) {
+		this.firstName = name;
+	}
+
 
 	/* Methods */
 	
