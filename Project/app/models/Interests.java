@@ -46,6 +46,12 @@ public class Interests {
 	}
 
 	/* Methods */
+	/**
+	 * return whether this interest has subinterests or not
+	 */
+	public boolean hasSubs() {
+		return (subInterests != null);
+	}
 	
 	/**
 	 * turn the interest on for the user

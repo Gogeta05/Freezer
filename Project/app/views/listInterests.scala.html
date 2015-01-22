@@ -1,0 +1,11 @@
+@(interests: List[Interests])
+	@for(i <- interests) {
+		<div data-role="collapsible" data-iconpos="right">
+			<h3>@i.getTitle()<h3>
+			@if(i.hasSubs()) {
+				@listInterests(i.getSubInterests())
+			}
+		</div>
+	}
+
+

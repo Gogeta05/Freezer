@@ -9,6 +9,7 @@ import play.*;
 import play.data.Form;
 import play.db.ebean.Model;
 import play.mvc.*;
+import utils.Util;
 import views.html.*;
 
 public class Application extends Controller {
@@ -89,6 +90,6 @@ public class Application extends Controller {
     }
     
     public static Result userPopup() {
-    	return ok(userPopup.render());
+    	return ok(userPopup.render(Util.getSessionUser()));
     }
 }
