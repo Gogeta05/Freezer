@@ -8,6 +8,7 @@
 	<link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/hund.css")" />
 	<link rel="stylesheet" type="text/css" media="main and (max-device-width: 480px)" href="@routes.Assets.at("stylesheets/mobile.css")" /> <!-- Responsive Webdesign -->
 	<link rel="shortcut icon" href="@routes.Assets.at("icons/favicon.ico")" type="image/x-icon" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
 	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
@@ -17,13 +18,15 @@
 <!-- Top Navigation -->
 @topNav()
 
-<!-- Ab hier: Der eigentliche Inhalt. Main Container wird noch hier im Header geoeffnet -->
-<div class="mainContent" id="mainContent">
+<!-- Content -->
+<div data-role="content">
  <h1>@lifts.length lifts currently stored in the database.</h1>
-    <ul>
+	<form class="ui-filterable">
+		<input id="filterBasic-input" data-type="search">
+	</form>
+    <ul data-role="listview" data-filter="true" data-input="#filterBasic-input">
     @for(lift <- lifts) {
-    	<br>
-    	<li><b>Name:</b> @lift.name</li>
+    	<li>@lift.name</li>
     	@*<li><b>PLZ:</b> @lift.location.PLZ</li>
     	<li><b>Ort:</b> @lift.location.municipality</li>
     	<li><b>Typ:</b> @lift.type</li>
