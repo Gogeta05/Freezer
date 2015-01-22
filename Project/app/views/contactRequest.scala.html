@@ -15,14 +15,7 @@
 <body>
 
 <!-- Top Navigation -->
-<div class="topNavigation" id="topNavigation">
-	<ul>
-		<li><a href='@routes.Application.index'>Home</a></li>
-		<li><span style="margin-left:25px;">0</span><a href='@routes.Application.privateMessageList()'><img src="@routes.Assets.at("images/inbox.png")" alt="inbox" style="width:30px; height:25px;"></a></li>
-		<li style="margin-left:25px;"><input type="checkbox" data-role="flipswitch" name="flip-checkbox-1" id="flip-checkbox-1" data-theme="b" data-mini="true"></li>
-		<li style="margin-left:25px;"><a href='@routes.Application.index()'>Logout</a></li>
-	</ul>
-</div>
+@topNav()
 
 <!-- Content -->
 <div class="mainContent" id="mainContent">
