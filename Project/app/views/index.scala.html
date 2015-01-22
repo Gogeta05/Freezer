@@ -1,5 +1,4 @@
-@* The list of users - which is passed via the index.render() method *@
-@(users: List[User])
+@(users: List[User])(form: Form[controllers.Application.Login])
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 <head>
@@ -20,12 +19,19 @@
 <div class="mainContent" id="mainContent">
 
 	<h1>Login</h1>
-    <form action='@routes.Application.login()' method='post'>
+	@if(form.hasGlobalErrors) {
+	
+	    <hr>
+	    <p class="error">
+	    @form.globalError.message
+	    </p>
+	}
+	@helper.form(routes.Application.login) {
 		<div class="formFieldLabel">
-			<label for="username">Username</label>
+			<label for="email">E-Mail</label>
 		</div>	
 		<div class="formField">
-			<input type="text" data-mini="true" name="username" id="username" />
+			<input type="email" data-mini="true" name="email" id="email" value="@form("email").value"/>
 		</div>
 		
 		<div class="formFieldLabel">
@@ -38,8 +44,8 @@
 		<div class="formSubmit">
 			<input accesskey="s" value="Login" type="submit" data-mini="true">
 			<input kl_virtual_keyboard_secure_input="on" accesskey="r" value="Zurücksetzen" type="hidden" data-mini="true" >
-		</div>
-    </form>
+		</div> 
+    }
     
     </br>
     New? <a href='@routes.Application.register()'>Register now.</a>

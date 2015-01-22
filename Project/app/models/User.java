@@ -3,6 +3,7 @@ package models;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -107,7 +108,7 @@ public class User extends Model {
 		this.email = email;
 	}
 	public void setPassword(String password) {
-		this.password = password;
+		this.password = Util.encrypter.encrypt(password);
 	}
 	public void setAge(Integer age) {
 		this.age = age;
@@ -299,7 +300,7 @@ public class User extends Model {
 	}
 	
 	/**
-	 * recieve a message
+	 * receive a message
 	 */
 	public void recieveMsg (Message msg) {
 		this.msgBox.messages.add(msg);
@@ -311,4 +312,19 @@ public class User extends Model {
 	public void sendMsg (String msg, User to) {
 		Database.getUser(to.getUsername()).recieveMsg(new Message(this, to, msg));
 	}
+	
+	//Hier wird (auf absolut unsichere Art und Weise) überprüft, ob der Benutzer existiert
+    public static User authenticate(String email, String password) {
+        User u = new Model.Finder<>(String.class, User.class).where().eq("email", email).findUnique(); 
+        System.out.println(u.email);
+        System.out.println(Util.encrypter.decrypt(u.getPassword()));
+    	if(u != null && Util.encrypter.decrypt(u.getPassword()).equals(password)) {
+    		return u;
+    	}
+    	else {
+    		System.out.println("authenticate fail");
+    		System.out.println(email);
+    		return null;
+    	}
+    }
 }

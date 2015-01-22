@@ -4,7 +4,7 @@
 
 # Home page
 GET     /                           controllers.Application.index()
-POST	/home						controllers.Application.login()
+POST	/							controllers.Application.login()
 GET		/register					controllers.Application.register()
 POST	/submitRegistration			controllers.Application.submitRegistration()
 GET		/displayLifts				controllers.Application.displayLifts()

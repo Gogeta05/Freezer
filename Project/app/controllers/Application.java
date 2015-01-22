@@ -15,10 +15,11 @@ import views.html.*;
 public class Application extends Controller {
 
     public static Result index() {
+    	Form<Login> loginForm = Form.form(Login.class);
     	//Query users from database
     	List<User> users = new Model.Finder<String, User>(String.class, User.class).all();
     	//Passing the list to the view
-        return ok(index.render(users));
+        return ok(index.render(users, loginForm));
     }
 	
     public static Result home() {
@@ -26,9 +27,24 @@ public class Application extends Controller {
     }
     
     public static Result login() {
-    	//Retrieve data from POST
-    	
-    	return redirect(routes.Application.home());
+    	Form<Login> loginForm = Form.form(Login.class).bindFromRequest();
+        if (loginForm.hasErrors()) {
+        	List<User> users = new Model.Finder<String, User>(String.class, User.class).all();
+            return badRequest(index.render(users, loginForm));
+        } else {
+            session().clear();
+            
+            
+            
+/*****************************************************************************************************************
+ * TODO: email and username are hardcoded because the corresponding fields in this class are still null after filling out the form -> we need to fix this ASAP.
+ * Automatic form generation is needed for the validate method. But the controller login-action and the validate-action do get NULL as parameter, although I did everything the same as in the example files of the VO!
+ */
+            session("email", /*loginForm.get().email*/"nice@am.com");
+            return redirect(
+                    routes.Application.home()
+            );
+       }
     }
     
     public static Result register() {
@@ -91,5 +107,31 @@ public class Application extends Controller {
     
     public static Result userPopup() {
     	return ok(userPopup.render(Util.getSessionUser()));
+    }
+    
+    /**
+     * Play generates forms automagically
+     * HTML Form hier als Klasse definiert, wird im View automatisch gerendert
+     * *
+     */
+    public static class Login {
+        public String email;
+        public String password;
+
+        public String validate() {
+            // Der passende Validator für die Form
+        	
+        	
+        	
+        	
+/*****************************************************************************************************************
+ * TODO: email and username are hardcoded because the corresponding fields in this class are still null after filling out the form -> we need to fix this ASAP.
+ * Automatic form generation is needed for the validate method. But the controller login-action and the validate-action do get NULL as parameter, although I did everything the same as in the example files of the VO!
+ */
+            if (User.authenticate("nice@am.com", "nice") == null) {
+                return "Invalid user or password";
+            }
+            return null;
+        }
     }
 }
