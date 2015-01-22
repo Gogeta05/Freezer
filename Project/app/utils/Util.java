@@ -1,4 +1,6 @@
 package utils;
+import models.User;
+
 import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
 
 public final class Util {
@@ -8,5 +10,12 @@ public final class Util {
 	
 	/* file format constants */
 	static public String seperator_Interests = ",";
+	
+	/* encryption */
 	static public StandardPBEStringEncryptor encrypter = null;
+	
+	/* session/database */
+	static public User getSessionUser() {
+		return new User("VirginDestroyer69", "still@virg.in", "sadpanda", 42, 'm');
+	}
 }
