@@ -92,6 +92,12 @@ public class User extends Model {
 	public char getGender() {
 		return gender;
 	}
+	public String getGenderString() {
+		if (gender == 'm') {
+			return "Male";
+		}
+		return "Female";
+	}
 	public Location getLocation() {
 		return location;
 	}
