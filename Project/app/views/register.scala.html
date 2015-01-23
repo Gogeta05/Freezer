@@ -9,14 +9,13 @@
 
 <!-- Content -->
 <div class="mainContent" id="mainContent">
-
-@if(form.hasGlobalErrors) {	
-    <hr>
-    <p class="error">
-    @form.globalError.message
-    </p>
-}
-	
+	@if(form.hasGlobalErrors) {	
+		<hr>
+		<p class="error">
+		@form.globalError.message
+		</p>
+	}
+		
 	<h1>Register</h1>
     @helper.form(routes.Application.submitRegistration) {
 		<div class="formFieldLabel">
@@ -76,6 +75,7 @@
 			<input accesskey="s" value="Absenden" type="submit">
 			<input kl_virtual_keyboard_secure_input="on" accesskey="r" value="Zurücksetzen" type="hidden">
 		</div>
+    </form>
     }
 </div>
 
