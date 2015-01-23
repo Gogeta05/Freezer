@@ -18,6 +18,7 @@ GET		/settingsMatching			controllers.Application.settingsMatching()
 GET		/settingsProfile			controllers.Application.settingsProfile()
 GET		/userPopup					controllers.Application.userPopup()
 GET		/home						controllers.Application.home()
+GET		/contactRequest	controllers.Application.contactRequest()
 GET		/							controllers.Application.logout()
 
 
