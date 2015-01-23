@@ -12,9 +12,9 @@
 	<h1>Login</h1>
 	@if(form.hasGlobalErrors) {
 		<hr />
-		<p class="error">
-			@form.globalError.message
-		</p>
+		<div class="error">
+			<p>@form.globalError.message</p>
+		</div>
 	}
 	@helper.form(routes.Application.login) {
 		<div class="formFieldLabel">
@@ -31,8 +31,8 @@
 			<input type="password" data-mini="true" name="password" id="password" />
 		</div>
 		
-		<div class="formSubmit">
-			<input accesskey="s" value="Login" type="submit" data-mini="true">
+		<div class="formSubmit" data-role="controlgroup" data-type="horizontal">
+			<input accesskey="s" value="Login" type="submit" data-mini="true" />
 			<input accesskey="r" value="Register" type="button" data-mini="true" onclick="forward('@routes.Application.register()')" /> <!-- <button> would also be possible, but is still in development and could be interpreted in different ways by different browsers. W3 School recommends to use "old syntax" <input type="button"> -->
 		</div> 
 	}

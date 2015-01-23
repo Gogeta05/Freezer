@@ -36,11 +36,9 @@
 			<label for="gender">Gender</label>
 		</div>	
 		
-		<fieldset data-role="controlgroup" data-iconpos="left">
-			<input name="gender" id="genderMale" value="m" checked="checked" type="radio" />
-				<label for="genderMale">Male</label>
-			<input name="gender" id="genderFemale" value="f" type="radio" />
-				<label for="genderFemale">Female</label>
+		<fieldset data-role="controlgroup" data-iconpos="left" class="genderBox">
+			<input name="gender" id="genderMale" value="m" checked="checked" type="radio" /><label for="genderMale">Male</label>
+			<input name="gender" id="genderFemale" value="f" type="radio" /><label for="genderFemale">Female</label>
 		</fieldset>
 		
 		<div class="formFieldLabel">
@@ -71,9 +69,9 @@
 			<input type="password" name="passwordConfirm" id="passwordConfirm" />
 		</div>
 		
-		<div class="formSubmit">
-			<input accesskey="s" value="Absenden" type="submit">
-			<input kl_virtual_keyboard_secure_input="on" accesskey="r" value="Zurücksetzen" type="hidden">
+		<div class="formSubmit" data-role="controlgroup" data-type="horizontal">
+			<input accesskey="s" value="Register" type="submit" data-theme="b" />
+			<input kl_virtual_keyboard_secure_input="on" accesskey="r" value="Reset" type="reset" />
 		</div>
     </form>
     }
