@@ -9,10 +9,6 @@
 
 <!-- Content -->
 <div class="mainContent" id="mainContent">
-<<<<<<< HEAD
-	<h1>Register</h1>
-    <form action='@routes.Application.submitRegistration()' method='post'> <!-- Hier auch umstellen auf Automatik wie bei Login? helper.form(routes.Application.submitRegistration)  -->
-=======
 
 @if(form.hasGlobalErrors) {	
     <hr>
@@ -23,7 +19,6 @@
 	
 	<h1>Register</h1>
     @helper.form(routes.Application.submitRegistration) {
->>>>>>> origin/master
 		<div class="formFieldLabel">
 			<label for="username">Username</label>
 		</div>	
@@ -81,12 +76,7 @@
 			<input accesskey="s" value="Absenden" type="submit">
 			<input kl_virtual_keyboard_secure_input="on" accesskey="r" value="Zurücksetzen" type="hidden">
 		</div>
-<<<<<<< HEAD
-    </form>
-=======
     }
-
->>>>>>> origin/master
 </div>
 
 <!-- footer -->
