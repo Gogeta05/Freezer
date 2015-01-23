@@ -53,7 +53,7 @@ public class User extends Model {
 			
 			this.username = username;
 			this.email = email;
-			this.password = Util.encrypter.encrypt(password);
+			this.password = Util.encrypter.encryptPassword(password);
 			this.firstName = "";
 			this.lastName = "";
 			this.age = age;
@@ -108,7 +108,7 @@ public class User extends Model {
 		this.email = email;
 	}
 	public void setPassword(String password) {
-		this.password = Util.encrypter.encrypt(password);
+		this.password = Util.encrypter.encryptPassword(password);
 	}
 	public void setAge(Integer age) {
 		this.age = age;
@@ -313,17 +313,14 @@ public class User extends Model {
 		Database.getUser(to.getUsername()).recieveMsg(new Message(this, to, msg));
 	}
 	
-	//Hier wird (auf absolut unsichere Art und Weise) überprüft, ob der Benutzer existiert
+	//Hier wird (auf absolut sichere Art und Weise) überprüft, ob der Benutzer existiert
     public static User authenticate(String email, String password) {
-        User u = new Model.Finder<>(String.class, User.class).where().eq("email", email).findUnique(); 
-        System.out.println(u.email);
-        System.out.println(Util.encrypter.decrypt(u.getPassword()));
-    	if(u != null && Util.encrypter.decrypt(u.getPassword()).equals(password)) {
-    		return u;
+    	
+        User usr = new Model.Finder<>(String.class, User.class).where().eq("email", email).findUnique(); 
+    	if(usr != null && Util.encrypter.checkPassword(password, usr.getPassword())) {
+    		return usr;
     	}
     	else {
-    		System.out.println("authenticate fail");
-    		System.out.println(email);
     		return null;
     	}
     }

@@ -33,14 +33,8 @@ public class Application extends Controller {
             return badRequest(index.render(users, loginForm));
         } else {
             session().clear();
+            session("email", loginForm.get().email);
             
-            
-            
-/*****************************************************************************************************************
- * TODO: email and username are hardcoded because the corresponding fields in this class are still null after filling out the form -> we need to fix this ASAP.
- * Automatic form generation is needed for the validate method. But the controller login-action and the validate-action do get NULL as parameter, although I did everything the same as in the example files of the VO!
- */
-            session("email", /*loginForm.get().email*/"nice@am.com");
             return redirect(
                     routes.Application.home()
             );
@@ -109,26 +103,19 @@ public class Application extends Controller {
     	return ok(userPopup.render(Util.getSessionUser()));
     }
     
+    public static Result logout() {
+    	session().clear();
+    	return redirect(routes.Application.index());
+    }
     /**
-     * Play generates forms automagically
-     * HTML Form hier als Klasse definiert, wird im View automatisch gerendert
-     * *
+     * don't touch, automatic playframework at work
      */
     public static class Login {
         public String email;
         public String password;
 
         public String validate() {
-            // Der passende Validator für die Form
-        	
-        	
-        	
-        	
-/*****************************************************************************************************************
- * TODO: email and username are hardcoded because the corresponding fields in this class are still null after filling out the form -> we need to fix this ASAP.
- * Automatic form generation is needed for the validate method. But the controller login-action and the validate-action do get NULL as parameter, although I did everything the same as in the example files of the VO!
- */
-            if (User.authenticate("nice@am.com", "nice") == null) {
+            if (User.authenticate(email, password) == null) {
                 return "Invalid user or password";
             }
             return null;

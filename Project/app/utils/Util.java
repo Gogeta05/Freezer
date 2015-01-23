@@ -1,7 +1,7 @@
 package utils;
 import models.User;
 
-import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
+import org.jasypt.util.password.ConfigurablePasswordEncryptor;
 
 import play.db.ebean.Model;
 import play.mvc.Controller;
@@ -19,13 +19,13 @@ public final class Util {
 	static public String seperator_Interests = ",";
 	
 	/* encryption */
-	static public StandardPBEStringEncryptor encrypter = null;
+	static public ConfigurablePasswordEncryptor encrypter = null;
 	
 	/* session/database */
 	static public User getSessionUser() {
-		System.out.println(Controller.session().get("email"));
-		User u = new Model.Finder<>(String.class, User.class).where(Expr.eq("email", Controller.session().get("email"))).findUnique();
-		System.out.println(u);
-		return u;
+
+		return 
+				new Model.Finder<>(String.class, User.class).where(Expr.eq("email", Controller.session().get("email"))).findUnique();
+		
 	}
 }
