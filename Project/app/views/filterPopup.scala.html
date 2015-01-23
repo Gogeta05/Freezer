@@ -1,14 +1,8 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 <head>
-	<title>Filter popup</title>
-	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-	<link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/hund.css")" />
-	<link rel="stylesheet" type="text/css" media="main and (max-device-width: 480px)" href="@routes.Assets.at("stylesheets/mobile.css")" /> <!-- Responsive Webdesign -->
-	<link rel="shortcut icon" href="@routes.Assets.at("icons/favicon.ico")" type="image/x-icon" />
-	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
-	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+	<title>Filter matching users</title>
+	@headInclude()
 </head>
 <body>
 
@@ -17,30 +11,35 @@
 
 <!-- Content -->
 <div class="mainContent" id="mainContent">
- <h1>Filter matching</h1>
- 
-<div class="formFieldLabel">
-			<label for="gender">Gender</label>
-		</div>	
-		
+ <h1>Filter matching users</h1>
+	<div class="formFieldLabel">
+		<label for="gender">Gender</label>
+	</div>
+	
+	<div class="formField">
 		<fieldset data-role="controlgroup" data-iconpos="left">
 			<input name="gender" id="genderMale" value="m" checked="checked" type="radio">
 				<label for="genderMale">Male</label>
 			<input name="gender" id="genderFemale" value="f" type="radio">
 				<label for="genderFemale">Female</label>
 		</fieldset>
-<br /><br />
+	</div>
+	<br /><br />
 
-<div class="filterOptions">Age</div>
-<select name="ageSelect">
-	<option value="=">=</option>
-	<option value=">=">>=</option>
-	<option value="<="><=</option>
-</select>
-<input type="number" name="ageInput" value="42" size="10" />
-<br /><br />
+	<div class="formFieldLabel">
+		<label for="age">Age</label>
+	</div>
+	<div class="formField">
+		<select name="ageSelect" id="select-choice-mini" data-mini="true" data-inline="true">
+			<option value="=">=</option>
+			<option value=">=">>=</option>
+			<option value="<="><=</option>
+		</select>
+		<input type="number" name="ageInput" value="42" />
+	</div>
+	<br />
 
-<div class="filterOptions">Interests</div>
+	<div class="filterOptions">Interests</div>
 	<ul>
 		<li>+ Politics [x]</li>
 		<li>+ Theology [x]</li>
@@ -49,15 +48,15 @@
 	<br />
 	([x] ... should be replaced with javascript code to expand sub-categories in final version)<br /><br />
 
-<div class="footerButtons" id="footerButtons">
-	<a href='@routes.Application.home'><input type="button" class="buttonRight" value="set filter"></a>
+	<div class="formSubmit">
+		<input type="button" name="contact" value="Contact" data-mini="true" onclick="forward('@routes.Application.contactRequest()')" />
+		<input type="button" name="filter" value="Set Filter" data-mini="true" onclick="forward('@routes.Application.filterPopup()')" />
+	</div>
 </div>
-</div>
-<!-- foot -->
+
+<!-- footer -->
 <br /><hr />
-<div class="copyright" id="copyright">&copy;2014-2015 by MasterMoritz, YtGz, Gogeta05<br />All rights reserved - Thanks to Play!</div>
-<a href='@routes.Application.index'>Index</a> - <a href='@routes.Application.register()'>Register</a> - <a href='@routes.Application.settingsAccount()'>Settings Account (other settings linked there)</a> -
-<a href='@routes.Application.userPopup()'>UserPopup</a> - <a href='@routes.Application.displayLifts()'>Display lifts</a> - <a href='@routes.Application.filterPopup()'>Filter popup</a> -
-<a href='@routes.Application.locationTracker()'>Location Tracker</a> - <a href='@routes.Application.privateMessage()'>Private Message detail</a> - <a href='@routes.Application.privateMessageList()'>Private MessageList</a>
+<footer>
+	@footer()
 </body>
 </html>

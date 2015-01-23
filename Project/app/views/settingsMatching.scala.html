@@ -1,14 +1,8 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 <head>
-	<title>Settings matching</title>
-	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-	<link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/hund.css")" />
-	<link rel="stylesheet" type="text/css" media="main and (max-device-width: 480px)" href="@routes.Assets.at("stylesheets/mobile.css")" /> <!-- Responsive Webdesign -->
-	<link rel="shortcut icon" href="@routes.Assets.at("icons/favicon.ico")" type="image/x-icon" />
-	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
-	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+	<title>Settings Matching</title>
+	@headInclude()
 </head>
 <body>
 
@@ -17,18 +11,20 @@
 
 <!-- Ab hier: Der eigentliche Inhalt. Main Container wird noch hier im Header geoeffnet -->
 <div class="mainContent" id="mainContent">
-	<ul>
-		<li>Settings</li>
-			<ul class="settings" id="settings">
-				<li><a href='@routes.Application.settingsGeneral()'>General</a></li>
-				<li><a href='@routes.Application.settingsAccount()'>Account</a></li>
-				<li><a href='@routes.Application.settingsProfile()'>Profile</a></li>
-				<li><a href='@routes.Application.settingsMatching()'>Matching</a></li>
-			</ul>
-	</ul>
+	<nav class="settings" id="navSettings"> <!-- see here for finalization: http://webdesignerwall.com/tutorials/mobile-navigation-design-tutorial  -->
+		<ul class="settingsUL" id="settingsUL">
+			<li>Settings</li>
+				<ul class="settings" id="settings">
+					<li><a href='@routes.Application.settingsGeneral()'>General</a></li>
+					<li><a href='@routes.Application.settingsAccount()'>Account</a></li>
+					<li><a href='@routes.Application.settingsProfile()'>Profile</a></li>
+					<li><a href='@routes.Application.settingsMatching()'>Matching</a></li>
+				</ul>
+		</ul>
+	</nav>
 
-	<div class="filterOptions">Matching Settings</div>
-	<form action='@routes.Application.settingsMatching()' method='post'>
+	<div class="filterOptions">Matching Settings</div> <!-- fieldset-->
+	<form action='@routes.Application.settingsMatching()' method='post'> <!-- automatically -->
 		<div class="innerBox">
 			<div class="filterOptions">Gender</div>
 			 <div class="formFieldLabel">
@@ -46,15 +42,15 @@
 			<br /><br />
 
 			<div class="filterOptions">Age</div>
-			<select name="ageSelect">
+			<select name="ageSelect" id="select-choice-mini" data-mini="true" data-inline="true">
 				<option value="=">=</option>
 				<option value=">=">>=</option>
 				<option value="<="><=</option>
 			</select>
-			<input type="text" name="ageInput" value="42" size="10" />
+			<input type="text" name="ageInput" value="42" />
 			<br /><br />
 
-			<div class="filterOptions">Interests</div>
+			<div class="filterOptions">Interests</div> <!-- fieldset-->
 				<ul>
 					<li>+ Politics [x]</li>
 					<li>+ Theology [x]</li>
@@ -64,7 +60,7 @@
 				([x] ... should be replaced with javascript code to expand sub-categories in final version)<br /><br />
 		</div>
 		
-		<div class="filterOptions">Match with users around:</div>
+		<div class="filterOptions">Match with users around:</div> <!-- fieldset-->
 		<div class="formFieldLabel">
 			<label for="sameLocation">same location</label>
 		</div>
@@ -79,23 +75,22 @@
 			<input type="checkbox" name="matchSameLift" value="1" />
 		</div>
 		
-		<div class="filterOptions">Allow Location Tracking - ON/OFF Switch</div>
+		<div class="filterOptions">Allow Location Tracking - <input type="checkbox" data-role="flipswitch" name="flip-checkbox-1" id="flip-checkbox-1" data-theme="b" data-mini="true"></div>
 		<div class="innerBox">
-			Location Tracking is currently turned <span class="fontColorRed">OFF</span>.<br />
-			Matching is only enabled when this is turned <span class="fontColorGreen">ON</span>.
+			Location Tracking is currently turned <span class="off">OFF</span>.<br />
+			Matching is only enabled when this is turned <span class="on">ON</span>.
 		</div>
 		
 		<div class="formSubmit">
-			<input accesskey="s" value="Speichern" type="submit">
-			<input kl_virtual_keyboard_secure_input="on" accesskey="r" value="Zur�cksetzen" type="reset">
+			<input accesskey="s" value="Save" type="submit">
+			<input kl_virtual_keyboard_secure_input="on" accesskey="r" value="Reset" type="reset">
 		</div>
 	</form>
 </div>
-<!-- foot -->
+
+<!-- footer -->
 <br /><hr />
-<div class="copyright" id="copyright">&copy;2014-2015 by MasterMoritz, YtGz, Gogeta05<br />All rights reserved - Thanks to Play!</div>
-<a href='@routes.Application.index'>Index</a> - <a href='@routes.Application.register()'>Register</a> - <a href='@routes.Application.settingsAccount()'>Settings Account (other settings linked there)</a> -
-<a href='@routes.Application.userPopup()'>UserPopup</a> - <a href='@routes.Application.displayLifts()'>Display lifts</a> - <a href='@routes.Application.filterPopup()'>Filter popup</a> -
-<a href='@routes.Application.locationTracker()'>Location Tracker</a> - <a href='@routes.Application.privateMessage()'>Private Message detail</a> - <a href='@routes.Application.privateMessageList()'>Private MessageList</a>
+<footer>
+	@footer()
 </body>
 </html>

@@ -1,16 +1,10 @@
 @* The list of users - which is passed via the index.render() method *@
-@(users: List[User])
+@*(users: List[User])*@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 <head>
 	<title>Contact Request</title>
-	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-	<link rel="shortcut icon" href="@routes.Assets.at("icons/favicon.ico")" type="image/x-icon" />
-	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
-	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-	<link rel="stylesheet" href="@routes.Assets.at("stylesheets/hund.css")" />
-	<link rel="stylesheet" media="main and (max-device-width: 480px)" href="@routes.Assets.at("stylesheets/mobile.css")" /> <!-- Responsive Webdesign -->
+	@headInclude()
 </head>
 <body>
 
@@ -28,7 +22,7 @@
 		</thead>
 		<tbody>
 			<tr>
-				<td><input type="text" name="proposeTime" id="proposeTime" value="10:35" /></td>
+				<td><input type="time" name="proposeTime" id="proposeTime" /></td>
 				<td><input type="text" name="toUser" id="toUser" value="VirginDestroyer69" /></td>
 			</tr>
 		</tbody>
@@ -39,14 +33,12 @@
 	<textarea rows="10" cols="100" name="message" id="message">Are you still virgin?</textarea>
 	<br />
 	<div class="footerButtons" id="footerButtons">
-		<input type="button" class="buttonRight" value="Send" onclick="javascript:alert('Request');" />
+		<input type="button" class="buttonRight" value="Send" onclick="forward('@routes.Application.home()')" />
 </div>
 
-<!-- foot -->
+<!-- footer -->
 <br /><hr />
-<div class="copyright" id="copyright">&copy;2014-2015 by MasterMoritz, YtGz, Gogeta05<br />All rights reserved - Thanks to Play!</div>
-<a href='@routes.Application.index'>Index</a> - <a href='@routes.Application.register()'>Register</a> - <a href='@routes.Application.settingsAccount()'>Settings Account (other settings linked there)</a> -
-<a href='@routes.Application.userPopup()'>UserPopup</a> - <a href='@routes.Application.displayLifts()'>Display lifts</a> - <a href='@routes.Application.filterPopup()'>Filter popup</a> -
-<a href='@routes.Application.locationTracker()'>Location Tracker</a> - <a href='@routes.Application.privateMessage()'>Private Message detail</a> - <a href='@routes.Application.privateMessageList()'>Private MessageList</a>
+<footer>
+	@footer()
 </body>
 </html>

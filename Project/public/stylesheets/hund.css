@@ -1,8 +1,51 @@
-li {
-	display:inline;
-	list-style-image:none;
+/************************************************************************************
+NAV
+*************************************************************************************
+#navSettingsUL {
+	margin-top: 20px;
 }
 
-ul.settings li {
-	display:block;
+/* menu icon 
+#menu-icon {
+	display: none; /* hide menu icon initially 
 }
+
+#navSettings, 
+#navSettings li {
+	margin: 0;
+	padding: 0;
+}
+#navSettings li {
+	list-style: none;
+	float: left;
+	margin-right: 5px;
+}
+
+/* nav link 
+#navSettings a {
+	padding: 4px 15px;
+	display: block;
+	color: #000;
+	background: #ecebeb;
+}
+#navSettings a:hover {
+	background: #f8f8f8;
+}
+
+/* nav dropdown 
+#navSettings ul {
+	background: #fff;
+	padding: 2px;
+	position: absolute;
+	border: solid 1px #ccc;
+	display: none; /* hide dropdown 
+	width: 200px;
+}
+#navSettings ul li {
+	float: none;
+	margin: 0;
+	padding: 0;
+}
+#navSettings li:hover > ul {
+	display: block; /* show dropdown on hover 
+}*/
