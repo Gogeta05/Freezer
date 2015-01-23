@@ -1,3 +1,4 @@
+@(form: Form[controllers.Application.Register])
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 <head>
@@ -8,8 +9,21 @@
 
 <!-- Content -->
 <div class="mainContent" id="mainContent">
+<<<<<<< HEAD
 	<h1>Register</h1>
     <form action='@routes.Application.submitRegistration()' method='post'> <!-- Hier auch umstellen auf Automatik wie bei Login? helper.form(routes.Application.submitRegistration)  -->
+=======
+
+@if(form.hasGlobalErrors) {	
+    <hr>
+    <p class="error">
+    @form.globalError.message
+    </p>
+}
+	
+	<h1>Register</h1>
+    @helper.form(routes.Application.submitRegistration) {
+>>>>>>> origin/master
 		<div class="formFieldLabel">
 			<label for="username">Username</label>
 		</div>	
@@ -36,6 +50,20 @@
 		</fieldset>
 		
 		<div class="formFieldLabel">
+			<label for="email">Email</label>
+		</div>	
+		<div class="formField">
+			<input type="email" name="email" id="email" />
+		</div>
+		
+		<div class="formFieldLabel">
+			<label for="emailConfirm">Confirm Email</label>
+		</div>	
+		<div class="formField">
+			<input type="email" name="emailConfirm" id="emailConfirm" />
+		</div>
+		
+		<div class="formFieldLabel">
 			<label for="password">Password</label>
 		</div>	
 		<div class="formField">
@@ -49,25 +77,16 @@
 			<input type="password" name="passwordConfirm" id="passwordConfirm" />
 		</div>
 		
-		<div class="formFieldLabel">
-			<label for="email">Email</label>
-		</div>	
-		<div class="formField">
-			<input type="text" name="email" id="email" />
-		</div>
-		
-		<div class="formFieldLabel">
-			<label for="emailConfirm">Confirm Email</label>
-		</div>	
-		<div class="formField">
-			<input type="text" name="emailConfirm" id="emailConfirm" />
-		</div>
-		
 		<div class="formSubmit">
 			<input accesskey="s" value="Absenden" type="submit">
 			<input kl_virtual_keyboard_secure_input="on" accesskey="r" value="Zurücksetzen" type="hidden">
 		</div>
+<<<<<<< HEAD
     </form>
+=======
+    }
+
+>>>>>>> origin/master
 </div>
 
 <!-- footer -->

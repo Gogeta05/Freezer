@@ -6,7 +6,7 @@
 GET     /                           controllers.Application.index()
 POST	/							controllers.Application.login()
 GET		/register					controllers.Application.register()
-POST	/submitRegistration			controllers.Application.submitRegistration()
+POST	/register					controllers.Application.submitRegistration()
 GET		/displayLifts				controllers.Application.displayLifts()
 GET		/filterPopup				controllers.Application.filterPopup()
 GET		/locationTracker			controllers.Application.locationTracker()
