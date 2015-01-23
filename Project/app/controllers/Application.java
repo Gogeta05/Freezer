@@ -102,6 +102,10 @@ public class Application extends Controller {
     public static Result userPopup() {
     	return ok(userPopup.render(Util.getSessionUser()));
     }
+	
+	public static Result contactRequest() {
+		return ok(contactRequest.render());
+	}
     
     public static Result logout() {
     	session().clear();
