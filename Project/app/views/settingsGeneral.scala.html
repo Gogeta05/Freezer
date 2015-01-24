@@ -25,37 +25,10 @@
 	
 	<div class="informationBox">In Nomine Patris et Filii et Spiritus Sancti</div>
 	<div class="locationStatus">Location Status</div>
-	<div class="filterOptions">Users near you</div>
-	
-	<table class="tableList">
-		<thead>
-			<tr>
-				<th>Username</th>
-				<th>Real name</th>
-			</tr>
-		</head>
-		<tbody>
-			<tr>
-				<td>VirginDestroyer69</td>
-				<td><Hidden></td>
-			</tr>
-			<tr>
-				<td>GrueneGurke</td>
-				<td>Guenther</td>
-			</tr>
-			<tr>
-				<td>Gandalf</td>
-				<td>Gandalf Grey</td>
-			</tr>
-			<tr>
-				<td>Morgoth</td>
-				<td>Boeser Heinz</td>
-			</tr>
-	</table>
 
 	<div class="formSubmit">
 		<input type="button" name="contact" value="Contact" data-mini="true" onclick="forward('@routes.Application.contactRequest()')" />
-		<input type="button" name="filter" value="Set Filter" data-mini="true" onclick="forward('@routes.Application.filterPopup()')" />
+		<input type="button" name="filter" value="Set Filter" data-mini="true" onclick="popup('open, filterPopup')" />
 	</div>
 </div>
 
