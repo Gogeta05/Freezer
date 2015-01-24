@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import jxl.Sheet;
 import jxl.Workbook;
@@ -38,7 +39,9 @@ public class User extends Model {
 	private String lastName;
 	private Integer age;
 	private char gender;
+	@OneToOne(cascade=CascadeType.ALL)
 	private Location location;
+	@OneToOne(cascade=CascadeType.ALL)
 	public MessageBox msgBox;
 	
 	@OneToMany(mappedBy="owner", cascade=CascadeType.ALL)
