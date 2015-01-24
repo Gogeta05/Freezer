@@ -3,6 +3,7 @@ package backend;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 
 import models.Lift;
 import models.Location;
@@ -28,6 +29,20 @@ public final class Database {
 
 	public static User getUser(String usrname) {
 		return new Model.Finder<String, User>(String.class, User.class).where(Expr.eq("username", usrname)).findUnique();
+	}
+	public static List<User> getUsers () {
+		return new Model.Finder<String, User>(String.class, User.class).all();
+	}
+	
+	/**
+	 * update interests of every user
+	 */
+	public static void updateInterests() {
+		List<User> users = getUsers();
+		
+		for (User u : users) {
+			u.updateInterests();
+		}
 	}
 	
 	/**

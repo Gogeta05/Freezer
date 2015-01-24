@@ -324,4 +324,36 @@ public class User extends Model {
     		return null;
     	}
     }
+    
+    /**
+     * shallow matching algorithm (only matching top level of interests)
+     * every top-level hit adds 1 to the matching
+     * @param matchCriteria only match Users which matching at least succeeds this value
+     * @return List of Users which fulfuill the matching criteria
+     */
+    public List<User> match(int matchCriteria) {
+    	
+    	List<User> users = Database.getUsers();
+    	List<User> matched = new ArrayList<>();
+    	
+    	int i = 0;
+    	
+    	for (User u : users) {
+    		int match_count = 0;
+    		List<Interests> thatInterests = u.interests;
+    		
+    		for (Interests in : interests) {
+    			if (in.isOn() == thatInterests.get(i).isOn()) {
+    				match_count += 1;
+    			}
+    			i += 1;
+    		}
+    		
+    		if (match_count >= matchCriteria) {
+    			matched.add(u);
+    		}
+    	}
+    	
+    	return matched;
+    }
 }
