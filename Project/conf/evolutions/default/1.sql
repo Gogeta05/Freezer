@@ -31,12 +31,14 @@ create table location (
 
 create table message (
   id                        bigint not null,
+  FK_BOX                    bigint,
   msg                       varchar(255),
   constraint pk_message primary key (id))
 ;
 
 create table message_box (
   id                        bigint not null,
+  FK_OWNER                  bigint,
   constraint pk_message_box primary key (id))
 ;
 
@@ -49,8 +51,7 @@ create table user (
   last_name                 varchar(255),
   age                       integer,
   gender                    varchar(255),
-  location_id               bigint,
-  msg_box_id                bigint,
+  location_plz              integer,
   constraint pk_user primary key (id))
 ;
 
@@ -70,10 +71,10 @@ alter table interests add constraint fk_interests_owner_1 foreign key (FK_OWNER)
 create index ix_interests_owner_1 on interests (FK_OWNER);
 alter table interests add constraint fk_interests_parent_2 foreign key (FK_PARENT) references interests (id) on delete restrict on update restrict;
 create index ix_interests_parent_2 on interests (FK_PARENT);
-alter table user add constraint fk_user_location_3 foreign key (location_id) references location (id) on delete restrict on update restrict;
-create index ix_user_location_3 on user (location_id);
-alter table user add constraint fk_user_msgBox_4 foreign key (msg_box_id) references message_box (id) on delete restrict on update restrict;
-create index ix_user_msgBox_4 on user (msg_box_id);
+alter table message add constraint fk_message_box_3 foreign key (FK_BOX) references message_box (id) on delete restrict on update restrict;
+create index ix_message_box_3 on message (FK_BOX);
+alter table message_box add constraint fk_message_box_owner_4 foreign key (FK_OWNER) references user (id) on delete restrict on update restrict;
+create index ix_message_box_owner_4 on message_box (FK_OWNER);
 
 
 

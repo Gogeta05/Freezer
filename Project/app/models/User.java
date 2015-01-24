@@ -41,7 +41,7 @@ public class User extends Model {
 	private char gender;
 	private int locationPLZ;
 	
-	@OneToOne(mappedBy="user", cascade=CascadeType.ALL)
+	@OneToOne(mappedBy="owner", cascade=CascadeType.ALL)
 	public MessageBox msgBox;
 	
 	@OneToMany(mappedBy="owner", cascade=CascadeType.ALL)
