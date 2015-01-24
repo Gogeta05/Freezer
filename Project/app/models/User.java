@@ -295,25 +295,70 @@ public class User extends Model {
 	}
 	
 	/**
-	 * set all interests to off
+	 * set all interests to off/on
 	 */
-	public void resetInterests() {
+	public void allInterests(boolean status) {
 		for (Interests i : interests) {
-			i.turnOff();
+			if (status == true) {
+				i.turnOn();
+			}
+			else {
+				i.turnOff();
+			}
 			List<Interests> subs = i.getSubInterests();
 			if (subs != null) {
-				rResetInterests(subs);
+				rAllInterests(status, subs);
 			}
 		}
 	}
-	private void rResetInterests(List<Interests> interests) {
+	private void rAllInterests(boolean status, List<Interests> interests) {
+		if (interests == null) {
+			return;
+		}
+		
 		for (Interests i : interests) {
-			i.turnOff();
+			if (status == true) {
+				i.turnOn();
+			}
+			else {
+				i.turnOff();
+			}
 			List<Interests> subs = i.getSubInterests();
 			if (subs != null) {
-				rResetInterests(subs);
+				rAllInterests(status, subs);
 			}
 		}
+	}
+	
+	/**
+	 * find interest by title recursively
+	 */
+	public Interests findInterests(String title) {
+		if (this.interests == null) {
+			return null;
+		}
+		
+		return rfindInterests(title, this.interests);
+	}
+	//recursive helper function for findInterests
+	public Interests rfindInterests(String title, List<Interests> interests) {
+		if (interests == null) {
+			return null;
+		}
+		
+		for (Interests i : interests) {
+			if (i.getTitle().equalsIgnoreCase(title)) {
+				return i;
+			}
+			else if (i.hasSubs()){
+				Interests subInterests = rfindInterests(title, i.getSubInterests());
+				if (subInterests != null) {
+					return subInterests;
+				}
+			}
+		}
+		
+		return null;
 	}
 	
 	/**
@@ -365,7 +410,7 @@ public class User extends Model {
     		List<Interests> thatInterests = u.interests;
     		
     		for (Interests in : interests) {
-    			if (in.isOn() == thatInterests.get(i).isOn()) {
+    			if (in.isOn() == true && thatInterests.get(i).isOn() == true) {
     				match_count += 1;
     			}
     			i += 1;

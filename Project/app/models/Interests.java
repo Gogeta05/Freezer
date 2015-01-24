@@ -91,6 +91,10 @@ public class Interests extends Model {
 	 */
 	public void turnOn() {
 		this.interestOn = true;
+		if (this.parent != null) {
+			this.parent.turnOn();
+		}
+		this.save();
 	}
 	
 	/**
@@ -98,6 +102,10 @@ public class Interests extends Model {
 	 */
 	public void turnOff() {
 		this.interestOn = false;
+		if (this.parent != null) {
+			this.parent.turnOff();
+		}
+		this.save();
 	}
 
 	@Override

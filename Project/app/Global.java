@@ -1,7 +1,9 @@
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
 import javax.crypto.Cipher;
 
+import models.Interests;
 import models.User;
 
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
@@ -51,6 +53,96 @@ public class Global extends GlobalSettings {
 	        Database.addUser(new User("XXxHotGirl742xXX", "im@girl.com", "not4scam", 17, 'f'));
 	        Database.addUser(new User("shyPeter", "peter@peters.pete", "peter!", 19, 'm'));
 	        Database.addUser(new User("admin", "admin@uibk.ac.at", "admin", 20, 'm'));
+	        
+	        //set some interests for the users
+	        List<User> users = Database.getUsers();
+	        Interests interest;
+	        
+	        //user 0
+	        interest = users.get(0).findInterests("pcgames");
+	        if (interest != null) {
+	        	interest.turnOn();
+	        }
+	        interest = users.get(0).findInterests("rpg");
+	        if (interest != null) {
+	        	interest.turnOn();
+	        }
+	        interest = users.get(0).findInterests("hack'n'slash");
+	        if (interest != null) {
+	        	interest.turnOn();
+	        }
+	        interest = users.get(0).findInterests("gaming");
+	        if (interest != null) {
+	        	interest.turnOn();
+	        }
+	        interest = users.get(0).findInterests("boardgames");
+	        if (interest != null) {
+	        	interest.turnOn();
+	        }
+	        
+	        //user 1
+	        interest = users.get(1).findInterests("theology");
+	        if (interest != null) {
+	        	interest.turnOn();
+	        }
+	        
+	        //user 2
+	        interest = users.get(2).findInterests("movies");
+	        if (interest != null) {
+	        	interest.turnOn();
+	        }
+	        interest = users.get(2).findInterests("horror");
+	        if (interest != null) {
+	        	interest.turnOn();
+	        }
+	        interest = users.get(2).findInterests("medieval");
+	        if (interest != null) {
+	        	interest.turnOn();
+	        }
+	        
+	        //user 3
+	        interest = users.get(3).findInterests("pcgames");
+	        if (interest != null) {
+	        	interest.turnOn();
+	        }
+	        interest = users.get(3).findInterests("rpg");
+	        if (interest != null) {
+	        	interest.turnOn();
+	        }
+	        interest = users.get(3).findInterests("boardgames");
+	        if (interest != null) {
+	        	interest.turnOn();
+	        }
+	        
+	        //user 4
+	        interest = users.get(4).findInterests("theology");
+	        if (interest != null) {
+	        	interest.turnOn();
+	        }
+	        
+	        //user 5
+	        interest = users.get(5).findInterests("movies");
+	        if (interest != null) {
+	        	interest.turnOn();
+	        }
+	        interest = users.get(5).findInterests("fantasy");
+	        if (interest != null) {
+	        	interest.turnOn();
+	        }
+	        interest = users.get(5).findInterests("theology");
+	        if (interest != null) {
+	        	interest.turnOn();
+	        }
+	        
+	        //user 6
+	        users.get(6).allInterests(true);
+	        
+	        //user 7
+	        //shyPeter is not interested in anything
+	        users.get(7).allInterests(false);
+	        
+	        //user 8
+	        users.get(8).allInterests(true);
         }
         
  
