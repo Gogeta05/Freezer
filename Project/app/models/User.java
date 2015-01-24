@@ -331,7 +331,7 @@ public class User extends Model {
      * @param matchCriteria only match Users which matching at least succeeds this value
      * @return List of Users which fulfuill the matching criteria
      */
-    public List<User> match(int matchCriteria) {
+    public List<User> matching(int matchCriteria) {
     	
     	List<User> users = Database.getUsers();
     	List<User> matched = new ArrayList<>();
