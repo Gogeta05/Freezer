@@ -5,9 +5,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import jxl.Sheet;
 import jxl.Workbook;
@@ -38,6 +40,7 @@ public class User extends Model {
 	private char gender;
 	private Location location;
 	public MessageBox msgBox;
+	@OneToMany(cascade=CascadeType.ALL)
 	public ArrayList<Interests> interests;
 	
 	/**

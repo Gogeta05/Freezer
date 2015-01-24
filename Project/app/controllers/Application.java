@@ -2,8 +2,11 @@ package controllers;
 
 import java.util.List;
 
+import com.avaje.ebean.Ebean;
+
 import controllers.Application.Register;
 import backend.Database;
+import models.Interests;
 import models.Lift;
 import models.User;
 import play.*;
@@ -24,6 +27,11 @@ public class Application extends Controller {
 	}
 
 	public static Result home() {
+		User u = Util.getSessionUser();
+		if(u != null) {
+			System.out.println(u.getPassword());
+			System.out.println(u.interests);
+		}
 		return ok(home.render());
 	}
 
@@ -53,7 +61,11 @@ public class Application extends Controller {
 		} else {
 			User user = new User(registrationForm.field("username").value(), registrationForm.field("email").value(), registrationForm.field("password").value(), Integer.parseInt(registrationForm.field("age").value()), registrationForm.field("gender").value()
 					.charAt(0));
+			System.out.println(user.interests);
 			// Save user into database
+			for(Interests i : user.interests) {
+				i.save();
+			}
 			user.save();
 		}
 		return redirect(routes.Application.index());

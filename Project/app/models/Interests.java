@@ -2,14 +2,29 @@ package models;
 
 import java.util.ArrayList;
 
-public class Interests {
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import play.db.ebean.Model;
+
+@Entity
+public class Interests extends Model {
+	
+	@Id
+	@GeneratedValue
+	public long id;
 	
 	/** The title of the interest, as displayed in the HTML later */
+	@Id
 	private String title;
 	/** The sub-interests of this one */
+	@OneToMany(cascade=CascadeType.ALL)
 	private ArrayList<Interests> subInterests;
 	/** The User is interested in this interest if on == true */
-	private Boolean on;
+	private Boolean interestOn;
 	
 	/**
 	 * The Constructor
@@ -19,7 +34,7 @@ public class Interests {
 	public Interests(String title, ArrayList<Interests> subs) {
 		this.title = title;
 		this.subInterests = subs;
-		on = false;
+		interestOn = false;
 	}
 
 	
@@ -33,7 +48,7 @@ public class Interests {
 	}
 
 	public Boolean isOn() {
-		return on;
+		return interestOn;
 	}
 
 	/* Setters */
@@ -57,14 +72,14 @@ public class Interests {
 	 * turn the interest on for the user
 	 */
 	public void turnOn() {
-		this.on = true;
+		this.interestOn = true;
 	}
 	
 	/**
 	 * turn the interest off for the user
 	 */
 	public void turnOff() {
-		this.on = false;
+		this.interestOn = false;
 	}
 
 	@Override
