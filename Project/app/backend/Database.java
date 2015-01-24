@@ -34,6 +34,10 @@ public final class Database {
 		return new Model.Finder<String, User>(String.class, User.class).all();
 	}
 	
+	public static void addUser(User user) {
+		user.save();
+	}
+	
 	/**
 	 * update interests of every user
 	 */
