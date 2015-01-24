@@ -26,7 +26,7 @@ public class User extends Model {
 	
 	@Id
 	@GeneratedValue
-	private long id;
+	public long id;
 	
 	@Required
 	private String username;
@@ -356,6 +356,11 @@ public class User extends Model {
     	int i = 0;
     	
     	for (User u : users) {
+    		if (u.id == this.id) {
+    			continue;
+    		}
+    		
+    		i = 0;
     		int match_count = 0;
     		List<Interests> thatInterests = u.interests;
     		

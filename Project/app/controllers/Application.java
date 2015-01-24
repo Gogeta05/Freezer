@@ -11,6 +11,7 @@ import models.Interests;
 import models.Lift;
 import models.User;
 import play.*;
+import play.api.mvc.Session;
 import play.data.Form;
 import play.db.ebean.Model;
 import play.mvc.*;
@@ -24,11 +25,14 @@ public class Application extends Controller {
 		// Query users from database
 		List<User> users = new Model.Finder<String, User>(String.class, User.class).all();
 		// Passing the list to the view
+		if (! session().isEmpty()) {
+			return ok(home.render(Util.getSessionUser()));
+		}
 		return ok(index.render(users, loginForm));
 	}
 
 	public static Result home() {
-		return ok(home.render());
+		return ok(home.render(Util.getSessionUser()));
 	}
 
 	public static Result login() {
@@ -37,7 +41,6 @@ public class Application extends Controller {
 			List<User> users = new Model.Finder<String, User>(String.class, User.class).all();
 			return badRequest(index.render(users, loginForm));
 		} else {
-			session().clear();
 			session("email", loginForm.get().email);
 
 			return redirect(routes.Application.home());
@@ -104,8 +107,13 @@ public class Application extends Controller {
 		return ok(settingsProfile.render());
 	}
 
-	public static Result userPopup() {
-		return ok(userPopup.render(Util.getSessionUser()));
+	public static Result userPopup(String username) {
+		User usr = Database.getUser(username);
+		
+		if (usr == null) {
+			return badRequest("nope");
+		}
+		return ok(userPopup.render(usr));
 	}
 
 	public static Result contactRequest() {

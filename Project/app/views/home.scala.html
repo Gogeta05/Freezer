@@ -1,3 +1,5 @@
+@(user : User)
+
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 <head>
@@ -31,10 +33,12 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr>
-				<td class="tableCols">VirginDestroyer69</td>
-				<td class="tableCols">[Hidden]</td>
-			</tr>
+			@for(usr <- user.matching(1)) {
+				<tr>
+					<td class="tableCols"><a href='@routes.Application.userPopup(usr.getUsername())'>@usr.getUsername()</a></td>
+					<td class="tableCols">@usr.getName()</td>
+				</tr>
+			}
 		</tbody>
 	</table>
 	<br />

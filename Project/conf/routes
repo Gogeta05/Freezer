@@ -4,7 +4,7 @@
 
 # Home page
 GET     /                           controllers.Application.index()
-POST	/							controllers.Application.login()
+POST	/home						controllers.Application.login()
 GET		/register					controllers.Application.register()
 POST	/register					controllers.Application.submitRegistration()
 GET		/displayLifts				controllers.Application.displayLifts()
@@ -16,10 +16,10 @@ GET		/settingsAccount			controllers.Application.settingsAccount()
 GET		/settingsGeneral			controllers.Application.settingsGeneral()
 GET		/settingsMatching			controllers.Application.settingsMatching()
 GET		/settingsProfile			controllers.Application.settingsProfile()
-GET		/userPopup					controllers.Application.userPopup()
+GET		/userPopup/:usrname			controllers.Application.userPopup(usrname: String)
 GET		/home						controllers.Application.home()
 GET		/contactRequest	controllers.Application.contactRequest()
-GET		/							controllers.Application.logout()
+GET		/logout							controllers.Application.logout()
 
 
 # Map static resources from the /public folder to the /assets URL path
