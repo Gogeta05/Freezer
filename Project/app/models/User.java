@@ -308,7 +308,7 @@ public class User extends Model {
 	/**
 	 * receive a message
 	 */
-	public void recieveMsg (Message msg) {
+	public void receiveMsg (Message msg) {
 		this.msgBox.messages.add(msg);
 	}
 	
@@ -316,7 +316,7 @@ public class User extends Model {
 	 * send a message to another user
 	 */
 	public void sendMsg (String msg, User to) {
-		Database.getUser(to.getUsername()).recieveMsg(new Message(this, to, msg));
+		Database.getUser(to.getUsername()).receiveMsg(new Message(this, to, msg));
 	}
 	
 	//Hier wird (auf absolut sichere Art und Weise) überprüft, ob der Benutzer existiert
