@@ -129,9 +129,10 @@ public class UserTest {
 		tmpParent.addSubInterest(new Interests("otterly", null, user, tmpParent));
 		tmpParent.addSubInterest(new Interests("bull", null, user, tmpParent));
 		
-		user.interests.add(tmpParent);
-
+		//add new interest with subinterests in case that the initial list is empty
+		user.interests.get(0).addSubInterest(new Interests("on", null, user, user.interests.get(0)));
 		ArrayList<Interests> sub = user.interests.get(0).getSubInterests();
+		sub = sub.get(sub.size()-1).getSubInterests();
 		
 		//check if resetting is working properly (and recursively)
 		assertTrue(!sub.get(sub.size()-1).isOn());

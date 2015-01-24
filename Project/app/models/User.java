@@ -39,9 +39,9 @@ public class User extends Model {
 	private String lastName;
 	private Integer age;
 	private char gender;
-	@OneToOne(cascade=CascadeType.ALL)
-	private Location location;
-	@OneToOne(cascade=CascadeType.ALL)
+	private int locationPLZ;
+	
+	@OneToOne(mappedBy="user", cascade=CascadeType.ALL)
 	public MessageBox msgBox;
 	
 	@OneToMany(mappedBy="owner", cascade=CascadeType.ALL)
@@ -65,7 +65,7 @@ public class User extends Model {
 			this.lastName = "";
 			this.age = age;
 			this.gender = gender;
-			this.location = null;
+			this.locationPLZ = -1;
 			this.interests = null;
 			this.msgBox = new MessageBox();
 			updateInterests();
@@ -106,8 +106,8 @@ public class User extends Model {
 		}
 		return "Female";
 	}
-	public Location getLocation() {
-		return location;
+	public int getLocation() {
+		return locationPLZ;
 	}
 	
 	/* Setters */
@@ -123,8 +123,8 @@ public class User extends Model {
 	public void setGender(char gender) {
 		this.gender = gender;
 	}
-	public void setLocation(Location location) {
-		this.location = location;
+	public void setLocation(int locationPLZ) {
+		this.locationPLZ = locationPLZ;
 	}
 	public void setFirstName(String name) {
 		this.firstName = name;

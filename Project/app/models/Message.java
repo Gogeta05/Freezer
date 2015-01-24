@@ -11,6 +11,10 @@ public class Message {
 	@GeneratedValue
 	public long id;
 	
+	@ManyToOne
+	@JoinColumn(name = "FK_BOX")
+	MessageBox box;
+	
 	/**
 	 * The author of the message
 	 */
@@ -28,6 +32,7 @@ public class Message {
 		this.from = from;
 		this.to = to;
 		this.msg = msg;
+		box = to.msgBox;
 	}
 	
 	/**

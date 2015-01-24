@@ -1,12 +1,15 @@
 package models;
 
+import java.util.List;
 import java.util.ArrayList;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import play.db.ebean.Model;
 
@@ -21,11 +24,15 @@ public class MessageBox extends Model {
 	@GeneratedValue
 	public long id;
 	
+	@OneToOne
+	@JoinColumn(name = "FK_OWNER")
+	User owner;
+	
 	/**
 	 * The messages currently in the inbox
 	 */
-	@OneToMany(cascade=CascadeType.ALL)
-	public ArrayList<Message> messages;
+	@OneToMany(mappedBy="box", cascade=CascadeType.ALL)
+	public List<Message> messages;
 	
 	
 	public MessageBox() {
