@@ -3,8 +3,8 @@
 <head>
 	<title>Home</title>
 	@headInclude()
-	@*<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
-	<script type="text/javascript" src='@routes.Assets.at("javascripts/locationTracker.js")'></script>*@
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+	<script type="text/javascript" src='@routes.Assets.at("javascripts/locationTracker.js")'></script>
 </head>
 <body>
 
@@ -39,8 +39,7 @@
 	</table>
 	<br />
 	<div class="formSubmit" data-role="controlgroup" data-type="horizontal">
-		<input type="button" name="contact" value="Contact" data-mini="true" onclick="forward('@routes.Application.contactRequest()')" />
-		<input type="button" name="filter" value="Set Filter" data-mini="true" onclick="forward('@routes.Application.filterPopup()')" />
+		<input type="button" name="filter" value="Set Filter" data-mini="true" onclick="popup('open, filterPopup')" />
 	</div>
 </div>
 
