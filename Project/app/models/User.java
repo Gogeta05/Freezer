@@ -40,8 +40,9 @@ public class User extends Model {
 	private char gender;
 	private Location location;
 	public MessageBox msgBox;
-	@OneToMany(cascade=CascadeType.ALL)
-	public ArrayList<Interests> interests;
+	
+	@OneToMany(mappedBy="owner", cascade=CascadeType.ALL)
+	public List<Interests> interests;
 	
 	/**
 	 * The Constructor
@@ -142,12 +143,15 @@ public class User extends Model {
 		//the rows that were already read (true == already read), allows for some row-jumping
 		boolean[] readRows;
 		
+		User user;
+		
 		//Constructor
-		public XlsParser(int start, String filepath) {
+		public XlsParser(int start, String filepath, User usr) {
 			this.seperator = Util.seperator_Interests;
 			this.start = start;
 			this.xls = new File(filepath);
 			this.readRows = null;
+			this.user=usr;
 		}
 		
 		//parse the xls file
@@ -168,7 +172,7 @@ public class User extends Model {
 					}
 					
 					//add the interest with all its sub-interests
-					parsed.add(parseInterest(r, sheet));
+					parsed.add(parseInterest(r, sheet, null));
 				}
 				
 				if (parsed.isEmpty()) {
@@ -181,24 +185,31 @@ public class User extends Model {
 		}
 
 		//recursive sub method of parseInterests()
-		private Interests parseInterest(int r, Sheet sheet) {
+		private Interests parseInterest(int r, Sheet sheet, Interests parent) {
 			
 			//read the title
 			String title = sheet.getCell(0, r).getContents();
 			
+			Interests in = null;
+			if (parent == null) {
+				in = new Interests(title, null, this.user, parent);
+			}
+			else {
+				in = new Interests(title, null, null, parent);
+			}
+			
+			
 			//get the sub-interests
 			String arr = sheet.getCell(1, r).getContents();
-			
 			String[] items = arr.split(seperator);
-			ArrayList<Interests> subs = null;
+
 			
 			if (! (items[0].equals("")) ) {
-				subs = new ArrayList<>();
 		
 				for (int i = 0; i < items.length; i++) {
 					try {
 						int subcell = Integer.parseInt(items[i]);
-						subs.add(parseInterest(subcell-1,sheet));
+						in.addSubInterest((parseInterest(subcell-1,sheet, in)));
 						
 					} catch (NumberFormatException nfe) {};
 					
@@ -209,7 +220,7 @@ public class User extends Model {
 			readRows[r] = true;
 			
 			//return the parsed interest
-			return (new Interests(title, subs));
+			return (in);
 		}
 	}
 	
@@ -220,18 +231,18 @@ public class User extends Model {
 		
 		//if there was no list saved for the user, just save the new one
 		if (interests == null) {
-			interests = new XlsParser(2, Util.file_Interests).parseInterests();
+			interests = new XlsParser(2, Util.file_Interests, this).parseInterests();
 		}
 		
 		//otherwise update the old one with the new one
 		else {
-			ArrayList<Interests> parsed = new XlsParser(2, Util.file_Interests).parseInterests();
+			List<Interests> parsed = new XlsParser(2, Util.file_Interests, this).parseInterests();
 			rUpdateInterests(this.interests, parsed);
 		}
 	}
 	
 	//recursive submethod of updateInterests()
-	private void rUpdateInterests(ArrayList<Interests> thiss, ArrayList<Interests> that) {
+	private void rUpdateInterests(List<Interests> thiss, List<Interests> that) {
 		//null check
 		if (that == null) {
 			thiss = null;
@@ -286,16 +297,16 @@ public class User extends Model {
 	public void resetInterests() {
 		for (Interests i : interests) {
 			i.turnOff();
-			ArrayList<Interests> subs = i.getSubInterests();
+			List<Interests> subs = i.getSubInterests();
 			if (subs != null) {
 				rResetInterests(subs);
 			}
 		}
 	}
-	private void rResetInterests(ArrayList<Interests> interests) {
+	private void rResetInterests(List<Interests> interests) {
 		for (Interests i : interests) {
 			i.turnOff();
-			ArrayList<Interests> subs = i.getSubInterests();
+			List<Interests> subs = i.getSubInterests();
 			if (subs != null) {
 				rResetInterests(subs);
 			}

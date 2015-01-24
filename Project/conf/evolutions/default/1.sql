@@ -5,8 +5,11 @@
 
 create table interests (
   id                        bigint not null,
-  title                     varchar(255) not null,
-  interest_on               boolean)
+  FK_OWNER                  bigint,
+  FK_PARENT                 bigint,
+  title                     varchar(255),
+  interest_on               boolean,
+  constraint pk_interests primary key (id))
 ;
 
 create table lift (
@@ -37,6 +40,10 @@ create sequence lift_seq;
 
 create sequence user_seq;
 
+alter table interests add constraint fk_interests_owner_1 foreign key (FK_OWNER) references user (id) on delete restrict on update restrict;
+create index ix_interests_owner_1 on interests (FK_OWNER);
+alter table interests add constraint fk_interests_parent_2 foreign key (FK_PARENT) references interests (id) on delete restrict on update restrict;
+create index ix_interests_parent_2 on interests (FK_PARENT);
 
 
 

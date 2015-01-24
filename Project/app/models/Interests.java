@@ -1,11 +1,15 @@
 package models;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import play.db.ebean.Model;
@@ -17,12 +21,21 @@ public class Interests extends Model {
 	@GeneratedValue
 	public long id;
 	
+	@ManyToOne
+	@JoinColumn(name = "FK_OWNER")
+	User owner;
+	
+	@ManyToOne
+	@JoinColumn(name = "FK_PARENT")
+	Interests parent;
+	
 	/** The title of the interest, as displayed in the HTML later */
-	@Id
 	private String title;
+	
 	/** The sub-interests of this one */
-	@OneToMany(cascade=CascadeType.ALL)
-	private ArrayList<Interests> subInterests;
+	@OneToMany(mappedBy="parent", cascade=CascadeType.ALL)
+	private List<Interests> subInterests;
+	
 	/** The User is interested in this interest if on == true */
 	private Boolean interestOn;
 	
@@ -31,10 +44,12 @@ public class Interests extends Model {
 	 * @param title
 	 * @param subs The sub-Interests, use null if none exist
 	*/
-	public Interests(String title, ArrayList<Interests> subs) {
+	public Interests(String title, ArrayList<Interests> subs, User owner, Interests parent) {
 		this.title = title;
 		this.subInterests = subs;
 		interestOn = false;
+		this.owner = owner;
+		this.parent = parent;
 	}
 
 	
@@ -43,7 +58,7 @@ public class Interests extends Model {
 		return title;
 	}
 
-	public ArrayList<Interests> getSubInterests() {
+	public List<Interests> getSubInterests() {
 		return subInterests;
 	}
 
@@ -57,6 +72,9 @@ public class Interests extends Model {
 	}
 
 	public void addSubInterest(Interests sub) {
+		if (subInterests == null) {
+			subInterests = new ArrayList<Interests>();
+		}
 		this.subInterests.add(sub);
 	}
 

@@ -14,6 +14,7 @@ import jxl.read.biff.BiffException;
 
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
+import org.jasypt.util.password.ConfigurablePasswordEncryptor;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -28,10 +29,9 @@ public class UserTest {
 	public void setUp() throws Exception {
 		//setup the password encrypter
 		if (Util.encrypter == null) {
-        	Util.encrypter = new StandardPBEStringEncryptor();
-			Util.encrypter.setProvider(new BouncyCastleProvider());
-	        Util.encrypter.setAlgorithm("PBEWITHSHA256AND128BITAES-CBC-BC");
-	        Util.encrypter.setPassword("WhatIsThisFor? I don't even!");
+        	Util.encrypter = new ConfigurablePasswordEncryptor();
+	        Util.encrypter.setProvider(new BouncyCastleProvider());
+	        Util.encrypter.setAlgorithm("WHIRLPOOL");
 		}
 
 		try {
@@ -78,19 +78,20 @@ public class UserTest {
 		try {
 			user.updateInterests();
 			
-			//adds recursive subInterests
-			ArrayList<Interests> tmp = new ArrayList<>();
-			tmp.add(new Interests("bull", null));
-			tmp.add(new Interests("otterly", null));
+			Interests tmpParent = new Interests("tmpo", null, user, null);
+
 			
 			//add new interest with subinterests, in case that the initial list is empty
-			user.interests.add(new Interests("tmpo", tmp));
+			tmpParent.addSubInterest(new Interests("otterly", null, user, tmpParent));
+			tmpParent.addSubInterest(new Interests("bull", null, user, tmpParent));
+			
+			user.interests.add(tmpParent);
 			
 			ArrayList<Interests> sub = user.interests.get(0).getSubInterests();
 			
 			//test on size update (due to removing/adding)
 			int oldsize = sub.size();
-			user.interests.get(0).addSubInterest(new Interests("on", tmp));
+			user.interests.get(0).addSubInterest(new Interests("on", null, user, user.interests.get(0)));
 			
 			assertTrue(sub.size() == oldsize + 1);
 			user.updateInterests();
@@ -104,7 +105,7 @@ public class UserTest {
 			assertTrue(sub.size() == oldsize);
 			
 			//add new interest with subinterests, in case that the initial list is empty
-			user.interests.add(new Interests("tmpo", tmp));
+			user.interests.add(tmpParent);
 			
 			//test on title update
 			String oldTitle = user.interests.get(0).getTitle();
@@ -121,15 +122,16 @@ public class UserTest {
 	
 	@Test
 	public void testResetInterests() {
-		//adds recursive subInterests
-		ArrayList<Interests> tmp = new ArrayList<>();
-		tmp.add(new Interests("bull", null));
-		tmp.add(new Interests("otterly", null));
+		Interests tmpParent = new Interests("tmpo", null, user, null);
+
 		
-		//add new interest with subinterests in case that the initial list is empty
-		user.interests.get(0).addSubInterest(new Interests("on", tmp));
+		//add new interest with subinterests, in case that the initial list is empty
+		tmpParent.addSubInterest(new Interests("otterly", null, user, tmpParent));
+		tmpParent.addSubInterest(new Interests("bull", null, user, tmpParent));
+		
+		user.interests.add(tmpParent);
+
 		ArrayList<Interests> sub = user.interests.get(0).getSubInterests();
-		sub = sub.get(sub.size()-1).getSubInterests();
 		
 		//check if resetting is working properly (and recursively)
 		assertTrue(!sub.get(sub.size()-1).isOn());
