@@ -13,20 +13,18 @@
 
 <!-- Content -->
 <div class="mainContent" id="mainContent" data-role="content">
-	<h1>@user.getUsername()</h1>
-	<p>Name: @user.getName()</p>
-	<p>Gender: @user.getGenderString()</p>
-	<p>Age: @user.getAge</p>
-
-	<br />
-	<h2> Interests </h2>
-	@if(user.interests != null) {
-		@listInterests(user.interests)
-	}
-	
-	<br />
-	<hr />
-	<div class="formSubmit">
+	<div class="innerBox">
+		<h1>@user.getUsername()</h1>
+		<div class="formFieldLabel userPopupField"><b>Name:</b> @user.getName()</div>
+		<div class="formFieldLabel userPopupField"><b>Gender: @user.getGenderString()</div>
+		<div class="formFieldLabel userPopupField"><b>Age: @user.getAge</div>
+		<hr />
+		<h3>Interests</h3>
+		@if(user.interests != null) {
+			<div class="formFieldLabel userPopupField">@listInterests(user.interests)</div>
+		}
+	</div>
+	<div class="formSubmit" data-role="controlgroup" data-type="horizontal">
 		<input type="button" name="contact" value="Contact" data-mini="true" onclick="forward('@routes.Application.contactRequest()')" />
 		<input type="button" name="filter" value="Set Filter" data-mini="true" onclick="forward('@routes.Application.filterPopup()')" />
 	</div>

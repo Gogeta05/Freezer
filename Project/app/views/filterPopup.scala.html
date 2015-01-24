@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 <head>
-	<title>Filter matching users</title>
+	<title>Match Users</title>
 	@headInclude()
 </head>
 <body>
@@ -11,44 +11,48 @@
 
 <!-- Content -->
 <div class="mainContent" id="mainContent">
- <h1>Filter matching users</h1>
-	<div class="formFieldLabel">
-		<label for="gender">Gender</label>
-	</div>
-	
-	<div class="formField">
-		<fieldset data-role="controlgroup" data-iconpos="left">
-			<input name="gender" id="genderMale" value="m" checked="checked" type="radio">
-				<label for="genderMale">Male</label>
-			<input name="gender" id="genderFemale" value="f" type="radio">
-				<label for="genderFemale">Female</label>
-		</fieldset>
-	</div>
-	<br /><br />
+	<h1>Filter by</h1>
+	<div class="innerBox">
+		<div class="formFieldLabel">
+			<label for="gender">Gender</label>
+		</div>
+		
+		<div class="formField">
+			<fieldset data-role="controlgroup" data-iconpos="left" class="genderBox" data-mini="true">
+				<input name="gender" id="genderMale" value="m" checked="checked" type="radio" /><label for="genderMale">Male</label>
+				<input name="gender" id="genderFemale" value="f" type="radio" /><label for="genderFemale">Female</label>
+			</fieldset>
+		</div>
+		<br />
 
-	<div class="formFieldLabel">
-		<label for="age">Age</label>
-	</div>
-	<div class="formField">
-		<select name="ageSelect" id="select-choice-mini" data-mini="true" data-inline="true">
-			<option value="=">=</option>
-			<option value=">=">>=</option>
-			<option value="<="><=</option>
-		</select>
-		<input type="number" name="ageInput" value="42" />
-	</div>
-	<br />
+		<div class="formFieldLabel">
+			<label for="age">Age</label>
+		</div>
+		<div class="formField">
+			<select name="ageSelect" id="select-choice-mini" data-mini="true" data-inline="true">
+				<option value="=">equals</option>
+				<option value=">=">is greater than</option>
+				<option value="<=">is lower than</option>
+			</select>
+			<input type="number" name="ageInput" placeholder="42" value="" data-mini="true" />
+		</div>
 
-	<div class="filterOptions">Interests</div>
-	<ul>
-		<li>+ Politics [x]</li>
-		<li>+ Theology [x]</li>
-		<li>+ Games [x]</li>
-	</ul>
-	<br />
-	([x] ... should be replaced with javascript code to expand sub-categories in final version)<br /><br />
+		<h4>Interests</h4>
+		<!-- Are not displayed - I don't know why so far ... -->
+		<div class="formField ui-field-contain">
+			<fieldset data-role="controlgroup" data-iconpos="left" class="genderBox">
+				<input type="checkbox" name="interests[]" id="checkbox1" value="politics" data-mini="true" /><label for="politics">Politics [+]</label>
+				<input type="checkbox" name="interests[]" id="checkbox2" value="theology" data-mini="true" /><label for="theology">Theology [+]</label>
+				<input type="checkbox" name="interests[]" id="checkbox3" value="games" data-mini="true" /><label for="games">Games [+]</label>
+				<input type="checkbox" name="interests[]" id="checkbox4" value="movies" data-mini="true" /><label for="movies">Movies [+]</label>
+				<input type="checkbox" name="interests[]" id="checkbox5" value="music" data-mini="true" /><label for="music">Music [+]</label>
+			</fieldset>
+		</div>
+		<br />
+		<span class="small">[+] ... should be replaced with javascript code to expand sub-categories in final version</span>
+	</div>
 
-	<div class="formSubmit">
+	<div class="formSubmit" data-role="controlgroup" data-type="horizontal">
 		<input type="button" name="contact" value="Contact" data-mini="true" onclick="forward('@routes.Application.contactRequest()')" />
 		<input type="button" name="filter" value="Set Filter" data-mini="true" onclick="forward('@routes.Application.filterPopup()')" />
 	</div>

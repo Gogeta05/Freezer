@@ -3,8 +3,8 @@
 <head>
 	<title>Home</title>
 	@headInclude()
-	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
-	<script type="text/javascript" src='@routes.Assets.at("javascripts/locationTracker.js")'></script>
+	@*<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+	<script type="text/javascript" src='@routes.Assets.at("javascripts/locationTracker.js")'></script>*@
 </head>
 <body>
 
@@ -22,23 +22,23 @@
 		<p>Location: <span id="locationInfo"></span></p>
 	</div>
 	<br />
-	<h4>potential matchings:</h4>
+	<h5>potential matchings:</h5>
 	<table class="tableList">
 		<thead>
 			<tr>
-				<th>Username</th>
-				<th>Name</th>
+				<th class="tableHead">Username</th>
+				<th class="tableHead">Name</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
-				<td>VirginDestroyer69</td>
-				<td><Hidden></td>
+				<td class="tableCols">VirginDestroyer69</td>
+				<td class="tableCols">[Hidden]</td>
 			</tr>
 		</tbody>
 	</table>
 	<br />
-	<div class="formSubmit">
+	<div class="formSubmit" data-role="controlgroup" data-type="horizontal">
 		<input type="button" name="contact" value="Contact" data-mini="true" onclick="forward('@routes.Application.contactRequest()')" />
 		<input type="button" name="filter" value="Set Filter" data-mini="true" onclick="forward('@routes.Application.filterPopup()')" />
 	</div>
