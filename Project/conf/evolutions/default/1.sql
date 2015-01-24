@@ -3,6 +3,12 @@
 
 # --- !Ups
 
+create table interests (
+  id                        bigint not null,
+  title                     varchar(255) not null,
+  interest_on               boolean)
+;
+
 create table lift (
   id                        bigint not null,
   name                      varchar(255),
@@ -25,6 +31,8 @@ create table user (
   constraint pk_user primary key (id))
 ;
 
+create sequence interests_seq;
+
 create sequence lift_seq;
 
 create sequence user_seq;
@@ -36,11 +44,15 @@ create sequence user_seq;
 
 SET REFERENTIAL_INTEGRITY FALSE;
 
+drop table if exists interests;
+
 drop table if exists lift;
 
 drop table if exists user;
 
 SET REFERENTIAL_INTEGRITY TRUE;
+
+drop sequence if exists interests_seq;
 
 drop sequence if exists lift_seq;
 
