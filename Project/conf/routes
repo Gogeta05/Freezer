@@ -18,7 +18,8 @@ GET		/settingsMatching			controllers.Application.settingsMatching()
 GET		/settingsProfile			controllers.Application.settingsProfile()
 GET		/userPopup/:usrname			controllers.Application.userPopup(usrname: String)
 GET		/home						controllers.Application.home()
-GET		/contactRequest	controllers.Application.contactRequest()
+GET		/contactRequest/:usrname	controllers.Application.contactRequest(usrname: String)
+POST	/contactRequest/:usrname	controllers.Application.contactRequestSubmit(usrname: String)
 GET		/logout							controllers.Application.logout()
 
 

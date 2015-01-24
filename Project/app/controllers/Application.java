@@ -1,9 +1,11 @@
 package controllers;
 
+import java.util.Date;
 import java.util.List;
 
 import com.avaje.ebean.Ebean;
 import com.avaje.ebean.Expr;
+//import com.sun.jmx.mbeanserver.Repository.RegistrationContext;
 
 import controllers.Application.Register;
 import backend.Database;
@@ -88,7 +90,8 @@ public class Application extends Controller {
 	}
 
 	public static Result privateMessageList() {
-		return ok(privateMessageList.render());
+		System.out.println(Util.getSessionUser().msgBox);		//Message Box null!!! Not saved in database damn fucking again :/
+		return ok(privateMessageList.render(Util.getSessionUser().msgBox));
 	}
 
 	public static Result settingsAccount() {
@@ -116,8 +119,29 @@ public class Application extends Controller {
 		return ok(userPopup.render(usr));
 	}
 
-	public static Result contactRequest() {
-		return ok(contactRequest.render());
+	/**
+	 * Controls the view that allows a user to arrange a meeting
+	 * @param toUser	the recipient of the message
+	 * @return
+	 */
+	public static Result contactRequest(String toUser) {
+		Form<ContactRequest> contactRequestForm = Form.form(ContactRequest.class);
+		return ok(contactRequest.render(toUser, contactRequestForm));
+	}
+	
+	public static Result contactRequestSubmit(String toUser) {
+		Form<ContactRequest> contactRequestForm = Form.form(ContactRequest.class).bindFromRequest();
+		if (contactRequestForm.hasErrors()) {
+			return badRequest(contactRequest.render(toUser, contactRequestForm));
+		} else {
+			User usr = Database.getUser(toUser);
+			if (usr == null) {
+				return badRequest("nope");
+			}
+			String msg = contactRequestForm.field("message").value();
+			Util.getSessionUser().sendMsg(msg, usr);
+		}
+		return redirect(routes.Application.home());
 	}
 	
 	public static Result logout() {
@@ -158,5 +182,11 @@ public class Application extends Controller {
 			}
 			return null;
 		}
+	}
+	
+	public static class ContactRequest {
+		public Date proposeTime;
+		public String toUser;
+		public String message;
 	}
 }
