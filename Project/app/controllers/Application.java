@@ -30,7 +30,7 @@ public class Application extends Controller {
 		User u = Util.getSessionUser();
 		if(u != null) {
 			System.out.println(u.getPassword());
-			System.out.println(u.interests);
+			System.out.println(u.msgBox);
 		}
 		return ok(home.render());
 	}

@@ -1,10 +1,16 @@
 package models;
+import javax.persistence.*;
 
 /**
  * A message.
  */
+@Entity
 public class Message {
 
+	@Id
+	@GeneratedValue
+	public long id;
+	
 	/**
 	 * The author of the message
 	 */

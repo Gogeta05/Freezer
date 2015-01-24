@@ -2,14 +2,29 @@ package models;
 
 import java.util.ArrayList;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import play.db.ebean.Model;
+
 /**
  * The inbox of a User.
  */
-public class MessageBox {
+
+@Entity
+public class MessageBox extends Model {
+	
+	@Id
+	@GeneratedValue
+	public long id;
 	
 	/**
 	 * The messages currently in the inbox
 	 */
+	@OneToMany(cascade=CascadeType.ALL)
 	public ArrayList<Message> messages;
 	
 	
