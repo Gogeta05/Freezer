@@ -1,4 +1,4 @@
-@(user : User)
+@(user : User)(form: Form[controllers.Application.SetUserLocation])
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 <head>
@@ -15,15 +15,20 @@
 <!-- Main content -->
 <div class="mainContent" id="mainContent">
 	<br>
-	
-	<form action="@routes.Application.setUserLocation()">
+	@if(form.hasGlobalErrors) {
+		<hr />
+		<div class="error">
+			<p>@form.globalError.message</p>
+		</div>
+	}
+	@helper.form(routes.Application.setUserLocation) {
 		<div class="innerBox">
 			<h3 align="center"> Location Settings </h3>
 			Location: <input type="text" name="locationInfo" id="locationInfo" readonly></input>
 			<br>
 			Lift:
 			<div class="ui-field-contain">
-				<select name="select-lift" id="select-lift" data-native-menu="true" data-mini="true">
+				<select name="liftname" id="liftname" data-native-menu="true" data-mini="true">
 					<option value="default">@user.getLiftName()</option>
 					@for(lift <- Application.getLifts(user.getLocation())) {
 						<option value="@lift.name">@lift.name</option>
@@ -33,7 +38,7 @@
 			<a href="home" class="ui-btn ui-icon-recycle ui-btn-icon-notext ui-corner-all">Refresh Button</a>
 			<input type="submit" value="OK">
 		</div>
-	</form>
+	}
 	
 	
 	<br />

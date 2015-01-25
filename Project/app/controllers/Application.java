@@ -8,6 +8,7 @@ import com.avaje.ebean.Expr;
 //import com.sun.jmx.mbeanserver.Repository.RegistrationContext;
 
 
+
 import controllers.Application.Register;
 import backend.Database;
 import models.Interests;
@@ -28,15 +29,18 @@ public class Application extends Controller {
 		Form<Login> loginForm = Form.form(Login.class);
 		// Query users from database
 		List<User> users = new Model.Finder<String, User>(String.class, User.class).all();
+		
 		// Passing the list to the view
 		if (! session().isEmpty()) {
-			return ok(home.render(Util.getSessionUser()));
+			Form<SetUserLocation> locationForm = Form.form(SetUserLocation.class);
+			return ok(home.render(Util.getSessionUser(), locationForm));
 		}
 		return ok(index.render(users, loginForm));
 	}
 
 	public static Result home() {
-		return ok(home.render(Util.getSessionUser()));
+		Form<SetUserLocation> locationForm = Form.form(SetUserLocation.class);
+		return ok(home.render(Util.getSessionUser(), locationForm));
 	}
 
 	public static Result login() {
@@ -170,11 +174,12 @@ public class Application extends Controller {
 	}
 
 	public static Result setUserLocation() {
-		Form<SetLocation> form = Form.form(SetLocation.class).bindFromRequest();
+		Form<SetUserLocation> form = Form.form(SetUserLocation.class).bindFromRequest();
 		
-		Util.getSessionUser().setLocation(form.field("locationInfo").value());
+		Util.getSessionUser().setLocation(Integer.parseInt(form.field("locationInfo").value()));
 		
-		String liftName = form.field("select-lift").value();
+		String liftName = form.field("liftname").value();
+
 		if (!liftName.equals("default")) {
 			Util.getSessionUser().setLiftName(liftName);
 		}
@@ -225,6 +230,11 @@ public class Application extends Controller {
 	
 	public static class Reply {
 		public String message;
+	}
+	
+	public static class SetUserLocation {
+		public String locationInfo;
+		public String liftname;
 	}
 	
 	public static List<Lift> getLifts(int plz) {
