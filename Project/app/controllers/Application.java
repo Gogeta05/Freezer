@@ -9,6 +9,7 @@ import com.avaje.ebean.Expr;
 
 
 
+
 import controllers.Application.Register;
 import backend.Database;
 import models.Interests;
@@ -127,7 +128,8 @@ public class Application extends Controller {
 	}
 
 	public static Result settingsMatching() {
-		return ok(settingsMatching.render());
+		Form<SaveMatchingSettings> form = Form.form(SaveMatchingSettings.class);
+		return ok(settingsMatching.render(form));
 	}
 
 	public static Result settingsProfile() {
@@ -162,8 +164,9 @@ public class Application extends Controller {
 			if (usr == null) {
 				return badRequest("nope");
 			}
+			String time = contactRequestForm.field("proposeTime").value();
 			String msg = contactRequestForm.field("message").value();
-			Util.getSessionUser().sendMsg(msg, usr);
+			Util.getSessionUser().sendMsg(msg, usr, time);
 		}
 		return redirect(routes.Application.home());
 	}
@@ -177,12 +180,48 @@ public class Application extends Controller {
 		Form<SetUserLocation> form = Form.form(SetUserLocation.class).bindFromRequest();
 		User usr = Util.getSessionUser();
 		
-		usr.setLocation(Integer.parseInt(form.field("locationInfo").value()));
+		String location = form.field("locationInfo").value();
+		
+		if (!location.equals("")) {
+			usr.setLocation(Integer.parseInt(location));
+		}
 		
 		String liftName = form.field("liftname").value();
 
 		if (!liftName.equals("default")) {
 			usr.setLiftName(liftName);
+		}
+		
+		usr.save();
+		return redirect(routes.Application.home());
+	}
+	
+	public static Result saveMatchingSettings() {
+		Form<SaveMatchingSettings> form = Form.form(SaveMatchingSettings.class).bindFromRequest();
+		User usr = Util.getSessionUser();
+		
+		String value = form.field("comparator").value();
+		if (!value.equals("")) {
+			usr.settings.comparator = value;
+		}
+		
+		value = form.field("male").value();
+		if (value.equals("m")) {
+			usr.settings.male = true;
+		}
+		value = form.field("female").value();
+		if (value.equals("f")) {
+			usr.settings.female = true;
+		}
+		
+		value = form.field("age").value();
+		if (!value.equals("")) {
+			usr.settings.age = Integer.parseInt(value);
+		}
+		
+		value = form.field("matchAroundLift").value();
+		if (value.equals("yes")) {
+			usr.settings.matchAroundLift = true;
 		}
 		
 		usr.save();
@@ -237,6 +276,14 @@ public class Application extends Controller {
 	public static class SetUserLocation {
 		public String locationInfo;
 		public String liftname;
+	}
+	
+	public static class SaveMatchingSettings {
+		public String comparator;
+		public String age;
+		public String male;
+		public String female;
+		public String matchAroundLift;
 	}
 	
 	public static List<Lift> getLifts(int plz) {

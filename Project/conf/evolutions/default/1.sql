@@ -35,6 +35,7 @@ create table message (
   FK_BOX                    bigint,
   FK_FROM                   bigint,
   FK_TO                     bigint,
+  time                      varchar(255),
   msg                       varchar(255),
   constraint pk_message primary key (id))
 ;
@@ -43,6 +44,18 @@ create table message_box (
   id                        bigint not null,
   FK_OWNER                  bigint,
   constraint pk_message_box primary key (id))
+;
+
+create table settings (
+  id                        integer not null,
+  FK_OWNER                  bigint,
+  comparator                varchar(255),
+  male                      boolean,
+  female                    boolean,
+  age                       integer,
+  allow_matching            boolean,
+  match_around_lift         boolean,
+  constraint pk_settings primary key (id))
 ;
 
 create table user (
@@ -69,6 +82,8 @@ create sequence message_seq;
 
 create sequence message_box_seq;
 
+create sequence settings_seq;
+
 create sequence user_seq;
 
 alter table interests add constraint fk_interests_owner_1 foreign key (FK_OWNER) references user (id) on delete restrict on update restrict;
@@ -83,6 +98,8 @@ alter table message add constraint fk_message_to_5 foreign key (FK_TO) reference
 create index ix_message_to_5 on message (FK_TO);
 alter table message_box add constraint fk_message_box_owner_6 foreign key (FK_OWNER) references user (id) on delete restrict on update restrict;
 create index ix_message_box_owner_6 on message_box (FK_OWNER);
+alter table settings add constraint fk_settings_owner_7 foreign key (FK_OWNER) references user (id) on delete restrict on update restrict;
+create index ix_settings_owner_7 on settings (FK_OWNER);
 
 
 
@@ -100,6 +117,8 @@ drop table if exists message;
 
 drop table if exists message_box;
 
+drop table if exists settings;
+
 drop table if exists user;
 
 SET REFERENTIAL_INTEGRITY TRUE;
@@ -113,6 +132,8 @@ drop sequence if exists location_seq;
 drop sequence if exists message_seq;
 
 drop sequence if exists message_box_seq;
+
+drop sequence if exists settings_seq;
 
 drop sequence if exists user_seq;
 
