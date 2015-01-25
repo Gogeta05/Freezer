@@ -1,0 +1,44 @@
+@(user : User)(form: Form[controllers.Application.ChooseLift])
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+	<title>Choose a lift</title>
+	@headInclude()
+</head>
+<body>
+
+<!-- Top Navigation -->
+@topNav()
+
+<!-- Main content -->
+<div class="mainContent" id="mainContent">
+	<br />
+	@if(form.hasGlobalErrors) {
+		<hr />
+		<div class="error">
+			<p>@form.globalError.message</p>
+		</div>
+	}
+	@helper.form(routes.Application.chooseLiftSubmit(user.getUsername())) {
+		<h1>Choose a lift:</h1>
+		<div class="ui-field-contain">
+			<select name="liftname" id="liftname" data-native-menu="true" data-mini="true">
+				<option value="@user.getLiftName">@user.getLiftName()</option>
+				@for(lift <- Application.getLifts(user.getLocation())) {
+					<option value="@lift.name">@lift.name</option>
+				}
+			</select>
+		</div>
+		<div class="formSubmit" data-role="controlgroup" data-type="horizontal">
+			<input type="submit" value="OK" data-mini="true" data-theme="b" />
+		</div>
+	}
+</div>
+
+<!-- footer -->
+<br /><hr />
+<footer>
+	@footer()
+</footer>
+</body>
+</html>

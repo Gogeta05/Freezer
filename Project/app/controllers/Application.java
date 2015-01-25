@@ -142,26 +142,54 @@ public class Application extends Controller {
 		}
 		return ok(userPopup.render(usr));
 	}
+	
+	public static Result chooseLift(String user) {
+		Form<ChooseLift> chooseLiftForm = Form.form(ChooseLift.class);
+		User usr = Database.getUser(user);	
+		if (usr == null) {
+			return badRequest("nope");
+		}
+		return ok(contactRequestChooseLift.render(usr, chooseLiftForm));
+	}
+	
+	public static Result chooseLiftSubmit(String user) {
+		Form<ChooseLift> chooseLiftForm = Form.form(ChooseLift.class).bindFromRequest();
+		User usr = Database.getUser(user);	
+		if (usr == null) {
+			return badRequest("nope");
+		}
+		if (chooseLiftForm.hasErrors()) {
+			return badRequest(contactRequestChooseLift.render(usr, chooseLiftForm));
+		} else {
+			String lift = chooseLiftForm.field("liftname").value();
+			return redirect(routes.Application.contactRequest(user, lift));
+		}
+		
+	}
 
 	/**
 	 * Controls the view that allows a user to arrange a meeting
 	 * @param toUser	the recipient of the message
 	 * @return
 	 */
-	public static Result contactRequest(String user) {
+	public static Result contactRequest(String user, String liftname) {
 		Form<ContactRequest> contactRequestForm = Form.form(ContactRequest.class);
-		return ok(contactRequest.render(user, contactRequestForm));
+		User usr = Database.getUser(user);	
+		if (usr == null) {
+			return badRequest("nope");
+		}
+		return ok(contactRequest.render(usr, liftname, contactRequestForm));
 	}
 	
-	public static Result contactRequestSubmit(String user) {
+	public static Result contactRequestSubmit(String user, String liftname) {
 		Form<ContactRequest> contactRequestForm = Form.form(ContactRequest.class).bindFromRequest();
+		User usr = Database.getUser(user);	
+		if (usr == null) {
+			return badRequest("nope");
+		}
 		if (contactRequestForm.hasErrors()) {
-			return badRequest(contactRequest.render(user, contactRequestForm));
+			return badRequest(contactRequest.render(usr, liftname, contactRequestForm));
 		} else {
-			User usr = Database.getUser(user);
-			if (usr == null) {
-				return badRequest("nope");
-			}
 			String time = contactRequestForm.field("proposeTime").value();
 			String msg = contactRequestForm.field("message").value();
 			Util.getSessionUser().sendMsg(msg, usr, time);
@@ -237,6 +265,10 @@ public class Application extends Controller {
 	
 	public static class SetUserLocation {
 		public String locationInfo;
+		public String liftname;
+	}
+	
+	public static class ChooseLift {
 		public String liftname;
 	}
 	

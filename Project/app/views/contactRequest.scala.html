@@ -1,4 +1,4 @@
-@(user: String)(form: Form[controllers.Application.ContactRequest])
+@(user: User)(lift: String)(form: Form[controllers.Application.ContactRequest])
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 <head>
@@ -18,7 +18,7 @@
 		<p>@form.globalError.message</p>
 	</div>
 }
-@helper.form(routes.Application.contactRequestSubmit(user)) {
+@helper.form(routes.Application.contactRequestSubmit(user.getUsername(), lift)) {
 	<div class="formFieldLabel">
 		<label for="time">Propose time</label>
 	</div>
@@ -27,14 +27,14 @@
 	</div>
 	
 	<div class="formFieldLabel">
-		<label for="user">to User</label>
+		<label for="user.getUsername()">To user</label>
 	</div>
 	<div class="formField">
-		<input type="text" name="toUser" id="toUser" value="@user" readonly="readonly" />
+		<input type="text" name="toUser" id="toUser" value="@user.getUsername()" readonly="readonly" />
 	</div>
 	<br />
 	<div class="formFieldLabel">
-		<label for="locationAndLift">[your location][liftname]</label>
+		<label for="locationAndLift">@user.getLocation() @lift</label>
 	</div>
 	<hr /><br />
 	<textarea rows="10" cols="100" name="message" id="message" placeholder="Write your message here"></textarea>
