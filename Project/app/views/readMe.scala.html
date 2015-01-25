@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+	<title>ReadMe</title>
+	@headInclude()
+</head>
+<body>
+
+<!-- Top Navigation -->
+@topNav()
+
+<!-- Main content -->
+<div class="mainContent" id="mainContent">
+	<div class="innerBox">
+		<p>Welcome to FREEZER - your dating app on cold and enjoyful winterdays in the mountains.<br />
+			I may sound like an enemy in Dragon Ball Z, but I'm much more!<br /><br />
+			Come with me and discover my functionalities.
+		</p>
+		
+		<p>Will be continued ...</p>
+	</div>
+
+	<div class="formSubmit" data-role="controlgroup" data-type="horizontal">
+		<input type="button" name="contact" value="Contact" data-mini="true" onclick="forward('@routes.Application.chooseLift("virgin_destroyer")')" />
+		<a href="#filterPopup" data-rel="popup" data-transition="pop" data-mini="true" data-role="button">Set Filter</a>
+	</div>
+</div>
+
+<!-- footer -->
+<br /><hr />
+<footer>
+	@footer()
+</footer>
+</body>
+</html>

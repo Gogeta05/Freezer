@@ -168,7 +168,10 @@ public class Application extends Controller {
 			String lift = chooseLiftForm.field("liftname").value();
 			return redirect(routes.Application.contactRequest(user, lift));
 		}
-		
+	}
+	
+	public static Result readMe() {
+		return ok(readMe.render());
 	}
 
 	/**

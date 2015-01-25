@@ -1,4 +1,16 @@
 @(interests: List[Interests])
+	<div data-role="collapsible" data-iconpos="right">
+		@for(i <- interests) {	
+			<input type="checkbox" name="interests" id="@i.getTitle()" value="@i.getTitle()" />@i.getTitle()
+			@if(i.hasSubs()) {
+				@listInterests(i.getSubInterests())
+			}
+		}
+	</div>
+@*
+
+
+------------------------
 	<div class="formField ui-field-contain">
 		<ul data-role="listview">
 			@for(i <- interests) {
@@ -17,7 +29,7 @@
 				</li>
 			}
 		</ul>
-	</div>
+	</div>*@
 		@*
 			@for(i <- interests) {
 				<input type="checkbox" name="interests[]" id="@i.getTitle()" value="@i.getTitle()" data-mini="true" /><label for="@i.getTitle()">@i.getTitle()</label>
