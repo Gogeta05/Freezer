@@ -77,21 +77,8 @@ public class Application extends Controller {
 		return redirect(routes.Application.index());
 	}
 
-	/*
-	 * For testing purposes only - a bit of eyecandy in addition to the unit tests.
-	 */
-	public static Result displayLifts() {
-		Database.readSpreadsheet();
-		List<Lift> lifts = new Model.Finder<>(String.class, Lift.class).all();
-		return ok(displayLifts.render(lifts));
-	}
-
 	public static Result filterPopup() {
 		return ok(filterPopup.render());
-	}
-
-	public static Result locationTracker() {
-		return ok(locationTracker.render());
 	}
 
 	public static Result privateMessage(long id) {
