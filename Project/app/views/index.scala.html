@@ -34,6 +34,7 @@
 		<div class="formSubmit" data-role="controlgroup" data-type="horizontal">
 			<input accesskey="s" value="Login" type="submit" data-mini="true" />
 			<input accesskey="r" value="Register" type="button" data-mini="true" onclick="forward('@routes.Application.register()')" /> <!-- <button> would also be possible, but is still in development and could be interpreted in different ways by different browsers. W3 School recommends to use "old syntax" <input type="button"> -->
+			<input accesskey="w" value="Manual" type="button" data-theme="b" data-mini="true" onclick="forward('@routes.Application.readMe()')" />
 		</div> 
 	}
 </div>
