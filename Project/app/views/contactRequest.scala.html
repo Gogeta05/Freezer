@@ -4,18 +4,6 @@
 <head>
 	<title>Contact Request</title>
 	@headInclude()
-	
-	<!-- get current time to fill in in propose time placeholder field -->
-	<script type="text/javascript">
-		//<![CDATA[
-		$(window).load(function() {
-			var element = document.getElementById("proposeTime");
-			var now = new Date();
-			var time = now.getHours()+":"+now.getMinutes();
-			element.setAttribute("placeholder", time);
-		//]]>
-		});
-	</script>
 </head>
 <body>
 
@@ -35,7 +23,7 @@
 		<label for="time">Propose time</label>
 	</div>
 	<div class="formField">
-		<input type="time" name="proposeTime" id="proposeTime" placeholder="" /> <!-- time element does not work in FF, see https://miketaylr.com/code/input-type-attr.html -> open it with FF 'cause website checks your browser and shows you the compatible elements which your browser supports/not supports -->
+		<input type="time" name="proposeTime" id="proposeTime" placeholder="10:30" /> <!-- time element does not work in FF, see https://miketaylr.com/code/input-type-attr.html -> open it with FF -->
 	</div>
 	
 	<div class="formFieldLabel">
@@ -62,6 +50,5 @@
 <br /><hr />
 <footer>
 	@footer()
-</footer>
 </body>
 </html>
