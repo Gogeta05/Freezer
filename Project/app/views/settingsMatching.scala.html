@@ -1,3 +1,5 @@
+@(form: Form[controllers.Application.SaveMatchingSettings])
+
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 <head>
@@ -14,53 +16,41 @@
 	@settingsMenu()
 
 	<h4 class="distanceSettingsMenu">Matching Settings</h4>
-	<form action='@routes.Application.settingsMatching()' method='post'> <!-- automatically -->
+	
+	@helper.form(routes.Application.saveMatchingSettings) {
 		<h4>Gender</h4>
 		 <div class="formFieldLabel ui-field-contain">
 			<fieldset data-role="controlgroup" data-iconpos="left" class="genderBox">
-				<input type="checkbox" name="gender" id="male" value="1" data-mini="true" /><label for="male">Male</label>
-				<input type="checkbox" name="gender" id="female" value="2" data-mini="true" /><label for="female">Female</label>
+				<input type="checkbox" name="male" id="male" value="m" data-mini="true" /><label for="male">Male</label>
+				<input type="checkbox" name="female" id="female" value="f" data-mini="true" /><label for="female">Female</label>
 			</fieldset>
 		</div>
 
 		<h4>Age</h4>
-		<select name="ageSelect" id="select-choice-mini" data-mini="true" data-inline="true">
-			<option value="=">equal</option>
-			<option value=">=">greather than</option>
-			<option value="<=">less than</option>
+		<select name="comparator" id="select-choice-mini" data-mini="true" data-inline="true">
+			<option value="e">equal</option>
+			<option value="gt">greather than</option>
+			<option value="lt">less than</option>
 		</select>
-		<input type="text" name="ageInput" value="42" />
-		
-		<h4>Interests</h4>
-		<div class="formField ui-field-contain">
-			<fieldset data-role="controlgroup" data-iconpos="left" class="genderBox settingsProfileBox">
-				<input type="checkbox" name="interests[]" id="politics" value="politics" data-mini="true" /><label for="politics">politics</label>
-			</fieldset>
-		</div>
+		<input type="text" name="age" value="42" />
 		
 		<h4>Match with users around:</h4>
 		<div class="formFieldLabel ui-field-contain">
 			<fieldset data-role="controlgroup" data-iconpos="left" class="genderBox settingsProfileBox">
-				<input type="checkbox" name="matchSameLocation" id="sameLocation" value="1" data-mini="true" /><label for="sameLocation">same location</label>
-				<input type="checkbox" name="matchSameLift" value="1" id="sameLift" data-mini="true" /><label for="sameLift">same lift</label>
-		</div>
-		
-		<h4>Allow Location Tracking <input type="checkbox" data-role="flipswitch" class=" class="flipMatching" name="flip-checkbox-1" id="flip-checkbox-1" data-mini="true"></h4>
-		<div class="distanceLeft">
-			Location Tracking is currently turned <span class="off">OFF</span>.<br />
-			Matching is only enabled when this is turned <span class="on">ON</span>.
+				<input type="checkbox" name="matchSameLocation" id="sameLocation" value="yes" data-mini="true" /><label for="sameLocation">same location</label>
+				<input type="checkbox" name="matchAroundLift" value="yes" id="sameLift" data-mini="true" /><label for="sameLift">same lift</label>
 		</div>
 		
 		<div class="formSubmit" data-role="controlgroup" data-type="horizontal">
 			<input accesskey="s" value="Save" type="submit" data-theme="b" />
-			<input kl_virtual_keyboard_secure_input="on" accesskey="r" value="Reset" type="reset" />
 		</div>
-	</form>
+	}
 </div>
 
 <!-- footer -->
 <br /><hr />
 <footer>
 	@footer()
+</footer>
 </body>
 </html>

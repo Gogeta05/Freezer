@@ -24,7 +24,7 @@
 		<label for="user">to User</label>
 	</div>
 	<div class="formField">
-		<input type="text" name="toUser" id="toUser" value="@msg.from.getUsername()" readonly="readonly" />
+		<input type="text" name="toUser" id="toUser" value="@msg.from.getUsername()" readonly />
 	</div>
 	<hr /><br />
 	<textarea rows="10" cols="100" name="message" id="message" placeholder="Write your message here"></textarea>
@@ -40,5 +40,6 @@
 <br /><hr />
 <footer>
 	@footer()
+</footer>
 </body>
 </html>

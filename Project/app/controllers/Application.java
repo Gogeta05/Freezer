@@ -9,6 +9,9 @@ import com.avaje.ebean.Expr;
 
 
 
+
+
+
 import controllers.Application.Register;
 import backend.Database;
 import models.Interests;
@@ -127,7 +130,8 @@ public class Application extends Controller {
 	}
 
 	public static Result settingsMatching() {
-		return ok(settingsMatching.render());
+		Form<SaveMatchingSettings> form = Form.form(SaveMatchingSettings.class);
+		return ok(settingsMatching.render(form));
 	}
 
 	public static Result settingsProfile() {
@@ -206,12 +210,58 @@ public class Application extends Controller {
 		Form<SetUserLocation> form = Form.form(SetUserLocation.class).bindFromRequest();
 		User usr = Util.getSessionUser();
 		
-		usr.setLocation(Integer.parseInt(form.field("locationInfo").value()));
+		String location = form.field("locationInfo").value();
+		
+		if (!location.equals("")) {
+			usr.setLocation(Integer.parseInt(location));
+		}
 		
 		String liftName = form.field("liftname").value();
 
 		if (!liftName.equals("default")) {
 			usr.setLiftName(liftName);
+		}
+		
+		usr.save();
+		return redirect(routes.Application.home());
+	}
+	
+	public static Result saveMatchingSettings() {
+		Form<SaveMatchingSettings> form = Form.form(SaveMatchingSettings.class).bindFromRequest();
+		User usr = Util.getSessionUser();
+		
+		String value = form.field("comparator").value();
+		if (value != null) {
+			usr.settings.comparator = value;
+		}
+		
+		value = form.field("male").value();
+		if (value != null) {
+			usr.settings.male = true;
+		}
+		else {
+			usr.settings.male = false;
+			
+		}
+		value = form.field("female").value();
+		if (value != null) {
+			usr.settings.female = true;
+		}
+		else {
+			usr.settings.female = false;
+		}
+		
+		value = form.field("age").value();
+		if (value != null) {
+			usr.settings.age = Integer.parseInt(value);
+		}
+		
+		value = form.field("matchAroundLift").value();
+		if (value != null) {
+			usr.settings.matchAroundLift = true;
+		}
+		else {
+			usr.settings.matchAroundLift = false;
 		}
 		
 		usr.save();
@@ -268,8 +318,16 @@ public class Application extends Controller {
 		public String liftname;
 	}
 	
+
 	public static class ChooseLift {
 		public String liftname;
+	}
+	public static class SaveMatchingSettings {
+		public String comparator;
+		public String age;
+		public String male;
+		public String female;
+		public String matchAroundLift;
 	}
 	
 	public static List<Lift> getLifts(int plz) {
