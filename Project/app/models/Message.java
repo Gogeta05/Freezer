@@ -1,6 +1,8 @@
 package models;
 import javax.persistence.*;
 
+import backend.Database;
+
 /**
  * A message.
  */
@@ -18,10 +20,14 @@ public class Message {
 	/**
 	 * The author of the message
 	 */
+	@ManyToOne
+	@JoinColumn(name = "FK_FROM")
 	public User from;
 	/**
 	 * The recipient.
 	 */
+	@ManyToOne
+	@JoinColumn(name = "FK_TO")
 	public User to;
 	/**
 	 * The message that is sent.

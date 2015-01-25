@@ -35,8 +35,9 @@ public class MessageBox extends Model {
 	public List<Message> messages;
 	
 	
-	public MessageBox() {
+	public MessageBox(User owner) {
 		messages = new ArrayList<Message>();
+		this.owner = owner;
 	}
 	
 	/**
@@ -45,12 +46,21 @@ public class MessageBox extends Model {
 	 */
 	public void deleteMsg(Message msg) {
 		messages.remove(msg);
+		this.save();
+	}
+	/**
+	 * adds a message
+	 */
+	public void addMsg(Message msg) {
+		messages.add(msg);
+		this.save();
 	}
 	/**
 	 * Deletes all messages in the inbox.
 	 */
 	public void deleteAll() {
 		messages.clear();
+		this.save();
 	}
 	/**
 	 * Sends a reply to a message.

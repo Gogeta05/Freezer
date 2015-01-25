@@ -90,7 +90,6 @@ public class Application extends Controller {
 	}
 
 	public static Result privateMessageList() {
-		System.out.println(Util.getSessionUser().msgBox);		//Message Box null!!! Not saved in database damn fucking again :/
 		return ok(privateMessageList.render(Util.getSessionUser().msgBox));
 	}
 

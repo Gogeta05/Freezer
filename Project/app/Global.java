@@ -143,9 +143,17 @@ public class Global extends GlobalSettings {
 	        
 	        //user 8
 	        users.get(8).allInterests(true);
+	        
+	        //send some messages
+	        users.get(0).sendMsg("How ya doin", users.get(1));
+	        users.get(1).sendMsg("How ya doin", users.get(0));
+	        users.get(2).sendMsg("How ya doin", users.get(2));
+	        users.get(3).sendMsg("How ya doin", users.get(3));
+	        users.get(4).sendMsg("How ya doin", users.get(0));
+	        users.get(5).sendMsg("How ya doin", users.get(5));
+	        users.get(6).sendMsg("How ya doin", users.get(7));
         }
         
- 
     }
 
     public void onStop(Application app) {
