@@ -48,6 +48,9 @@ public class User extends Model {
 	@OneToMany(mappedBy="owner", cascade=CascadeType.ALL)
 	public List<Interests> interests;
 	
+	@OneToOne(mappedBy="owner", cascade=CascadeType.ALL)
+	public Settings settings;
+	
 	/**
 	 * The Constructor
 	 * @param username
@@ -69,6 +72,7 @@ public class User extends Model {
 			this.locationPLZ = -1;
 			this.interests = null;
 			this.msgBox = new MessageBox(this);
+			this.settings = new Settings(this);
 			updateInterests();
 			
 		} catch (Exception e) {

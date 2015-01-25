@@ -17,6 +17,7 @@ POST	/privateMessageReply/:id		controllers.Application.privateMessageReplySubmit
 GET		/settingsAccount				controllers.Application.settingsAccount()
 GET		/settingsGeneral				controllers.Application.settingsGeneral()
 GET		/settingsMatching				controllers.Application.settingsMatching()
+POST	/settingsMatching				controllers.Application.saveMatchingSettings()
 GET		/settingsProfile				controllers.Application.settingsProfile()
 GET		/userPopup/:usrname				controllers.Application.userPopup(usrname: String)
 GET		/home							controllers.Application.home()
