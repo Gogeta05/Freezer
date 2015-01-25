@@ -19,6 +19,7 @@
 				<th class="tableHead" style="width:18px !important;">#</th>
 				<th class="tableHead">Title</th>
 				<th class="tableHead" style="width: 100px !important;">From</th>
+				<th class="tableHead">Time</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -27,6 +28,7 @@
 					<td class="tableCols">l</td>
 					<td class="tableCols"><a href="@routes.Application.privateMessage(message.id)">@message.msg</a></td>
 					<td class="tableCols">@message.from.getUsername()</td>
+					<td class="tableCols">@message.time</td>
 				</tr>
 			}
 		</tbody>

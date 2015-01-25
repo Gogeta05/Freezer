@@ -164,8 +164,9 @@ public class Application extends Controller {
 			if (usr == null) {
 				return badRequest("nope");
 			}
+			String time = contactRequestForm.field("proposeTime").value();
 			String msg = contactRequestForm.field("message").value();
-			Util.getSessionUser().sendMsg(msg, usr);
+			Util.getSessionUser().sendMsg(msg, usr, time);
 		}
 		return redirect(routes.Application.home());
 	}
