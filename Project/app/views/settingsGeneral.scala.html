@@ -16,10 +16,12 @@
 	<div class="distanceLeft">
 		<p>In Nomine Patris et Filii et Spiritus Sancti</p>
 	</div>
+	
+	@filterPopup()
 
 	<div class="formSubmit" data-role="controlgroup" data-type="horizontal">
 		<input type="button" name="contact" value="Contact" data-mini="true" onclick="forward('@routes.Application.contactRequest("virgin_destroyer")')" />
-		<input type="button" name="filter" value="Set Filter" data-mini="true" onclick="popup('open, filterPopup')" />
+		<a href="#filterPopup" data-rel="popup" data-transition="pop" data-mini="true" data-role="button">Set Filter</a>
 	</div>
 </div>
 

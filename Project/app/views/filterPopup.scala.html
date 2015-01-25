@@ -1,62 +1,41 @@
-<!DOCTYPE html>
-<html dir="ltr" lang="en">
-<head>
-	<title>Match Users</title>
-	@headInclude()
-</head>
-<body>
+	<!-- Popup to set filters for the users you want to match with -->
+	<div data-role="popup" id="filterPopup">
+		<h1>Filter by</h1>
+		<div class="innerBox">
+			<div class="formFieldLabel">
+				<label for="gender">Gender</label>
+			</div>
+			
+			<div class="formField">
+				<fieldset data-role="controlgroup" data-iconpos="left" class="genderBox" data-mini="true">
+					<input name="gender" id="genderMale" value="m" checked="checked" type="radio" /><label for="genderMale">Male</label>
+					<input name="gender" id="genderFemale" value="f" type="radio" /><label for="genderFemale">Female</label>
+				</fieldset>
+			</div>
+			<br />
 
-<!-- Top Navigation -->
-@topNav()
+			<div class="formFieldLabel">
+				<label for="age">Age</label>
+			</div>
+			<div class="formField">
+				<select name="ageSelect" id="select-choice-mini" data-mini="true" data-inline="true">
+					<option value="=">equals</option>
+					<option value=">=">is greater than</option>
+					<option value="<=">is lower than</option>
+				</select>
+				<input type="number" name="ageInput" placeholder="42" value="" data-mini="true" />
+			</div>
 
-<!-- Main content -->
-<div class="mainContent" id="mainContent">
-	<h1>Filter by</h1>
-	<div class="innerBox">
-		<div class="formFieldLabel">
-			<label for="gender">Gender</label>
-		</div>
-		
-		<div class="formField">
-			<fieldset data-role="controlgroup" data-iconpos="left" class="genderBox" data-mini="true">
-				<input name="gender" id="genderMale" value="m" checked="checked" type="radio" /><label for="genderMale">Male</label>
-				<input name="gender" id="genderFemale" value="f" type="radio" /><label for="genderFemale">Female</label>
-			</fieldset>
-		</div>
-		<br />
-
-		<div class="formFieldLabel">
-			<label for="age">Age</label>
-		</div>
-		<div class="formField">
-			<select name="ageSelect" id="select-choice-mini" data-mini="true" data-inline="true">
-				<option value="=">equals</option>
-				<option value=">=">is greater than</option>
-				<option value="<=">is lower than</option>
-			</select>
-			<input type="number" name="ageInput" placeholder="42" value="" data-mini="true" />
-		</div>
-
-		<h4>Interests</h4>
-		<div class="formField ui-field-contain">
-			<fieldset data-role="controlgroup" data-iconpos="left" class="genderBox">
-				<input type="checkbox" name="interests[]" id="politics" value="politics" data-mini="true" /><label for="politics">Politics [+]</label>
-				<input type="checkbox" name="interests[]" id="theology" value="theology" data-mini="true" /><label for="theology">Theology [+]</label>
-				<input type="checkbox" name="interests[]" id="games" value="games" data-mini="true" /><label for="games">Games [+]</label>
-				<input type="checkbox" name="interests[]" id="movies" value="movies" data-mini="true" /><label for="movies">Movies [+]</label>
-				<input type="checkbox" name="interests[]" id="music" value="music" data-mini="true" /><label for="music">Music [+]</label>
-			</fieldset>
+			<h4>Interests</h4>
+			<div class="formField ui-field-contain">
+				<fieldset data-role="controlgroup" data-iconpos="left" class="genderBox">
+					<input type="checkbox" name="interests[]" id="politics" value="politics" data-mini="true" /><label for="politics">Politics [+]</label>
+					<input type="checkbox" name="interests[]" id="theology" value="theology" data-mini="true" /><label for="theology">Theology [+]</label>
+					<input type="checkbox" name="interests[]" id="games" value="games" data-mini="true" /><label for="games">Games [+]</label>
+					<input type="checkbox" name="interests[]" id="movies" value="movies" data-mini="true" /><label for="movies">Movies [+]</label>
+					<input type="checkbox" name="interests[]" id="music" value="music" data-mini="true" /><label for="music">Music [+]</label>
+				</fieldset>
+			</div>
 		</div>
 	</div>
-
-	<div class="formSubmit" data-role="controlgroup" data-type="horizontal">
-		<input type="button" name="filter" value="Set Filter" data-mini="true" onclick="popup('open, filterPopup')" />
-	</div>
-</div>
-
-<!-- footer -->
-<br /><hr />
-<footer>
-	@footer()
-</body>
-</html>
+	

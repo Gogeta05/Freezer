@@ -17,16 +17,3 @@ function updateMatching() {
 		}
 	*/
 }
-
-function popup(action, template) {
-	/**
-	 * Still to do (next step I'll work on)
-	 * 
-	 * action can be "open" oder "close"
-	 * template is the wanted template to open in a popup
-	 * open the popup as overlay via Jquery
-	 *
-	 * maybe I put this function into headInclude, still thinking
-	 * of the best way to show the popups.
-	 */
-}

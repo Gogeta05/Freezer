@@ -1,37 +1,18 @@
 @(user : User)
-
-<!DOCTYPE html>
-<html dir="ltr" lang="en">
-<head>
-	<title>@user.getUsername()</title>
-	@headInclude()
-</head>
-<body>
-
-<!-- Top Navigation -->
-@topNav()
-
-<!-- Main content -->
-<div class="mainContent" id="mainContent">
-	<div class="innerBox">
-		<h1>@user.getUsername()</h1>
-		<div class="formFieldLabel userPopupField"><b>Name:</b> @user.getName()</div>
-		<div class="formFieldLabel userPopupField"><b>Gender: @user.getGenderString()</div>
-		<div class="formFieldLabel userPopupField"><b>Age: @user.getAge</div>
-		<hr />
-		<h3>Interests</h3>
-		@if(user.interests != null) {
-			@listInterests(user.interests)
-		}
+	<!-- User Popup for user @user.getUsername() -->
+	<div data-role="popup" id="userPopup-@user.getUsername()">
+		<div class="innerBox">
+			<h1>@user.getUsername()</h1>
+			<div class="formFieldLabel userPopupField"><b>Name:</b> @user.getName()</div>
+			<div class="formFieldLabel userPopupField"><b>Gender: @user.getGenderString()</div>
+			<div class="formFieldLabel userPopupField"><b>Age: @user.getAge</div>
+			<hr />
+			<h3>Interests</h3>
+			@if(user.interests != null) {
+				@listInterests(user.interests)
+			}
+		</div>
+		<div class="formSubmit" data-role="controlgroup" data-type="horizontal">
+			<input type="button" name="contact" value="Contact" data-mini="true" onclick="forward('@routes.Application.contactRequest(user.getUsername())')" />
+		</div>
 	</div>
-	<div class="formSubmit" data-role="controlgroup" data-type="horizontal">
-		<input type="button" name="contact" value="Contact" data-mini="true" onclick="forward('@routes.Application.contactRequest(user.getUsername())')" />
-	</div>
-</div>
-
-<!-- footer -->
-<br /><hr />
-<footer>
-	@footer()
-</body>
-</html>

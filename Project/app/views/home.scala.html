@@ -34,15 +34,20 @@
 		<tbody>
 			@for(usr <- user.matching(1)) {
 				<tr>
-					<td class="tableCols"><a href='@routes.Application.userPopup(usr.getUsername())'>@usr.getUsername()</a></td>
+					<td class="tableCols"><a href="#userPopup-@usr.getUsername()" data-rel="popup" data-transition="pop" data-mini="true">@usr.getUsername()</a></td>
 					<td class="tableCols">@usr.getName()</td>
 				</tr>
 			}
 		</tbody>
 	</table>
 	<br />
+	
+	@for(usr <- user.matching(1)) {
+		@userPopup(usr)
+	}
+	@filterPopup()
 	<div class="formSubmit" data-role="controlgroup" data-type="horizontal">
-		<input type="button" name="filter" value="Set Filter" data-mini="true" onclick="popup('open, filterPopup')" />
+		<a href="#filterPopup" data-rel="popup" data-transition="pop" data-mini="true" data-role="button">Set Filter</a>
 	</div>
 </div>
 
