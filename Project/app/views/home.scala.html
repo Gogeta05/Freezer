@@ -24,7 +24,7 @@
 	@helper.form(routes.Application.setUserLocation) {
 		<div class="innerBox">
 			<h3 align="center"> Location Settings </h3>
-			Location: <input type="text" name="locationInfo" id="locationInfo" readonly></input>
+			Location: <input type="text" name="locationInfo" id="locationInfo" value="@if(user.getLocation() != -1) {@user.getLocation()}" readonly></input>
 			<br>
 			Lift:
 			<div class="ui-field-contain">

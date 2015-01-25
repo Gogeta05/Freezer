@@ -23,6 +23,7 @@ GET		/home							controllers.Application.home()
 GET		/contactRequest/:usrname		controllers.Application.contactRequest(usrname: String)
 POST	/contactRequest/:usrname		controllers.Application.contactRequestSubmit(usrname: String)
 GET		/logout							controllers.Application.logout()
+GET		/setLocation					controllers.Application.home()
 POST	/setLocation					controllers.Application.setUserLocation()
 
 

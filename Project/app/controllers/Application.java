@@ -175,15 +175,17 @@ public class Application extends Controller {
 
 	public static Result setUserLocation() {
 		Form<SetUserLocation> form = Form.form(SetUserLocation.class).bindFromRequest();
+		User usr = Util.getSessionUser();
 		
-		Util.getSessionUser().setLocation(Integer.parseInt(form.field("locationInfo").value()));
+		usr.setLocation(Integer.parseInt(form.field("locationInfo").value()));
 		
 		String liftName = form.field("liftname").value();
 
 		if (!liftName.equals("default")) {
-			Util.getSessionUser().setLiftName(liftName);
+			usr.setLiftName(liftName);
 		}
 		
+		usr.save();
 		return redirect(routes.Application.home());
 	}
 	
