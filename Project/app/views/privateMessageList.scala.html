@@ -12,25 +12,25 @@
 
 <!-- Ab hier: Der eigentliche Inhalt. Main Container wird noch hier im Header geoeffnet -->
 <div class="mainContent" id="mainContent">
-<div class="filterOptions">Your PMs</div>
-<table class="tableList">
-	<thead>
-		<tr>
-			<th>Message id</th>
-			<th>Title</th>
-			<th>from User</th>
-		</tr>
-	</thead>
-	<tbody>
-		@for(message <- messageBox.messages) {
+	<h4>Your PMs</h4>
+	<table class="tableList">
+		<thead>
 			<tr>
-				<td>l</td>
-				<td>@message.msg</td>
-				<td>@message.from.getUsername()</td>
+				<th class="tableHead" style="width:18px !important;">#</th>
+				<th class="tableHead">Title</th>
+				<th class="tableHead" style="width: 100px !important;">From</th>
 			</tr>
-		}
-	</tbody>
-</table>
+		</thead>
+		<tbody>
+			@for(message <- messageBox.messages) {
+				<tr>
+					<td class="tableCols">l</td>
+					<td class="tableCols"><a href="@routes.Application.privateMessage()">@message.msg</a></td>
+					<td class="tableCols">@message.from.getUsername()</td>
+				</tr>
+			}
+		</tbody>
+	</table>
 </div>
 
 <!-- footer -->

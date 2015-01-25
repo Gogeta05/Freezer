@@ -10,23 +10,23 @@
 <!-- Top Navigation -->
 @topNav()
 
-<!-- Content -->
-<div data-role="content">
- <h1>@lifts.length lifts currently stored in the database.</h1>
-	<form class="ui-filterable">
-		<input id="filterBasic-input" data-type="search">
-	</form>
-    <ul data-role="listview" data-filter="true" data-input="#filterBasic-input">
-		@for(lift <- lifts) {
-			<li>@lift.name</li>
-			@*<li><b>PLZ:</b> @lift.location.PLZ</li>
-			<li><b>Ort:</b> @lift.location.municipality</li>
-			<li><b>Typ:</b> @lift.type</li>
-			<li><b>Anz. Personen:</b> @lift.maxPersons.toString()</li>
-			<li><b>Sitzheizung:</b> @lift.seatHeating.toString()</li>
-			<li><b>Wetterschutz:</b> @lift.weatherProtection</li>*@
-		}
-    </ul>
+<!-- Main content -->
+<div class="mainContent" id="mainContent">
+	<h1>@lifts.length lifts currently stored in the database.</h1>
+		<form class="ui-filterable">
+			<input id="filterBasic-input" data-type="search" type="text" data-mini="true" />
+		</form>
+		<ul data-role="listview" data-filter="true" data-input="#filterBasic-input" style="margin-left: 7px !important; width: 250px !important;">
+			@for(lift <- lifts) {
+				<li>@lift.name</li>
+				@*<li><b>PLZ:</b> @lift.location.PLZ</li>
+				<li><b>Ort:</b> @lift.location.municipality</li>
+				<li><b>Typ:</b> @lift.type</li>
+				<li><b>Anz. Personen:</b> @lift.maxPersons.toString()</li>
+				<li><b>Sitzheizung:</b> @lift.seatHeating.toString()</li>
+				<li><b>Wetterschutz:</b> @lift.weatherProtection</li>*@
+			}
+		</ul>
 </div>
 
 <!-- footer -->

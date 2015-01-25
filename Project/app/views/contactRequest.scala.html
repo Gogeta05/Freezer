@@ -10,7 +10,7 @@
 <!-- Top Navigation -->
 @topNav()
 
-<!-- Content -->
+<!-- Main content -->
 <div class="mainContent" id="mainContent">
 @if(form.hasGlobalErrors) {
 	<hr />
@@ -19,27 +19,29 @@
 	</div>
 }
 @helper.form(routes.Application.contactRequestSubmit(user)) {
-	<table class="tableList">
-		<thead>
-			<tr>
-				<td>Propose time</td>
-				<td>to User</td>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td><input type="time" name="proposeTime" id="proposeTime" /></td>
-				<td><input type="text" name="toUser" id="toUser" value="@user" readonly="readonly" /></td>
-			</tr>
-		</tbody>
-	</table>
+	<div class="formFieldLabel">
+		<label for="time">Propose time</label>
+	</div>
+	<div class="formField">
+		<input type="time" name="proposeTime" id="proposeTime" placeholder="10:30" /> <!-- time element does not work in FF, see https://miketaylr.com/code/input-type-attr.html -> open it with FF -->
+	</div>
+	
+	<div class="formFieldLabel">
+		<label for="user">to User</label>
+	</div>
+	<div class="formField">
+		<input type="text" name="toUser" id="toUser" value="@user" readonly="readonly" />
+	</div>
 	<br />
-	<your location><liftname>
+	<div class="formFieldLabel">
+		<label for="locationAndLift">[your location][liftname]</label>
+	</div>
 	<hr /><br />
-	<textarea rows="10" cols="100" name="message" id="message">Are you still virgin?</textarea>
-	<br />
-	<div class="footerButtons" id="footerButtons">
-		<input type="button" class="buttonRight" value="Send" onclick="forward('@routes.Application.home()')" />
+	<textarea rows="10" cols="100" name="message" id="message" placeholder="Write your message here"></textarea>
+
+	<div class="formSubmit" data-role="controlgroup" data-type="horizontal">
+		<input type="button" value="Send" data-mini="true" onclick="forward('@routes.Application.home()')" />
+	</div>
 }
 </div>
 

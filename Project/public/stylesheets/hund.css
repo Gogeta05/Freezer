@@ -25,6 +25,12 @@
 	
 }
 
+.ui-input-search {
+	width: 210px !important;
+	margin-left: 7px !important;
+}
+
+/* Flipswitch */
 .ui-flipswitch {
 	color: #000 !important;
 	height: 15px !important;
@@ -36,6 +42,11 @@
 /* Standard HTML Tags */
 h1, h2, h3, h4, h5 {
 	margin-left: 7px !important;
+}
+
+hr {
+	width: 250px;
+	margin-left: 7px;
 }
 
 
@@ -149,6 +160,11 @@ h1, h2, h3, h4, h5 {
 
 .interestsNavUL {
 	list-style-type: none !important;
+}
+
+.pmDisplay {
+	margin-left: 7px !important;
+	width: 250px !important;
 }
 
 .error {
