@@ -172,9 +172,9 @@ public class Application extends Controller {
 	public static Result setUserLocation() {
 		Form<SetLocation> form = Form.form(SetLocation.class).bindFromRequest();
 		
-		Util.getSessionUser().setLocation(form.field("locationInfo").value());
+		Util.getSessionUser().setLocation(Integer.parseInt(form.field("locationInfo").value()));
 		
-		String liftName = form.field("select-lift").value();
+		String liftName = form.field("lift").value();
 		if (!liftName.equals("default")) {
 			Util.getSessionUser().setLiftName(liftName);
 		}
@@ -225,6 +225,11 @@ public class Application extends Controller {
 	
 	public static class Reply {
 		public String message;
+	}
+	
+	public static class SetLocation {
+		public String locationInfo;
+		public String lift;
 	}
 	
 	public static List<Lift> getLifts(int plz) {
