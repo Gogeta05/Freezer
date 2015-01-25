@@ -199,7 +199,7 @@ public class Application extends Controller {
 		} else {
 			String time = contactRequestForm.field("proposeTime").value();
 			String msg = contactRequestForm.field("message").value();
-			Util.getSessionUser().sendMsg(msg, usr, time);
+			Util.getSessionUser().sendMsg(msg, usr, time, liftname);
 		}
 		return redirect(routes.Application.home());
 	}
@@ -331,6 +331,10 @@ public class Application extends Controller {
 		public String male;
 		public String female;
 		public String matchAroundLift;
+	}
+	
+	public static List<Lift> getLifts() {
+		return Database.getLifts();
 	}
 	
 	public static List<Lift> getLifts(int plz) {

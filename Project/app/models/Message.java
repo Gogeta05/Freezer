@@ -35,14 +35,19 @@ public class Message {
 	 */
 	public String time;
 	/**
+	 * The lift of the meeting
+	 */
+	public String lift;
+	/**
 	 * The message that is sent.
 	 */
 	public String msg;
 	
-	protected Message(User from, User to, String time, String msg) {
+	protected Message(User from, User to, String time, String lift, String msg) {
 		this.from = from;
 		this.to = to;
 		this.time = time;
+		this.lift = lift;
 		this.msg = msg;
 		box = to.msgBox;
 	}
@@ -52,7 +57,7 @@ public class Message {
 	 * @param msg the content of the reply
 	 */
 	public void reply(String msg) {
-		to.sendMsg(msg, from, time);
+		to.sendMsg(msg, from, time, lift);
 	}
 	
 }

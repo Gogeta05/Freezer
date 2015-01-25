@@ -24,7 +24,7 @@
 		<div class="ui-field-contain">
 			<select name="liftname" id="liftname" data-native-menu="true" data-mini="true">
 				<option value="@user.getLiftName">@user.getLiftName()</option>
-				@for(lift <- Application.getLifts(user.getLocation())) {
+				@for(lift <- Application.getLifts()) {
 					<option value="@lift.name">@lift.name</option>
 				}
 			</select>

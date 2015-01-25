@@ -145,13 +145,13 @@ public class Global extends GlobalSettings {
 	        users.get(8).allInterests(true);
 	        
 	        //send some messages
-	        users.get(0).sendMsg("How ya doin", users.get(1), "00:00");
-	        users.get(1).sendMsg("How ya doin", users.get(0), "00:00");
-	        users.get(2).sendMsg("How ya doin", users.get(2), "00:00");
-	        users.get(3).sendMsg("How ya doin", users.get(3), "00:00");
-	        users.get(4).sendMsg("How ya doin", users.get(0), "00:00");
-	        users.get(5).sendMsg("How ya doin", users.get(5), "00:00");
-	        users.get(6).sendMsg("How ya doin", users.get(7), "00:00");
+	        users.get(0).sendMsg("How ya doin", users.get(1), "Brandtallift", "00:00");
+	        users.get(1).sendMsg("How ya doin", users.get(0), "Brandtallift", "00:00");
+	        users.get(2).sendMsg("How ya doin", users.get(2), "Brandtallift", "00:00");
+	        users.get(3).sendMsg("How ya doin", users.get(3), "Brandtallift", "00:00");
+	        users.get(4).sendMsg("How ya doin", users.get(0), "Brandtallift", "00:00");
+	        users.get(5).sendMsg("How ya doin", users.get(5), "Brandtallift", "00:00");
+	        users.get(6).sendMsg("How ya doin", users.get(7), "Brandtallift", "00:00");
         }
         
     }
