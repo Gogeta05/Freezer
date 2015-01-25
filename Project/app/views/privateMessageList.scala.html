@@ -1,4 +1,5 @@
 @(messageBox: MessageBox)
+@import java.math.BigInteger; var i=1
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 <head>
@@ -26,12 +27,13 @@
 		<tbody>
 			@for(message <- messageBox.messages) {
 				<tr>
-					<td class="tableCols">l</td>
+					<td class="tableCols">@i</td>
 					<td class="tableCols"><a href="@routes.Application.privateMessage(message.id)">@message.msg</a></td>
 					<td class="tableCols">@message.from.getUsername()</td>
 					<td class="tableCols">@message.lift</td>
 					<td class="tableCols">@message.time</td>
 				</tr>
+				@{i=i+1}
 			}
 		</tbody>
 	</table>
