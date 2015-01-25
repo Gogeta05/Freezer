@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 <head>
-	<title>Settings General</title>
+	<title>ReadMe</title>
 	@headInclude()
 </head>
 <body>
@@ -11,13 +11,14 @@
 
 <!-- Main content -->
 <div class="mainContent" id="mainContent">
-	@settingsMenu()
-	
-	<div class="distanceLeft">
-		<p>In Nomine Patris et Filii et Spiritus Sancti</p>
+	<div class="innerBox">
+		<p>Welcome to FREEZER - your dating app on cold and enjoyful winterdays in the mountains.<br />
+			I may sound like an enemy in Dragon Ball Z, but I'm much more!<br /><br />
+			Come with me and discover my functionalities.
+		</p>
+		
+		<p>Will be continued ...</p>
 	</div>
-	
-	@filterPopup()
 
 	<div class="formSubmit" data-role="controlgroup" data-type="horizontal">
 		<input type="button" name="contact" value="Contact" data-mini="true" onclick="forward('@routes.Application.chooseLift("virgin_destroyer")')" />
@@ -25,5 +26,10 @@
 	</div>
 </div>
 
+<!-- footer -->
+<br /><hr />
+<footer>
+	@footer()
+</footer>
 </body>
 </html>

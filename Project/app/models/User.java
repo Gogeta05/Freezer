@@ -380,8 +380,8 @@ public class User extends Model {
 	/**
 	 * send a message to another user
 	 */
-	public void sendMsg (String msg, User to, String time) {
-		to.receiveMsg(new Message(this, to, time, msg));
+	public void sendMsg (String msg, User to, String time, String lift) {
+		to.receiveMsg(new Message(this, to, time, lift, msg));
 	}
 	
 	//Hier wird (auf absolut sichere Art und Weise) überprüft, ob der Benutzer existiert
