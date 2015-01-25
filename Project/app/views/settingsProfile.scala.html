@@ -13,17 +13,17 @@
 <div class="mainContent" id="mainContent">
 	<nav class="settings" id="navSettings"> <!-- see here for finalization: http://webdesignerwall.com/tutorials/mobile-navigation-design-tutorial  -->
 		<ul class="settingsUL" id="settingsUL">
-			<li>Settings</li>
-				<ul class="settings" id="settings">
+			<li><b>Settings</b></li>
+				<ul class="settingsMenu" id="settings">
 					<li><a href='@routes.Application.settingsGeneral()'>General</a></li>
 					<li><a href='@routes.Application.settingsAccount()'>Account</a></li>
-					<li><a href='@routes.Application.settingsProfile()'>Profile</a></li>
+					<li class="current"><a href='@routes.Application.settingsProfile()'>Profile</a></li>
 					<li><a href='@routes.Application.settingsMatching()'>Matching</a></li>
 				</ul>
 		</ul>
 	</nav>
 
-	<div class="filterOptions">Profile Settings</div> <!-- Use fieldset in final version -->
+	<h4 class="distanceSettingsMenu">Profile Settings</h4>
 	
     <form action='@routes.Application.settingsProfile()' method='post'> <!-- automatically like login ? -->
 		<div class="formFieldLabel">
@@ -47,11 +47,7 @@
 			<input type="text" name="age" id="age" />
 		</div>
 		
-		<div class="formFieldLabel positionRight">
-			<label for="avatar"><img src="@routes.Assets.at("images/avatar_default.png")" alt="Avatar" /></label>
-		</div>	
-		
-		<div class="formFieldLabel positionRight">
+		<div class="formFieldLabel settingsProfileAge">
 			<label for="gender"><select name="gender" id="select-choice-mini" data-mini="true" data-inline="true">
 					<option value="male">male</option>
 					<option value="female">female</option>
@@ -60,18 +56,16 @@
 			</label>
 		</div>
 		
-		<div class="filterOptions">Interests</div> <!-- fieldset ... -->
-		<ul>
-			<li>+ Politics [x]</li>
-			<li>+ Theology [x]</li>
-			<li>+ Games [x]</li>
-		</ul>
-		<br />
-		([x] ... should be replaced with javascript code to expand sub-categories in final version)<br /><br />
+		<h4>Interests</h4>
+		<div class="formField ui-field-contain">
+			<fieldset data-role="controlgroup" data-iconpos="left" class="genderBox settingsProfileBox">
+				<input type="checkbox" name="interests[]" id="politics" value="politics" data-mini="true" /><label for="politics">politics</label>
+			</fieldset>
+		</div>
 		
-		<div class="formSubmit">
-			<input accesskey="s" value="Save" type="submit">
-			<input kl_virtual_keyboard_secure_input="on" accesskey="r" value="Reset" type="reset">
+		<div class="formSubmit" data-role="controlgroup" data-type="horizontal">
+			<input accesskey="s" value="Save" type="submit" data-theme="b" />
+			<input kl_virtual_keyboard_secure_input="on" accesskey="r" value="Reset" type="reset" />
 		</div>
 	</form>
 </div>

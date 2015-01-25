@@ -100,6 +100,14 @@ h1, h2, h3, h4, h5 {
 	width: 185px !important;
 }
 
+.settingsProfileBox label {
+	margin-left: 7px !important;
+}
+
+.settingsProfileAge label {
+	margin-left: 2px !important;
+}
+
 .innerBox {
 	background-color:#ddd;
 	padding: 2px 2px 2px 2px !important;

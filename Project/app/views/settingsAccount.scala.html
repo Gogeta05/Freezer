@@ -13,17 +13,17 @@
 <div class="mainContent" id="mainContent">
 	<nav class="settings" id="navSettings"> <!-- see here for finalization: http://webdesignerwall.com/tutorials/mobile-navigation-design-tutorial  -->
 		<ul class="settingsUL" id="settingsUL">
-			<li>Settings</li>
-				<ul class="settings" id="settings">
+			<li><b>Settings</b></li>
+				<ul class="settingsMenu" id="settings">
 					<li><a href='@routes.Application.settingsGeneral()'>General</a></li>
-					<li><a href='@routes.Application.settingsAccount()'>Account</a></li>
+					<li class="current"><a href='@routes.Application.settingsAccount()'>Account</a></li>
 					<li><a href='@routes.Application.settingsProfile()'>Profile</a></li>
 					<li><a href='@routes.Application.settingsMatching()'>Matching</a></li>
 				</ul>
 		</ul>
 	</nav>
-
-	<div class="filterOptions">Account Settings</div> <!-- Memo to me (Gogeta): use fieldset instead in final version -->
+	
+	<h4 class="distanceSettingsMenu">Account settings</h4>
 
     <form action='@routes.Application.settingsAccount()' method='post'> <!-- make this automatically like login ? -->
 		<div class="formFieldLabel">
@@ -47,9 +47,9 @@
 			<input type="email" name="email" id="email" />
 		</div>
 		
-		<div class="formSubmit">
-			<input accesskey="s" value="Save" type="submit">
-			<input kl_virtual_keyboard_secure_input="on" accesskey="r" value="Reset" type="reset">
+		<div class="formSubmit" data-role="controlgroup" data-type="horizontal">
+			<input accesskey="s" value="Save" type="submit" data-theme="b" />
+			<input kl_virtual_keyboard_secure_input="on" accesskey="r" value="Reset" type="reset" />
 		</div>
     </form>
 </div>
