@@ -12,17 +12,53 @@
 <!-- Main content -->
 <div class="mainContent" id="mainContent">
 	<div class="innerBox">
-		<p>Welcome to FREEZER - your dating app on cold and enjoyful winterdays in the mountains.<br />
+		<p><b>Welcome to FREEZER</b> - your dating app on cold and enjoyful winterdays in the mountains.<br /><br />
 			I may sound like an enemy in Dragon Ball Z, but I'm much more!<br /><br />
-			Come with me and discover my functionalities.
+			<b>Come with me and discover my functionalities.</b>
 		</p>
 		
-		<p>Will be continued ...</p>
+		<p><h3>I. How to begin?</h3>
+			<ul style="line-height: 1.5;">
+				<li>First you have to accomplish the <a href='@routes.Application.register()'>registration</a>.
+				<li>After registration you have to <a href='@routes.Application.index'>login</a>.
+				<li>You will be redirected to the home overview after successfully logging in.<br /></li>
+				<li>And don't worry: We encrypt your password and personal data on a very high security level.</li>
+			</ul>
+		</p>
+		
+		<p><h3>II. On the home overview</h3>
+			Your location should be found automatically and based upon your location all available lifts near you will be displayed in a select menu - if not, click refresh.<br /><br />
+			After choosing the lift you want to ride with, click OK, to get all users near the chosen lift which also use Freezer.<br /><br />
+			Now you can set a filter to match all found users to your wanted criterias and interests. You can also click on the username of the found users wo get information about them
+			(Name, Age, prefered interests, ...).
+		</p>
+		
+		<p><h3>III. How to contact</h3>
+			If you find users who match with your interests, you can easily contact them by our <b>contact request functionality</b>. You can write them messages with the proposed time and lift and you can also receive
+			messages.<br /><br />
+			If you got new messages, the counter on the top (near the bird) will change and directly lead you to your <a href='@routes.Application.privateMessageList()'>message list</a>. There
+			you can find all incoming messages in a nice list.<br /><br />
+			You also can open them from there and view them in detail and you also can directly reply to the user's message.
+		</p>
+		
+		<p><h3>IV. Update your settings</h3>
+			You also can change your personal settings on account, personal data (profile) and the matching options easily. You also can feel free to navigation through the different setting pages
+			by an improved menu which can be used by touch.
+		</p>
+		
+		<p><h3>V. Conclusion</h3>
+			You may ask "This is it?" - Yes this is it for now. We gave our best to give you a cool and "freezing" tool to come in contact with other people during your winter activities.<br /><br />
+			We hope you will enjoy it and of course, we are working hard for further improvements.<br /><br />
+			If you have some interesting ideas for improvement or if you find a bug, please don't hesitate and contact us via email.<br /><br />
+			Last, but not least: This app of course is free and does not cost you any money!
+		</p>
+		
+		<p><h4>And now - have fun and ...
+		</p>
 	</div>
 
 	<div class="formSubmit" data-role="controlgroup" data-type="horizontal">
-		<input type="button" name="contact" value="Contact" data-mini="true" onclick="forward('@routes.Application.chooseLift("virgin_destroyer")')" />
-		<a href="#filterPopup" data-rel="popup" data-transition="pop" data-mini="true" data-role="button">Set Filter</a>
+		<input type="button" name="start" value="Get started" data-mini="true" data-theme="b" onclick="forward('@routes.Application.register()')" />
 	</div>
 </div>
 
