@@ -52,6 +52,10 @@ hr {
 
 /*************************/
 /* Own CSS classes */
+.distanceLeft {
+	margin-left: 7px !important;
+}
+
 .topNavigation {
 	margin-left: -42px !important;
 	font-size: 12px !important;
@@ -66,30 +70,8 @@ hr {
 	margin-left: 10px !important;
 }
 
-.settings {
-	position: relative;
-	margin: 20px 0;
-	font-size: 12px;
-}
-
-.settings ul {
-	margin-left: 7px;
-	padding: 0;
-}
-
-.settings li {
-	margin: 0 5px 10px 0;
-	padding: 0;
-	list-style:none;
-	display: inline-block;
-}
-
-.settings .settingsMenu {
-	margin-left: 0px;
-}
-
-.distanceSettingsMenu {
-	margin-left: 7px !important;
+.settingsMenuPopup {
+	min-width: 210px;
 }
 
 .formFieldLabel label {
@@ -195,53 +177,5 @@ hr {
 
 /* Mobile Devices */
 @media screen and (max-width: 480px) {
-	/* Settings Navigation */
-	.settings {
-		position: relative;
-		min-height: 20px;
-	}
-
-	.settings ul {
-		width: 90px;
-		padding: 5px 0;
-		position: absolute;
-		top: 0;
-		left: 0;
-		border: 1px #aaa solid;
-		background: #fff url(/assets/images/icon-menu.png) no-repeat 10px 11px;
-		border-radius: 5px;
-		box-shadow: 0 1px 2px rgba(0,0,0,.3);
-	}
-
-	.settings li {
-		display: none;
-		margin: 0;
-	}
-
-	.settings .current {
-		display: block;
-	}
-
-	.settings a {
-		display: block;
-		padding: 5px 5px 5px 32px;
-		text-align:left;
-	}
-	
-	.settings ul:hover {
-		background-image: none;
-	}
-
-	.settings ul:hover li {
-		display: block;
-		margin: 0 0 5px;
-	}
-
-	.settings ul:hover .current {
-		background: url(/assets/images/icon-check.png) no-repeat 10px 7px;
-	}
-	
-	.distanceSettingsMenu {
-		margin-top: 80px !important;
-	}
+	/* Nothing yet - all solved via jquery mobile */
 }

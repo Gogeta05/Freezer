@@ -11,17 +11,7 @@
 
 <!-- Main content -->
 <div class="mainContent" id="mainContent">
-	<nav class="settings" id="navSettings"> <!-- see here for finalization: http://webdesignerwall.com/tutorials/mobile-navigation-design-tutorial  -->
-		<ul class="settingsUL" id="settingsUL">
-			<li><b>Settings</b></li>
-				<ul class="settingsMenu" id="settings">
-					<li><a href='@routes.Application.settingsGeneral()'>General</a></li>
-					<li><a href='@routes.Application.settingsAccount()'>Account</a></li>
-					<li class="current"><a href='@routes.Application.settingsProfile()'>Profile</a></li>
-					<li><a href='@routes.Application.settingsMatching()'>Matching</a></li>
-				</ul>
-		</ul>
-	</nav>
+	@settingsMenu()
 
 	<h4 class="distanceSettingsMenu">Profile Settings</h4>
 	
