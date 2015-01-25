@@ -29,14 +29,20 @@ public class Message {
 	@ManyToOne
 	@JoinColumn(name = "FK_TO")
 	public User to;
+	
+	/**
+	 * The time of the meeting
+	 */
+	public String time;
 	/**
 	 * The message that is sent.
 	 */
 	public String msg;
 	
-	protected Message(User from, User to, String msg) {
+	protected Message(User from, User to, String time, String msg) {
 		this.from = from;
 		this.to = to;
+		this.time = time;
 		this.msg = msg;
 		box = to.msgBox;
 	}
@@ -46,7 +52,7 @@ public class Message {
 	 * @param msg the content of the reply
 	 */
 	public void reply(String msg) {
-		to.sendMsg(msg, from);
+		to.sendMsg(msg, from, time);
 	}
 	
 }

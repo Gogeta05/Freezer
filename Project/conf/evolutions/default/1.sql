@@ -35,6 +35,7 @@ create table message (
   FK_BOX                    bigint,
   FK_FROM                   bigint,
   FK_TO                     bigint,
+  time                      varchar(255),
   msg                       varchar(255),
   constraint pk_message primary key (id))
 ;
