@@ -55,6 +55,32 @@ h1, h2, h3, h4, h5 {
 	margin-left: 10px !important;
 }
 
+.settings {
+	position: relative;
+	margin: 20px 0;
+	font-size: 12px;
+}
+
+.settings ul {
+	margin-left: 7px;
+	padding: 0;
+}
+
+.settings li {
+	margin: 0 5px 10px 0;
+	padding: 0;
+	list-style:none;
+	display: inline-block;
+}
+
+.settings .settingsMenu {
+	margin-left: 0px;
+}
+
+.distanceSettingsMenu {
+	margin-left: 7px !important;
+}
+
 .formFieldLabel label {
 	font-weight:bold !important;
 	margin-left: 7px !important;
@@ -141,54 +167,56 @@ h1, h2, h3, h4, h5 {
 	font-weight: bold !important;
 }
 
-/************************************************************************************
-NAVIGATION EXAMPLE CODE - DO NOT USE!! Navigation will be implemented by me on Saturday evening
-*************************************************************************************
-#navSettingsUL {
-	margin-top: 20px;
-}
 
-/* menu icon 
-#menu-icon {
-	display: none; /* hide menu icon initially 
-}
+/* Mobile Devices */
+@media screen and (max-width: 480px) {
+	/* Settings Navigation */
+	.settings {
+		position: relative;
+		min-height: 20px;
+	}
 
-#navSettings, 
-#navSettings li {
-	margin: 0;
-	padding: 0;
-}
-#navSettings li {
-	list-style: none;
-	float: left;
-	margin-right: 5px;
-}
+	.settings ul {
+		width: 90px;
+		padding: 5px 0;
+		position: absolute;
+		top: 0;
+		left: 0;
+		border: 1px #aaa solid;
+		background: #fff url(/assets/images/icon-menu.png) no-repeat 10px 11px;
+		border-radius: 5px;
+		box-shadow: 0 1px 2px rgba(0,0,0,.3);
+	}
 
-/* nav link 
-#navSettings a {
-	padding: 4px 15px;
-	display: block;
-	color: #000;
-	background: #ecebeb;
-}
-#navSettings a:hover {
-	background: #f8f8f8;
-}
+	.settings li {
+		display: none;
+		margin: 0;
+	}
 
-/* nav dropdown 
-#navSettings ul {
-	background: #fff;
-	padding: 2px;
-	position: absolute;
-	border: solid 1px #ccc;
-	display: none; /* hide dropdown 
-	width: 200px;
+	.settings .current {
+		display: block;
+	}
+
+	.settings a {
+		display: block;
+		padding: 5px 5px 5px 32px;
+		text-align:left;
+	}
+	
+	.settings ul:hover {
+		background-image: none;
+	}
+
+	.settings ul:hover li {
+		display: block;
+		margin: 0 0 5px;
+	}
+
+	.settings ul:hover .current {
+		background: url(/assets/images/icon-check.png) no-repeat 10px 7px;
+	}
+	
+	.distanceSettingsMenu {
+		margin-top: 80px !important;
+	}
 }
-#navSettings ul li {
-	float: none;
-	margin: 0;
-	padding: 0;
-}
-#navSettings li:hover > ul {
-	display: block; /* show dropdown on hover 
-}*/

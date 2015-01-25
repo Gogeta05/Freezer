@@ -13,20 +13,20 @@
 <div class="mainContent" id="mainContent">
 	<nav class="settings" id="navSettings"> <!-- see here for finalization: http://webdesignerwall.com/tutorials/mobile-navigation-design-tutorial  -->
 		<ul class="settingsUL" id="settingsUL">
-			<li>Settings</li>
-				<ul class="settings" id="settings">
-					<li><a href='@routes.Application.settingsGeneral()'>General</a></li>
+			<li><b>Settings</b></li>
+				<ul class="settingsMenu" id="settings">
+					<li class="current"><a href='@routes.Application.settingsGeneral()'>General</a></li>
 					<li><a href='@routes.Application.settingsAccount()'>Account</a></li>
 					<li><a href='@routes.Application.settingsProfile()'>Profile</a></li>
 					<li><a href='@routes.Application.settingsMatching()'>Matching</a></li>
 				</ul>
 		</ul>
 	</nav>
-	
-	<div class="informationBox">In Nomine Patris et Filii et Spiritus Sancti</div>
-	<div class="locationStatus">Location Status</div>
+	<div class="distanceSettingsMenu">
+		<p>In Nomine Patris et Filii et Spiritus Sancti</p>
+	</div>
 
-	<div class="formSubmit">
+	<div class="formSubmit" data-role="controlgroup" data-type="horizontal">
 		<input type="button" name="contact" value="Contact" data-mini="true" onclick="forward('@routes.Application.contactRequest("virgin_destroyer")')" />
 		<input type="button" name="filter" value="Set Filter" data-mini="true" onclick="popup('open, filterPopup')" />
 	</div>
