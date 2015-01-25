@@ -40,7 +40,8 @@
 	<textarea rows="10" cols="100" name="message" id="message" placeholder="Write your message here"></textarea>
 
 	<div class="formSubmit" data-role="controlgroup" data-type="horizontal">
-		<input type="button" value="Send" data-mini="true" onclick="forward('@routes.Application.home()')" />
+			<input accesskey="s" value="Contact" type="submit" data-theme="b" />
+			<input kl_virtual_keyboard_secure_input="on" accesskey="r" value="Reset" type="reset" />
 	</div>
 }
 </div>

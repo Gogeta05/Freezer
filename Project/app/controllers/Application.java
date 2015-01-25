@@ -144,17 +144,17 @@ public class Application extends Controller {
 	 * @param toUser	the recipient of the message
 	 * @return
 	 */
-	public static Result contactRequest(String toUser) {
+	public static Result contactRequest(String user) {
 		Form<ContactRequest> contactRequestForm = Form.form(ContactRequest.class);
-		return ok(contactRequest.render(toUser, contactRequestForm));
+		return ok(contactRequest.render(user, contactRequestForm));
 	}
 	
-	public static Result contactRequestSubmit(String toUser) {
+	public static Result contactRequestSubmit(String user) {
 		Form<ContactRequest> contactRequestForm = Form.form(ContactRequest.class).bindFromRequest();
 		if (contactRequestForm.hasErrors()) {
-			return badRequest(contactRequest.render(toUser, contactRequestForm));
+			return badRequest(contactRequest.render(user, contactRequestForm));
 		} else {
-			User usr = Database.getUser(toUser);
+			User usr = Database.getUser(user);
 			if (usr == null) {
 				return badRequest("nope");
 			}
@@ -218,7 +218,7 @@ public class Application extends Controller {
 	}
 	
 	public static class ContactRequest {
-		public Date proposeTime;
+		public String proposeTime;
 		public String toUser;
 		public String message;
 	}

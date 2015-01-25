@@ -45,7 +45,7 @@ public class Message {
 	 * The reply to this message.
 	 * @param msg the content of the reply
 	 */
-	protected void reply(String msg) {
+	public void reply(String msg) {
 		to.sendMsg(msg, from);
 	}
 	
