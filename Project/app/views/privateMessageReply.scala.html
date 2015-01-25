@@ -1,0 +1,44 @@
+@(msg: Message)(form: Form[controllers.Application.Reply])
+
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+	<title>Reply to @msg.from.getUsername()</title>
+	@headInclude()
+</head>
+<body>
+
+<!-- Top Navigation -->
+@topNav()
+
+<!-- Main content -->
+<div class="mainContent" id="mainContent">
+@if(form.hasGlobalErrors) {
+	<hr />
+	<div class="error">
+		<p>@form.globalError.message</p>
+	</div>
+}
+@helper.form(routes.Application.privateMessageReplySubmit(msg.id)) {
+	<div class="formFieldLabel">
+		<label for="user">to User</label>
+	</div>
+	<div class="formField">
+		<input type="text" name="toUser" id="toUser" value="@msg.from.getUsername()" readonly="readonly" />
+	</div>
+	<hr /><br />
+	<textarea rows="10" cols="100" name="message" id="message" placeholder="Write your message here"></textarea>
+
+	<div class="formSubmit" data-role="controlgroup" data-type="horizontal">
+			<input accesskey="s" value="Register" type="submit" data-theme="b" />
+			<input kl_virtual_keyboard_secure_input="on" accesskey="r" value="Reset" type="reset" />
+	</div>
+}
+</div>
+
+<!-- footer -->
+<br /><hr />
+<footer>
+	@footer()
+</body>
+</html>
