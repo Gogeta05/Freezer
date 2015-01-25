@@ -12,6 +12,7 @@ import com.avaje.ebean.Expr;
 
 
 
+
 import controllers.Application.Register;
 import backend.Database;
 import models.Interests;
@@ -135,7 +136,8 @@ public class Application extends Controller {
 	}
 
 	public static Result settingsProfile() {
-		return ok(settingsProfile.render());
+		Form<SaveProfileSettings> form = Form.form(SaveProfileSettings.class);
+		return ok(settingsProfile.render(Util.getSessionUser(), form));
 	}
 
 	public static Result userPopup(String username) {
@@ -240,6 +242,39 @@ public class Application extends Controller {
 		return redirect(routes.Application.home());
 	}
 	
+	public static Result saveProfileSettings() {
+		Form<SaveMatchingSettings> form = Form.form(SaveMatchingSettings.class).bindFromRequest();
+		User usr = Util.getSessionUser();
+		
+		String value = form.field("firstName").value();
+		if (value != null) {
+			usr.setFirstName(value);
+		}
+		
+		value = form.field("lastName").value();
+		if (value != null) {
+			usr.setLastName(value);
+		}
+		
+		value = form.field("gender").value();
+		if (value != null) {
+			if (value.equals("male")) {
+				usr.setGender('m');
+			} else {
+				usr.setGender('f');
+			}
+			
+		}
+		
+		value = form.field("age").value();
+		if (value != null) {
+			usr.setAge(Integer.parseInt(value));
+		}
+
+		usr.save();
+		return redirect(routes.Application.home());
+	}
+	
 	/**
 	 * don't touch, automatic playframework at work
 	 */
@@ -296,6 +331,13 @@ public class Application extends Controller {
 		public String male;
 		public String female;
 		public String matchAroundLift;
+	}
+	
+	public static class SaveProfileSettings {
+		public String firstName;
+		public String lastName;
+		public String age;
+		public String gender;
 	}
 	
 	public static List<Lift> getLifts(int plz) {
