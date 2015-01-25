@@ -26,7 +26,7 @@
 				<select name="select-lift" id="select-lift" data-native-menu="true" data-mini="true">
 					<option value="default">@user.getLiftName()</option>
 					@for(lift <- Application.getLifts(user.getLocation())) {
-						<option value=@lift.name>@lift.name</option>
+						<option value="@lift.name">@lift.name</option>
 					}
 				</select>
 			</div>

@@ -23,7 +23,7 @@ GET		/home							controllers.Application.home()
 GET		/contactRequest/:usrname		controllers.Application.contactRequest(usrname: String)
 POST	/contactRequest/:usrname		controllers.Application.contactRequestSubmit(usrname: String)
 GET		/logout							controllers.Application.logout()
-POST	/setLocation			controllers.Application.setUserLocation()
+POST	/setLocation					controllers.Application.setUserLocation()
 
 
 # Map static resources from the /public folder to the /assets URL path
