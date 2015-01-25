@@ -96,6 +96,7 @@ public class Application extends Controller {
 
 	public static Result privateMessage(long id) {
 		Message msg = new Model.Finder<>(String.class, Message.class).where(Expr.idEq(id)).findUnique();
+		msg.read = true;
 		return ok(privateMessage.render(msg));
 	}
 

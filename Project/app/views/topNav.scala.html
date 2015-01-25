@@ -7,7 +7,7 @@
 	<nav class="topNav" id="topNav">
 		<ul class="topNavUL" id="topNavUL">
 			<li><a href='@routes.Application.home()'>Home</a></li>
-			<li><span class="newPMs" id="newPMs">0</span><a href='@routes.Application.privateMessageList()'><img src='@routes.Assets.at("images/inbox.png")' alt="inbox" style="width:30px; height:25px;"></a></li>
+			<li><a href='@routes.Application.privateMessageList()'><img src='@routes.Assets.at("images/inbox.png")' alt="inbox" style="width:30px; height:25px;"></a><span class="newPMs" id="newPMs">@utils.Util.getSessionUser().msgBox.getNumberOfUnreadMessages()</span></li>
 			<li><span class="small">Matching</span> <input type="checkbox" data-role="flipswitch" name="flipMatching" class="flipMatching" id="flipMatching" data-mini="true" data-on-text="ON" data-off-text="OFF" onchange="updateMatching()" /></li> <!-- JavaScript Aufruf updateLocationTracking() -> Function is not implemented yet; implement in generalFunctions.js and also give the current User to the function so that it knows which user's location tracking should be updatet (on/off) // Alternative: Ueber AJAX loesen -->
 			<li><a href='@routes.Application.logout()'>Logout</a></li>
 		</ul>

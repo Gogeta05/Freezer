@@ -43,12 +43,15 @@ public class Message {
 	 */
 	public String msg;
 	
+	public Boolean read;
+	
 	protected Message(User from, User to, String time, String lift, String msg) {
 		this.from = from;
 		this.to = to;
 		this.time = time;
 		this.lift = lift;
 		this.msg = msg;
+		read = false;
 		box = to.msgBox;
 	}
 	

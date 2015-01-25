@@ -71,6 +71,18 @@ public class MessageBox extends Model {
 		msg.reply(newMsg);
 	}
 	
+	/**
+	 * Returns the number of unread messages in this box
+	 */
+	public int getNumberOfUnreadMessages() {
+		int number = 0;
+		for(Message message : messages) {
+			if(!message.read)
+				number++;
+		}
+		return number;
+	}
+	
 	
 	
 }

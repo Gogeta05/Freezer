@@ -38,6 +38,7 @@ create table message (
   time                      varchar(255),
   lift                      varchar(255),
   msg                       varchar(255),
+  read                      boolean,
   constraint pk_message primary key (id))
 ;
 
