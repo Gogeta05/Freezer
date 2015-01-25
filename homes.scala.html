@@ -1,0 +1,59 @@
+@(user : User)
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+	<title>Home</title>
+	@headInclude()
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+	<script type="text/javascript" src='@routes.Assets.at("javascripts/locationTracker.js")'></script>
+</head>
+<body>
+
+<!-- Top Navigation -->
+@topNav()
+
+<!-- Main content -->
+<div class="mainContent" id="mainContent">
+	<br>
+	<div class="innerBox">
+		<h3 align="center"> Location Settings </h3>
+		Location: <span id="locationInfo"></span>&nbsp
+		<div class="ui-field-contain">
+			<label for="select-lift">Lift:</label>
+			<select name="select-lift" id="select-lift" data-native-menu="true" data-mini="true">
+				@for(lift <- Application.getLifts(user.getLocation())) {
+					<option value=@lift.name>@lift.name</option>
+				}
+			</select>
+		</div>
+		<a href="home" class="ui-btn ui-icon-recycle ui-btn-icon-notext ui-corner-all">Refresh Button</a>
+	</div>
+	<br />
+	<h5>potential matchings:</h5>
+	<table class="tableList">
+		<thead>
+			<tr>
+				<th class="tableHead">Username</th>
+				<th class="tableHead">Name</th>
+			</tr>
+		</thead>
+		<tbody>
+			@for(usr <- user.matching(1)) {
+				<tr>
+					<td class="tableCols"><a href='@routes.Application.userPopup(usr.getUsername())'>@usr.getUsername()</a></td>
+					<td class="tableCols">@usr.getName()</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+	<br />
+	<div class="formSubmit" data-role="controlgroup" data-type="horizontal">
+		<input type="button" name="filter" value="Set Filter" data-mini="true" onclick="popup('open, filterPopup')" />
+	</div>
+</div>
+
+<!-- footer -->
+<br /><hr />
+	@footer()
+</body>
+</html>

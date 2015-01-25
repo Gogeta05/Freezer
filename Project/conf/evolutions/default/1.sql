@@ -15,6 +15,7 @@ create table interests (
 create table lift (
   id                        bigint not null,
   name                      varchar(255),
+  location_postal           integer,
   type                      varchar(255),
   max_persons               integer,
   seat_heating              boolean,
@@ -54,6 +55,7 @@ create table user (
   age                       integer,
   gender                    varchar(255),
   location_plz              integer,
+  lift_name                 varchar(255),
   constraint pk_user primary key (id))
 ;
 

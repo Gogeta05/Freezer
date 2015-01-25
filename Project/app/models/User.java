@@ -40,6 +40,7 @@ public class User extends Model {
 	private Integer age;
 	private char gender;
 	private int locationPLZ;
+	private String liftName;
 	
 	@OneToOne(mappedBy="owner", cascade=CascadeType.ALL)
 	public MessageBox msgBox;
@@ -109,7 +110,9 @@ public class User extends Model {
 	public int getLocation() {
 		return locationPLZ;
 	}
-	
+	public String getLiftName() {
+		return liftName;
+	}
 	/* Setters */
 	public void setEmail(String email) {
 		this.email = email;
@@ -132,7 +135,9 @@ public class User extends Model {
 	public void setLastName(String name) {
 		this.firstName = name;
 	}
-
+	public void setLiftName(String name) {
+		this.lastName = name;
+	}
 
 	/* Methods */
 	

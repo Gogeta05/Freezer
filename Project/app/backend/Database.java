@@ -33,7 +33,12 @@ public final class Database {
 	public static List<User> getUsers () {
 		return new Model.Finder<String, User>(String.class, User.class).all();
 	}
-	
+	public static List<Lift> getLifts() {
+		return new Model.Finder<>(String.class, Lift.class).all();
+	}
+	public static List<Lift> getLifts(int plz) {
+		return new Model.Finder<>(String.class, Lift.class).where(Expr.eq("locationPostal", plz)).findList();
+	}
 	public static void addUser(User user) {
 		user.save();
 	}

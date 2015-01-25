@@ -60,7 +60,7 @@ function getPostal(position) {
 				}
 				
 				//Do something with the postal code
-				document.getElementById("locationInfo").innerHTML=parseInt(postal);
+				document.getElementById("locationInfo").value=parseInt(postal);
 				
 			} else {
 				alert('No results found');

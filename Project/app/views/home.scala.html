@@ -14,14 +14,28 @@
 
 <!-- Main content -->
 <div class="mainContent" id="mainContent">
-	<div class="innerBox">
-		Location Tracking is <span class="off">OFF</span><br />
-		Default filter is <span class="off">OFF</span>
-	</div>
-	<br />
-	<div class="innerBox">
-		<p>Location: <span id="locationInfo"></span></p>
-	</div>
+	<br>
+	
+	<form action="@routes.Application.setUserLocation()">
+		<div class="innerBox">
+			<h3 align="center"> Location Settings </h3>
+			Location: <input type="text" name="locationInfo" id="locationInfo" readonly></input>
+			<br>
+			Lift:
+			<div class="ui-field-contain">
+				<select name="select-lift" id="select-lift" data-native-menu="true" data-mini="true">
+					<option value="default">@user.getLiftName()</option>
+					@for(lift <- Application.getLifts(user.getLocation())) {
+						<option value=@lift.name>@lift.name</option>
+					}
+				</select>
+			</div>
+			<a href="home" class="ui-btn ui-icon-recycle ui-btn-icon-notext ui-corner-all">Refresh Button</a>
+			<input type="submit" value="OK">
+		</div>
+	</form>
+	
+	
 	<br />
 	<h5>potential matchings:</h5>
 	<table class="tableList">

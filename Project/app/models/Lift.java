@@ -22,6 +22,10 @@ public class Lift extends Model {
 	 */
 	public Location location;
 	/**
+	 * The location of the Lift as postal code
+	 */
+	public int locationPostal;
+	/**
 	 * Defines the type of the lift.s
 	 */
 	public String type;
@@ -49,6 +53,7 @@ public class Lift extends Model {
 	public Lift(String name, Location location, String type, int maxPersons, boolean seatHeating, String weatherProtection) {
 		this.name = name;
 		this.location = location;
+		this.locationPostal = location.PLZ;
 		this.type = type;
 		this.maxPersons = maxPersons;
 		this.seatHeating = seatHeating;

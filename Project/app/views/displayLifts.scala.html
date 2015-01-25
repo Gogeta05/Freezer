@@ -19,8 +19,8 @@
 		<ul data-role="listview" data-filter="true" data-input="#filterBasic-input" style="margin-left: 7px !important; width: 250px !important;">
 			@for(lift <- lifts) {
 				<li>@lift.name</li>
-				@*<li><b>PLZ:</b> @lift.location.PLZ</li>
-				<li><b>Ort:</b> @lift.location.municipality</li>
+				<li><b>PLZ:</b> @lift.locationPostal</li>
+				@*<li><b>Ort:</b> @lift.location.municipality</li>
 				<li><b>Typ:</b> @lift.type</li>
 				<li><b>Anz. Personen:</b> @lift.maxPersons.toString()</li>
 				<li><b>Sitzheizung:</b> @lift.seatHeating.toString()</li>
