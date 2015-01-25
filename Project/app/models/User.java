@@ -426,7 +426,24 @@ public class User extends Model {
     		}
     		
     		if (match_count >= matchCriteria) {
-    			matched.add(u);
+    			if (u.getLocation() == this.getLocation() &&
+    				( (u.getGender() == 'm' && this.settings.male) ||
+    				  (u.getGender() == 'f' && this.settings.female)) &&
+    				( (this.settings.comparator.equals("e") && this.settings.age == u.getAge()) ||
+    				  (this.settings.comparator.equals("gt") && this.settings.age <= u.getAge()) ||
+    				  (this.settings.comparator.equals("lt") && this.settings.age >= u.getAge())
+    				)
+    			) {
+    				if (!this.settings.matchAroundLift) {
+    					matched.add(u);
+    				}
+    				else {
+    					if (this.getLiftName().equals(u.getLiftName())) {
+    						matched.add(u);
+    					}
+    				}
+    			}
+    			
     		}
     	}
     	

@@ -32,7 +32,7 @@ public class Settings extends Model {
 		this.female = true;
 		this.comparator = "gt";
 		this.age = 0;
-		this.allowMatching = false;
+		this.allowMatching = true;
 		this.matchAroundLift = false;
 	}
 	
@@ -41,7 +41,7 @@ public class Settings extends Model {
 		this.female = true;
 		this.comparator = "gt";
 		this.age = 0;
-		this.allowMatching = false;
+		this.allowMatching = true;
 		this.matchAroundLift = false;
 		
 		this.save();
