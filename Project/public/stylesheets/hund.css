@@ -68,6 +68,12 @@ h1, h2, h3, h4, h5 {
 	width: 195px !important;
 }
 
+.subCheckBox label {
+	margin-left: 10px !important;
+	height: 10px !important;
+	width: 185px !important;
+}
+
 .innerBox {
 	background-color:#ddd;
 	padding: 2px 2px 2px 2px !important;
