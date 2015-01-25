@@ -4,15 +4,14 @@
 			@for(i <- interests) {
 				<input type="checkbox" name="interests[]" id="@i.getTitle()" value="@i.getTitle()" data-mini="true" /><label for="@i.getTitle()">@i.getTitle()</label>
 					@if(i.hasSubs()) {
-						@for(s <- i.getSubInterests()) {
-							<div class="ui-field-contain">
-								<fieldset data-role="controlgroup" data-iconpos="left" class="subCheckBox">
+						<div class="ui-field-contain">
+							<fieldset data-role="controlgroup" data-iconpos="left" class="subCheckBox">
+								@for(s <- i.getSubInterests()) {
 									<input type="checkbox" name="subInterests[]" id="@i.getTitle-@s.getTitle()" value="@s.getTitle()" data-mini="true" /><label for="@i.getTitle-@s.getTitle()">@s.getTitle()</label>
-								</fieldset>
-							</div>
-						}
+								}
+							</fieldset>
+						</div>
 					}
-				
 			}
 		</fieldset>
 	</div>
