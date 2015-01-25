@@ -87,10 +87,15 @@ hr {
 	width: 195px !important;
 }
 
+/*.mainCheckBox label {
+	background-color: #ccc !important;
+	border: 1px #f00 solid !important;
+}*/
+
 .subCheckBox label {
-	margin-left: 10px !important;
+	/*margin-left: 10px !important;*/
 	height: 10px !important;
-	width: 185px !important;
+	/*width: 185px !important;*/
 }
 
 .settingsProfileBox label {
