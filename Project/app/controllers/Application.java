@@ -7,10 +7,12 @@ import com.avaje.ebean.Ebean;
 import com.avaje.ebean.Expr;
 //import com.sun.jmx.mbeanserver.Repository.RegistrationContext;
 
+
 import controllers.Application.Register;
 import backend.Database;
 import models.Interests;
 import models.Lift;
+import models.Message;
 import models.User;
 import play.*;
 import play.api.mvc.Session;
@@ -85,8 +87,9 @@ public class Application extends Controller {
 		return ok(locationTracker.render());
 	}
 
-	public static Result privateMessage() {
-		return ok(privateMessage.render());
+	public static Result privateMessage(long id) {
+		Message msg = new Model.Finder<>(String.class, Message.class).where(Expr.idEq(id)).findUnique();
+		return ok(privateMessage.render(msg));
 	}
 
 	public static Result privateMessageList() {

@@ -1,3 +1,4 @@
+@(message: Message)
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 <head>
@@ -11,10 +12,9 @@
 
 <!-- Main content -->
 <div class="mainContent" id="mainContent">
-	<h4>From: [need user management]</h4>
+	<h4>From: @message.from.getUsername()</h4>
 	<hr />
-	<div class="formField pmDisplay">Are you still virgin<br />
-	In Nomine Patris et Filii et Spiritus Sancti.</div>
+	<div class="formField pmDisplay">@message.msg</div>
 	<hr />
 	
 	<div class="formSubmit" data-role="controlgroup" data-type="horizontal">

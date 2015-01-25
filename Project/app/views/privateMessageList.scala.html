@@ -25,7 +25,7 @@
 			@for(message <- messageBox.messages) {
 				<tr>
 					<td class="tableCols">l</td>
-					<td class="tableCols"><a href="@routes.Application.privateMessage()">@message.msg</a></td>
+					<td class="tableCols"><a href="@routes.Application.privateMessage(message.id)">@message.msg</a></td>
 					<td class="tableCols">@message.from.getUsername()</td>
 				</tr>
 			}
