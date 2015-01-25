@@ -12,7 +12,6 @@ import com.avaje.ebean.Expr;
 
 
 
-
 import controllers.Application.Register;
 import backend.Database;
 import models.Interests;
@@ -272,7 +271,6 @@ public class Application extends Controller {
 		usr.save();
 		return redirect(routes.Application.home());
 	}
-	
 	public static Result saveProfileSettings() {
 		Form<SaveMatchingSettings> form = Form.form(SaveMatchingSettings.class).bindFromRequest();
 		User usr = Util.getSessionUser();
@@ -305,7 +303,6 @@ public class Application extends Controller {
 		usr.save();
 		return redirect(routes.Application.home());
 	}
-	
 	/**
 	 * don't touch, automatic playframework at work
 	 */
@@ -367,11 +364,16 @@ public class Application extends Controller {
 		public String female;
 		public String matchAroundLift;
 	}
+	
 	public static class SaveProfileSettings {
 		public String firstName;
 		public String lastName;
 		public String age;
 		public String gender;
+	}
+	
+	public static List<Lift> getLifts() {
+		return Database.getLifts();
 	}
 	
 	public static List<Lift> getLifts(int plz) {
