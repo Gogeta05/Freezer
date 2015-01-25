@@ -95,6 +95,24 @@ public class Application extends Controller {
 	public static Result privateMessageList() {
 		return ok(privateMessageList.render(Util.getSessionUser().msgBox));
 	}
+	
+	public static Result privateMessageReply(long id) {
+		Message msg = new Model.Finder<>(String.class, Message.class).where(Expr.idEq(id)).findUnique();
+		Form<Reply> replyForm = Form.form(Reply.class);
+		return ok(privateMessageReply.render(msg, replyForm));
+	}
+	
+	public static Result privateMessageReplySubmit(long id) {
+		Message msg = new Model.Finder<>(String.class, Message.class).where(Expr.idEq(id)).findUnique();
+		Form<Reply> replyForm = Form.form(Reply.class).bindFromRequest();
+		if (replyForm.hasErrors()) {
+			return badRequest(privateMessageReply.render(msg, replyForm));
+		} else {
+			String newMsg = replyForm.field("message").value();
+			msg.reply(newMsg);
+		}
+		return redirect(routes.Application.home());
+	}
 
 	public static Result settingsAccount() {
 		return ok(settingsAccount.render());
@@ -189,6 +207,10 @@ public class Application extends Controller {
 	public static class ContactRequest {
 		public Date proposeTime;
 		public String toUser;
+		public String message;
+	}
+	
+	public static class Reply {
 		public String message;
 	}
 }
