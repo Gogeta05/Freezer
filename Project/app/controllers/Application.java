@@ -10,6 +10,8 @@ import com.avaje.ebean.Expr;
 
 
 
+
+
 import controllers.Application.Register;
 import backend.Database;
 import models.Interests;
@@ -201,27 +203,37 @@ public class Application extends Controller {
 		User usr = Util.getSessionUser();
 		
 		String value = form.field("comparator").value();
-		if (!value.equals("")) {
+		if (value != null) {
 			usr.settings.comparator = value;
 		}
 		
 		value = form.field("male").value();
-		if (value.equals("m")) {
+		if (value != null) {
 			usr.settings.male = true;
 		}
+		else {
+			usr.settings.male = false;
+			
+		}
 		value = form.field("female").value();
-		if (value.equals("f")) {
+		if (value != null) {
 			usr.settings.female = true;
+		}
+		else {
+			usr.settings.female = false;
 		}
 		
 		value = form.field("age").value();
-		if (!value.equals("")) {
+		if (value != null) {
 			usr.settings.age = Integer.parseInt(value);
 		}
 		
 		value = form.field("matchAroundLift").value();
-		if (value.equals("yes")) {
+		if (value != null) {
 			usr.settings.matchAroundLift = true;
+		}
+		else {
+			usr.settings.matchAroundLift = false;
 		}
 		
 		usr.save();
