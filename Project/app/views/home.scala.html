@@ -36,7 +36,7 @@
 					}
 				</select>
 			</div>
-			@*<a href="home" class="ui-btn ui-icon-recycle ui-btn-icon-notext ui-corner-all">Refresh Button</a> <!-- Breaks layout ... cannot be displayed next to OK Button ... -->*@
+			
 			<div class="formSubmit" data-role="controlgroup" data-type="horizontal">
 				<input type="submit" value="OK" data-mini="true" data-theme="b" />
 				<input type="button" onclick="forward('home')" value="Refresh" data-mini="true" />
@@ -68,16 +68,6 @@
 	@for(usr <- user.matching(1)) {
 		@userPopup(usr)
 	}
-	@filterPopup()
-	<div class="formSubmit" data-role="controlgroup" data-type="horizontal">
-		<a href="#filterPopup" data-rel="popup" data-transition="pop" data-mini="true" data-role="button">Set Filter</a>
-	</div>
 </div>
-
-<!-- footer -->
-<br /><hr />
-<footer>
-	@footer()
-</footer>
 </body>
 </html>
