@@ -14,6 +14,7 @@
 
 <!-- Main content -->
 <div class="mainContent" id="mainContent">
+	
 	<br />
 	@if(form.hasGlobalErrors) {
 		<hr />
@@ -37,11 +38,13 @@
 				</select>
 			</div>
 			
+			
 			<div class="formSubmit" data-role="controlgroup" data-type="horizontal">
 				<input type="submit" value="OK" data-mini="true" data-theme="b" />
 				<input type="button" onclick="forward('home')" value="Refresh" data-mini="true" />
 			</div>
 		</div>
+		<div hidden><input class="hiddenButton" type="submit" id="locbutt"/></div>
 	}
 	
 	

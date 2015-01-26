@@ -62,6 +62,9 @@ function getPostal(position) {
 				//Do something with the postal code
 				document.getElementById("locationInfo").value=parseInt(postal);
 				
+				//clicking the button is bugged because of the f5 bug, only uncomment if the f5 bug was resolved
+				//document.getElementById("locbutt").click();
+				
 			} else {
 				alert('No results found');
 			}	
