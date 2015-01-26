@@ -140,7 +140,7 @@ public class User extends Model {
 		this.firstName = name;
 	}
 	public void setLiftName(String name) {
-		this.lastName = name;
+		this.liftName = name;
 	}
 
 	/* Methods */
