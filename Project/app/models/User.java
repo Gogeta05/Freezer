@@ -136,6 +136,7 @@ public class User extends Model {
 	}
 	public void setLocation(int locationPLZ) {
 		this.locationPLZ = locationPLZ;
+		this.save();
 	}
 	public void setFirstName(String name) {
 		this.firstName = name;
@@ -444,6 +445,10 @@ public class User extends Model {
     	
     	List<User> users = Database.getUsers();
     	List<User> matched = new ArrayList<>();
+    	
+    	if (this.getLocation() == -1) {
+    		return matched;
+    	}
     	
     	int i = 0;
     	
