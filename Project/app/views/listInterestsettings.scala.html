@@ -1,9 +1,0 @@
-@(interests: List[Interests])
-	<div class="formField ui-field-contain">
-		@for(i <- interests) {
-			<input type="checkbox" name="@i.getTitle()" id="@i.getTitle()" value="@i.getTitle()" data-mini="true" @if(i.isOn()){checked="checked"}else{}><label for="@i.getTitle()">@i.getTitle()</label>
-				@if(i.hasSubs()) {
-					@listInterestsettings(i.getSubInterests())
-				}
-		}
-	</div>

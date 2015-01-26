@@ -47,10 +47,12 @@
 		</div>
 		
 		<h4>Interests</h4>
-		@listInterestsettings(user.interests)
+		<div class="formField ui-field-contain genderBox" data-role="controlgroup" data-iconpos="left">
+			@listInterests(user.interests)
+		</div>
 		
 		<div class="formSubmit" data-role="controlgroup" data-type="horizontal">
-			<input accesskey="s" value="Save" type="submit" data-theme="b" />
+			<input accesskey="s" value="Save" type="submit" data-theme="b" data-mini="true" />
 		</div>
 	}
 </div>

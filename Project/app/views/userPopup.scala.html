@@ -8,9 +8,11 @@
 			<div class="formFieldLabel userPopupField"><b>Age: @user.getAge</div>
 			<hr />
 			<h3>Interests</h3>
-			@if(user.interests != null) {
-				@listInterests(user.interests)
-			}
+			<div class="formField ui-field-contain genderBox" data-role="controlgroup" data-iconpos="left">
+				@if(user.interests != null) {
+					@listInterestsUserPopup(user.interests)(user)
+				}
+			</div>
 		</div>
 		<div class="formSubmit" data-role="controlgroup" data-type="horizontal">
 			<input type="button" name="contact" value="Contact" data-mini="true" onclick="forward('@routes.Application.chooseLift(user.getUsername())')" />
