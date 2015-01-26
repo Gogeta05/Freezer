@@ -1,0 +1,17 @@
+Sepp Grödel	54	Bauer
+
+Autraggeber der App. Hofft auf eine große Anzahl Nutzer, um seinen Profit zu steigern (und möchte die Applikation insgeheim auch selbst nutzen,
+ist daher sehr interessiert an der Implementierung eines Tutorials sowie ausführlichen Erklärungen, da er nicht so versiert in der Nutzung
+mobiler Endanwendungen ist).
+
+
+Sahra Klein	23	Einzelhandelskauffrau
+
+Fährt leidenschaftlich Ski und findet die App eine super Idee. Würde sich etwas mehr Nutzer wünschen.
+Außerdem sähe sie gern, wenn Profilfotos verpflichtend wären, da sie bereits auf mehrere "Fake"-Accounts gestoßen ist.
+
+
+Günther Harald	38	Software-Entwickler
+
+Hat seine eigene Dating App porgrammiert. Verwendet aber diese, da seine eigene App kaum Nutzer hat.
+Betreibt aktiv eine Vielzahl von gefälschten Accounts. Ständig online. Sendete bereits einen Bugreport.
