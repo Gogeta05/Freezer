@@ -1,6 +1,6 @@
 @(interests: List[Interests])(user: User)
 		@for(i <- interests) {
-			<input type="checkbox" name="interests[]" id="@i.getTitle()-@user.getUsername()" value="@i.getTitle()" data-mini="true" @if(i.isOn()){checked="checked" }else{}/><label for="@i.getTitle()-@user.getUsername()">@i.getTitle()</label>
+			<input type="checkbox" name="interests[]" id="@i.getTitle()-@user.getUsername()" onclick="this.checked=!this.checked;" value="@i.getTitle()" data-mini="true" @if(i.isOn()){checked="checked" }else{}/><label for="@i.getTitle()-@user.getUsername()">@i.getTitle()</label>
 				@if(i.hasSubs()) {
 					@listInterestsUserPopup(i.getSubInterests())(user)
 				}
