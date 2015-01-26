@@ -12,6 +12,7 @@ import com.avaje.ebean.Expr;
 
 
 
+
 import controllers.Application.Register;
 import backend.Database;
 import models.Interests;
@@ -264,12 +265,12 @@ public class Application extends Controller {
 		User usr = Util.getSessionUser();
 		
 		String value = form.field("firstName").value();
-		if (value != null) {
+		if (! value.equals("")) {
 			usr.setFirstName(value);
 		}
 		
 		value = form.field("lastName").value();
-		if (value != null) {
+		if (! value.equals("")) {
 			usr.setLastName(value);
 		}
 		
@@ -288,6 +289,18 @@ public class Application extends Controller {
 			usr.setAge(Integer.parseInt(value));
 		}
 
+
+		for (int i = 0; i < usr.interestCount; i++) {
+			
+			value=form.field("interests[" + i + "]").value();
+			if (value.equalsIgnoreCase("on")) {
+				usr.interestAt(i).turnOn();
+			}
+			else {
+				usr.interestAt(i).turnOff();
+			}
+		}
+		
 		usr.save();
 		return redirect(routes.Application.home());
 	}
@@ -358,6 +371,7 @@ public class Application extends Controller {
 		public String lastName;
 		public String age;
 		public String gender;
+		public String interests[];
 	}
 	
 	public static List<Lift> getLifts() {

@@ -21,35 +21,37 @@
 			<label for="firstname">first name</label>
 		</div>	
 		<div class="formField">
-			<input type="text" name="firstName" id="firstName" />
+			<input type="text" name="firstName" id="firstName" value="@user.getFirstName()" />
 		</div>
 		
 		<div class="formFieldLabel">
 			<label for="lastname">last name</label>
 		</div>	
 		<div class="formField">
-			<input type="text" name="lastName" id="lastName" />
+			<input type="text" name="lastName" id="lastName" value="@user.getLastName()" />
 		</div>
 		
 		<div class="formFieldLabel">
 			<label for="age">age</label>
 		</div>	
 		<div class="formField">
-			<input type="text" name="age" id="age" />
+			<input type="text" name="age" id="age" value="@user.getAge()" />
 		</div>
 		
 		<div class="formFieldLabel settingsProfileAge">
 			<label for="gender"><select name="gender" id="gender" data-mini="true" data-inline="true">
 					<option value="male">male</option>
-					<option value="female">female</option>
+					<option value="female" @if(user.getGender() == 'f'){selected=""}else{}>female</option>
 				</select>
 			</label>
 		</div>
 		
 		<h4>Interests</h4>
-		<div class="formField ui-field-contain genderBox" data-role="controlgroup" data-iconpos="left">
-			@listInterests(user.interests)
-		</div>
+			<table>
+				<tbody>
+					@listInterests(user.interests)
+				</tbody>
+			</table>
 		
 		<div class="formSubmit" data-role="controlgroup" data-type="horizontal">
 			<input accesskey="s" value="Save" type="submit" data-theme="b" data-mini="true" />

@@ -71,6 +71,8 @@ create table user (
   gender                    varchar(255),
   location_plz              integer,
   lift_name                 varchar(255),
+  interest_count            integer,
+  temporary_counter         integer,
   constraint pk_user primary key (id))
 ;
 

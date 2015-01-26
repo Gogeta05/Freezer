@@ -41,6 +41,8 @@ public class User extends Model {
 	private char gender;
 	private int locationPLZ;
 	private String liftName;
+	public Integer interestCount;
+	private int temporaryCounter;
 	
 	@OneToOne(mappedBy="owner", cascade=CascadeType.ALL)
 	public MessageBox msgBox;
@@ -62,6 +64,8 @@ public class User extends Model {
 	public User(String username, String email, String password, Integer age, char gender) {
 		try {
 			
+			this.interestCount = 0;
+			this.temporaryCounter = 0;
 			this.username = username;
 			this.email = email;
 			this.password = Util.encrypter.encryptPassword(password);
@@ -231,7 +235,8 @@ public class User extends Model {
 			//mark the row as read
 			readRows[r] = true;
 			
-			//return the parsed interest
+			//return the parsed interest and increase the interestCount in User
+			this.user.interestCount += 1;
 			return (in);
 		}
 	}
@@ -370,6 +375,39 @@ public class User extends Model {
 		return null;
 	}
 	
+	public Interests interestAt(int index) {
+		this.temporaryCounter = 0;
+
+		if (index >= interestCount) {
+			return null;
+		}
+		
+		else {
+			return rInterestAt(index, interests, 0);
+		}
+	}
+	
+	public Interests rInterestAt(int index, List<Interests> interests, int counter) {
+		Interests i = null;
+		if (interests == null || interests.isEmpty()) {
+			return null;
+		}
+		
+		Interests current = interests.get(counter);
+		if (index == this.temporaryCounter) {
+			return current;
+		}
+		
+		this.temporaryCounter += 1;
+		if (current.hasSubs()) {
+			i = rInterestAt(index, current.getSubInterests(), 0);
+		}
+		if (i == null && (counter + 1) < interests.size()) {
+			i = rInterestAt(index, interests, counter + 1);
+		}
+		
+		return i;
+	}
 	/**
 	 * receive a message
 	 */

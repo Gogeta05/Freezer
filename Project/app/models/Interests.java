@@ -27,7 +27,7 @@ public class Interests extends Model {
 	
 	@ManyToOne
 	@JoinColumn(name = "FK_PARENT")
-	Interests parent;
+	public Interests parent;
 	
 	/** The title of the interest, as displayed in the HTML later */
 	private String title;

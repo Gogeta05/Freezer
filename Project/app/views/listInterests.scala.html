@@ -1,7 +1,15 @@
 @(interests: List[Interests])
 		@for(i <- interests) {
-			<input type="checkbox" name="interests[]" id="@i.getTitle()" value="@i.getTitle()" data-mini="true" @if(i.isOn()){checked="checked" }else{}/><label for="@i.getTitle()">@i.getTitle()</label>
-				@if(i.hasSubs()) {
-					@listInterests(i.getSubInterests())
-				}
+			<tr>
+				<td @if(i.parent == null){style="color:#B89300; border-top: 1px solid black;"}>@i.getTitle()</td>
+				<td @if(i.parent == null){style="border-top: 1px solid black;"}>
+					<select name="interests[]" id="@i.getTitle()" data-role="flipswitch" data-mini="true">
+						<option>off</option>
+						<option @if(i.isOn()){selected="" }else{}>on</option>
+					</select>
+				</td>
+			</tr>
+			@if(i.hasSubs()) {
+				@listInterests(i.getSubInterests())
+			}
 		}
