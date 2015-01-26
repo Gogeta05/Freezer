@@ -12,7 +12,21 @@
 
 <!-- Main content -->
 <div class="mainContent" id="mainContent">
-	<h4>From: @message.from.getUsername()  @message.lift  @message.time</h4>
+	<h4>
+	<table>
+		<tbody>
+			<tr>
+				<td>From</td><td>@message.from.getUsername()</td>
+			</tr>
+			<tr>
+				<td>At Lift &nbsp</td><td>@message.lift</td>
+			</tr>
+			<tr>
+				<td>At</td><td>@message.time</td>
+			</tr>
+		</tbody>
+	</table>
+	</h4>
 	<hr />
 	<div class="formField pmDisplay">@message.msg</div>
 	<hr />
