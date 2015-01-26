@@ -86,6 +86,10 @@ public class Application extends Controller {
 	@Security.Authenticated(Secured.class)
 	public static Result privateMessage(long id) {
 		Message msg = new Model.Finder<>(String.class, Message.class).where(Expr.idEq(id)).findUnique();
+		
+		if (msg == null || (msg.to.id != Util.getSessionUser().id)) {
+			return redirect(routes.Application.home());
+		}
 		msg.read = true;
 		return ok(privateMessage.render(msg));
 	}
