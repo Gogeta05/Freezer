@@ -145,13 +145,30 @@ public class Global extends GlobalSettings {
 	        users.get(8).allInterests(true);
 	        
 	        //send some messages
-	        users.get(0).sendMsg("How ya doin", users.get(1), "Brandtallift", "00:00");
-	        users.get(1).sendMsg("How ya doin", users.get(0), "Brandtallift", "00:00");
-	        users.get(2).sendMsg("How ya doin", users.get(2), "Brandtallift", "00:00");
-	        users.get(3).sendMsg("How ya doin", users.get(3), "Brandtallift", "00:00");
-	        users.get(4).sendMsg("How ya doin", users.get(0), "Brandtallift", "00:00");
-	        users.get(5).sendMsg("How ya doin", users.get(5), "Brandtallift", "00:00");
-	        users.get(6).sendMsg("How ya doin", users.get(7), "Brandtallift", "00:00");
+	        users.get(0).sendMsg("How ya doin", users.get(1), "00:00", "Brandtallift");
+	        users.get(1).sendMsg("How ya doin", users.get(0), "00:00", "Brandtallift");
+	        users.get(2).sendMsg("How ya doin", users.get(2), "00:00", "Brandtallift");
+	        users.get(3).sendMsg("How ya doin", users.get(3), "00:00", "Brandtallift");
+	        users.get(4).sendMsg("How ya doin", users.get(0), "00:00", "Brandtallift");
+	        users.get(5).sendMsg("How ya doin", users.get(5), "00:00", "Brandtallift");
+	        users.get(6).sendMsg("How ya doin", users.get(7), "00:00", "Brandtallift");
+	        users.get(7).sendMsg("How ya doin", users.get(6), "00:00", "Brandtallift");
+	        users.get(8).sendMsg("How ya doin", users.get(4), "00:00", "Brandtallift");
+	        users.get(5).sendMsg("How ya doin", users.get(8), "00:00", "Brandtallift");
+	        users.get(2).sendMsg("How ya doin", users.get(2), "00:00", "Brandtallift");
+	        
+	        //set locations
+	        //shyPeter is all alone
+	        users.get(0).setLocation(6410);
+	        users.get(1).setLocation(6410);
+	        users.get(2).setLocation(6020);
+	       	users.get(3).setLocation(6020);
+	      	users.get(4).setLocation(6060);
+	        users.get(5).setLocation(6060);
+	        users.get(6).setLocation(6215);
+	        users.get(7).setLocation(6236);
+	        users.get(8).setLocation(6215);
+	        														
         }
         
     }
