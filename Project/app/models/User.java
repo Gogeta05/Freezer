@@ -141,7 +141,7 @@ public class User extends Model {
 		this.firstName = name;
 	}
 	public void setLastName(String name) {
-		this.firstName = name;
+		this.lastName = name;
 	}
 	public void setLiftName(String name) {
 		this.liftName = name;
