@@ -7,11 +7,24 @@ mobiler Endanwendungen ist).
 
 Sahra Klein	23	Einzelhandelskauffrau
 
-Fährt leidenschaftlich Ski und findet die App eine super Idee. Würde sich etwas mehr Nutzer wünschen.
+Fährt leidenschaftlich Ski und findet die App eine super Idee. Registriert sich bei der App.
+Loggt sich ein. Wählt auf der Homeübersicht den Lift in ihrer Nähe und passt ihre Matching Einstellungen an.
+Betrachtet ihre Matches. Würde sich etwas mehr Nutzer wünschen.
 Außerdem sähe sie gern, wenn Profilfotos verpflichtend wären, da sie bereits auf mehrere "Fake"-Accounts gestoßen ist.
+
 
 
 Günther Harald	38	Software-Entwickler
 
 Hat seine eigene Dating App porgrammiert. Verwendet aber diese, da seine eigene App kaum Nutzer hat.
-Betreibt aktiv eine Vielzahl von gefälschten Accounts. Ständig online. Sendete bereits einen Bugreport.
+Registriert sich mit falschen Daten - einer @mailnesia.com Adresse und unter Verwendung einer VPN-Verbindung zur Verschleierung.
+Stellt sein Matching so ein, dass er mit möglichst vielen Nutzern in Kontakt treten kann. Betrachtet alle vorgeschlagenen Profile.
+Schreibt dutzende Nachrichten, antwortet aber nie. 
+Betreibt inzwischen aktiv eine Vielzahl von gefälschten Accounts. Ständig online. 
+Sendete bereits einen Bugreport.
+
+
+Stefan Knoll	12	Schüler
+
+Eigentlich auf der Suche nach der App "Refrigerator".
+Läd Freezer aus Versehen. Löscht die Anwendung nach einmaligen Öffnen sofort.
