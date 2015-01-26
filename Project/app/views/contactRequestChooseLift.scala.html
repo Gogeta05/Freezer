@@ -20,7 +20,7 @@
 		</div>
 	}
 	@helper.form(routes.Application.chooseLiftSubmit(user.getUsername())) {
-		<h1>Choose a lift:</h1>
+		<h1>Choose a lift to meet:</h1>
 		<div class="ui-field-contain">
 			<select name="liftname" id="liftname" data-native-menu="true" data-mini="true">
 				<option value="@user.getLiftName">@user.getLiftName()</option>
