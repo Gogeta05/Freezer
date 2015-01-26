@@ -41,6 +41,7 @@ public class Application extends Controller {
 		return ok(index.render(users, loginForm));
 	}
 
+	@Security.Authenticated(Secured.class)
 	public static Result home() {
 		Form<SetUserLocation> locationForm = Form.form(SetUserLocation.class);
 		return ok(home.render(Util.getSessionUser(), locationForm));
@@ -81,22 +82,26 @@ public class Application extends Controller {
 		return ok(filterPopup.render());
 	}
 
+	@Security.Authenticated(Secured.class)
 	public static Result privateMessage(long id) {
 		Message msg = new Model.Finder<>(String.class, Message.class).where(Expr.idEq(id)).findUnique();
 		msg.read = true;
 		return ok(privateMessage.render(msg));
 	}
 
+	@Security.Authenticated(Secured.class)
 	public static Result privateMessageList() {
 		return ok(privateMessageList.render(Util.getSessionUser().msgBox));
 	}
 	
+	@Security.Authenticated(Secured.class)
 	public static Result privateMessageReply(long id) {
 		Message msg = new Model.Finder<>(String.class, Message.class).where(Expr.idEq(id)).findUnique();
 		Form<Reply> replyForm = Form.form(Reply.class);
 		return ok(privateMessageReply.render(msg, replyForm));
 	}
 	
+	@Security.Authenticated(Secured.class)
 	public static Result privateMessageReplySubmit(long id) {
 		Message msg = new Model.Finder<>(String.class, Message.class).where(Expr.idEq(id)).findUnique();
 		Form<Reply> replyForm = Form.form(Reply.class).bindFromRequest();
@@ -109,24 +114,29 @@ public class Application extends Controller {
 		return redirect(routes.Application.home());
 	}
 
+	@Security.Authenticated(Secured.class)
 	public static Result settingsAccount() {
 		return ok(settingsAccount.render());
 	}
 
+	@Security.Authenticated(Secured.class)
 	public static Result settingsGeneral() {
 		return ok(settingsGeneral.render());
 	}
 
+	@Security.Authenticated(Secured.class)
 	public static Result settingsMatching() {
 		Form<SaveMatchingSettings> form = Form.form(SaveMatchingSettings.class);
 		return ok(settingsMatching.render(form));
 	}
 
+	@Security.Authenticated(Secured.class)
 	public static Result settingsProfile() {
 		Form<SaveProfileSettings> form = Form.form(SaveProfileSettings.class);
 		return ok(settingsProfile.render(Util.getSessionUser(), form));
 	}
 
+	@Security.Authenticated(Secured.class)
 	public static Result userPopup(String username) {
 		User usr = Database.getUser(username);
 		
@@ -136,6 +146,7 @@ public class Application extends Controller {
 		return ok(userPopup.render(usr));
 	}
 	
+	@Security.Authenticated(Secured.class)
 	public static Result chooseLift(String user) {
 		Form<ChooseLift> chooseLiftForm = Form.form(ChooseLift.class);
 		User usr = Database.getUser(user);	
@@ -145,6 +156,7 @@ public class Application extends Controller {
 		return ok(contactRequestChooseLift.render(usr, chooseLiftForm));
 	}
 	
+	@Security.Authenticated(Secured.class)
 	public static Result chooseLiftSubmit(String user) {
 		Form<ChooseLift> chooseLiftForm = Form.form(ChooseLift.class).bindFromRequest();
 		User usr = Database.getUser(user);	
@@ -168,6 +180,7 @@ public class Application extends Controller {
 	 * @param toUser	the recipient of the message
 	 * @return
 	 */
+	@Security.Authenticated(Secured.class)
 	public static Result contactRequest(String user, String liftname) {
 		Form<ContactRequest> contactRequestForm = Form.form(ContactRequest.class);
 		User usr = Database.getUser(user);	
@@ -177,6 +190,7 @@ public class Application extends Controller {
 		return ok(contactRequest.render(usr, liftname, contactRequestForm));
 	}
 	
+	@Security.Authenticated(Secured.class)
 	public static Result contactRequestSubmit(String user, String liftname) {
 		Form<ContactRequest> contactRequestForm = Form.form(ContactRequest.class).bindFromRequest();
 		User usr = Database.getUser(user);	
@@ -193,11 +207,13 @@ public class Application extends Controller {
 		return redirect(routes.Application.home());
 	}
 	
+	@Security.Authenticated(Secured.class)
 	public static Result logout() {
 		session().clear();
 		return redirect(routes.Application.index());
 	}
 
+	@Security.Authenticated(Secured.class)
 	public static Result setUserLocation() {
 		Form<SetUserLocation> form = Form.form(SetUserLocation.class).bindFromRequest();
 		User usr = Util.getSessionUser();
@@ -218,6 +234,7 @@ public class Application extends Controller {
 		return redirect(routes.Application.home());
 	}
 	
+	@Security.Authenticated(Secured.class)
 	public static Result saveMatchingSettings() {
 		Form<SaveMatchingSettings> form = Form.form(SaveMatchingSettings.class).bindFromRequest();
 		User usr = Util.getSessionUser();
@@ -259,6 +276,8 @@ public class Application extends Controller {
 		usr.save();
 		return redirect(routes.Application.home());
 	}
+	
+	@Security.Authenticated(Secured.class)
 	public static Result saveProfileSettings() {
 		Form<SaveMatchingSettings> form = Form.form(SaveMatchingSettings.class).bindFromRequest();
 		User usr = Util.getSessionUser();
@@ -291,6 +310,8 @@ public class Application extends Controller {
 		usr.save();
 		return redirect(routes.Application.home());
 	}
+	
+	
 	/**
 	 * don't touch, automatic playframework at work
 	 */
